@@ -1,0 +1,310 @@
+@media(max-width:600px){
+	#header{
+		display:none;
+	}
+}
+body{
+	background:#f7f7f7;
+}
+@font-face {
+	font-family: Delicious; 
+	src: url('event/roboto.light.TTF'); 
+} 
+@font-face {
+	font-family: muli; 
+	src: url('event/muli.regular.TTF'); 
+}
+#heading h1{
+	padding-bottom: 15px; 
+	text-transform:none; 
+} 
+#heading p{ 
+	color: #333; 
+	font-family: muli, sans-serif; 
+	margin-bottom: 15px;
+}
+/*p{
+	font-family:Delicious;
+	font-size:20px;
+	color:#000000;
+	line-height:150%;
+	font-weight:lighter;	
+}*/
+#pricing{
+	color:#FFFFFF;
+	padding-top:20px;
+}
+#pricing h1{
+	color:#000000;
+}
+#pricing p{
+	padding:20px 0px 20px 0px;
+	color:#FFFFFF;
+	font-family:Delicious;
+	font-size:20px;
+	line-height:150%;
+	font-weight:lighter;
+}
+#box1,#box2,#box3,#box4{
+	border:5px solid #ffffff;
+	padding:20px;
+	text-align:center;
+	height:250px;
+	border-radius:10px;
+	color:#FFFFFF;
+}
+@font-face { 
+ 	font-family: tulip; src: url('font/Dutch Tulips Demo.TTF'); 
+	font-family: big; src: url('font/BIGBOBSBIG.TTF'); 
+	font-family: epic; src: url('font/My Epic Selfie Demo.TTF'); 
+	font-family: heart; src: url('font/My Big Heart Demo.TTF'); 
+} 
+#box h1{
+	 padding:30px; 
+	 font-size:40px; 
+	 text-transform: none; 
+	 text-align:center; 
+	 background-color:#007db2; 
+	 color:#FFFFFF; 
+	 font-weight:500; 
+	 border-radius:12px;
+	 margin:10px;
+}
+#box1{
+	background:#68bd45;
+	font-family:tulip;
+}
+#box2{
+	background:#ffc024;
+	font-family:big;
+}
+#box3{
+	background:#47b7fa;
+	font-family:epic;
+}
+#box4{
+	background:#ab66c4;
+	font-family:heart;
+}
+#box1 ul li,#box2 ul li,#box3 ul li,#box4 ul li{
+	line-height:150%;
+	font-weight:normal;
+	font-size:20px;
+	//font-weight:600;
+	padding:5px;
+}
+#box1 img,#box2 img,#box3 img,#box4 img{
+	width:100px;
+}
+#button{
+	border: 10px solid #FFFFFF;
+	padding: 10px 40px; 
+	background:#ffc024;
+	width: 450px;
+	border-radius: 20px;
+	margin:0px 0px 70px 0px;
+	color:#FFFFFF;
+	font-size:24px;
+}
+#button:hover{
+	background:#666666;
+}
+
+@media(max-width:600px){
+	#button{
+		width: 200px;
+		margin:0px 0px 20px 0px;;
+		padding: 5px 10px; 
+		font-size:12px;
+	}
+}
+
+/****************jquery flip css**********************/
+div.panel2,p.flip2,div.panel3,p.flip3,div.panel4,p.flip4,div.panel5,p.flip5,div.panel6,p.flip6,div.panel7,p.flip7,div.panel8,p.flip8,div.panel9,p.flip9,div.panel10,p.flip10,div.panel11,p.flip11,div.panel12,p.flip12,div.panel13,p.flip13 {
+	text-align: left;
+	background:#7EAEDC;
+	border:1px solid #FFFFFF;
+	border-radius: 20px;
+	padding:1%!important;
+}
+p.flip2,p.flip3,p.flip4,p.flip5,p.flip6,p.flip7,p.flip8,p.flip9,p.flip10,p.flip11,p.flip12,p.flip13{
+	cursor:pointer;
+	color:#DF7879;
+	margin-right:40px;
+	font-family:Delicious;
+	font-size:20px;
+	color:#000000;
+	line-height:150%;
+	font-weight:lighter;	
+} 
+p.flip2:hover,p.flip3:hover,p.flip4:hover,p.flip5:hover,p.flip6:hover,p.flip7:hover,p.flip8:hover,p.flip9:hover,p.flip10:hover,p.flip11:hover,p.flip12:hover,p.flip13:hover{
+	background:#5BA3E7;
+	color:#FFFFFF;
+	font-weight:600;
+}
+
+div.panel2,div.panel3,div.panel4,div.panel5,div.panel6,div.panel7,div.panel8,div.panel9,div.panel10,div.panel11,div.panel12,div.panel13{
+	widht: 50%;
+	height:auto;
+	display: none;
+	border-top:none;
+	margin-left:40px;
+}
+.panel2 p,.panel3 p,.panel4 p,.panel5 p,.panel6 p,.panel7 p,.panel8 p,.panel9 p,.panel10 p,.panel11 p,.panel12 p,.panel13 p{
+	font-size:19px;
+	padding-left:3% !important;
+	border-top:none;
+}
+
+/*********************css for background line *******************************/
+h2 {
+  font-size:30px;
+  text-align:center;
+}
+@media(max-width:600px){
+	h2{
+		font-size:20px;
+	}
+}
+h2.background {
+  position: relative;
+  z-index: 1;
+}
+h2.background:before {
+  /* this centers the line to the full width specified */
+  position: absolute;
+  /* positioning must be absolute here, and relative positioning must be applied to the parent */
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+}
+h2.background span {
+  /* to hide the lines from behind the text, you have to set the background color the same as the container */
+  background: #f7f7f7;
+  padding: 0 15px;
+}
+h2.double:before {
+  /* this is just to undo the :before styling from above */
+  border-top: none;
+}
+h2.double:after {
+  border-bottom: 1px solid blue;
+  -webkit-box-shadow: 0 1px 0 0 red;
+  -moz-box-shadow: 0 1px 0 0 red;
+  box-shadow: 0 1px 0 0 red;
+  content: "";
+  margin: 0 auto;
+  /* this centers the line to the full width specified */
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+/****************Table ***********************/
+#table{
+	margin-top:30px;
+	margin-bottom:60px;
+}
+#table h1{
+	padding:30px; 
+	font-size:40px; 
+	text-transform: none; 
+	text-align:center; 
+	background-color:#007db2; 
+	color:#FFFFFF; 
+	font-weight:500; 
+	border-radius:12px;
+	margin:10px;
+}
+table tr td{
+	text-align:center;
+	font-size:18px;
+	border: 1px solid brown;
+	
+	padding:20px;
+}
+table img{
+	width:30px;
+	background-color:#0066CC;
+}
+
+/***********************************************************/
+/*
+@import url(http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900);
+
+body {
+  font-family: 'Cinzel Decorative', cursive;
+  //background: url(event/texture-bg.jpg);
+  background-image:url(../event/Textures.jpg);
+  background-size: cover;
+  color: white;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+}
+.embiggen {
+  font-size: 4em;
+  text-shadow: 0 0 40px #ffbab3;
+}
+article {
+  max-width: 600px;
+  overflow: hidden;
+  margin: 0 auto 50px;
+}
+
+.subtitle {
+  margin: 0 0 2em 0;
+}
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;  
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  top: 0;
+  width: 600px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+.amp {
+  margin: 0 0 0.25em 0;
+}
+.amp span {
+  font-size: 0.7em;
+}
+
+.copy {
+  font: 1em Georgia, Serif;
+  text-align: justify;
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+}
+.copy p {
+  margin: 0 0 1em 0;
+}*/
+/*************************************************************/

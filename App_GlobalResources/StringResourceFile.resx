@@ -1,0 +1,1348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="id_1" xml:space="preserve">
+    <value>Add New Chapter +</value>
+  </data>
+  <data name="id_10" xml:space="preserve">
+    <value>Back Side Content</value>
+  </data>
+  <data name="id_100" xml:space="preserve">
+    <value> WAGmob App Platform is a facilitator to reach your readers anytime, anywhere and on any device on all digital platforms.</value>
+  </data>
+  <data name="id_101" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="id_102" xml:space="preserve">
+    <value> WAGmob App Platform is a facilitator to reach your readers anytime, anywhere and  on any device on all digital platforms.</value>
+  </data>
+  <data name="id_103" xml:space="preserve">
+    <value>Your browser does not support the video tag.</value>
+  </data>
+  <data name="id_104" xml:space="preserve">
+    <value>Your browser does not support the video tag.</value>
+  </data>
+  <data name="id_105" xml:space="preserve">
+    <value>Watch the video</value>
+  </data>
+  <data name="id_106" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="id_107" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="id_108" xml:space="preserve">
+    <value>Learn</value>
+  </data>
+  <data name="id_109" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="id_11" xml:space="preserve">
+    <value>Please write some text. Flash card's front side cannot be empty</value>
+  </data>
+  <data name="id_110" xml:space="preserve">
+    <value>Title of the Landing Page:</value>
+  </data>
+  <data name="id_111" xml:space="preserve">
+    <value>Style Guide</value>
+  </data>
+  <data name="id_112" xml:space="preserve">
+    <value>Landing Page Heading:</value>
+  </data>
+  <data name="id_113" xml:space="preserve">
+    <value>Times New Roman</value>
+  </data>
+  <data name="id_114" xml:space="preserve">
+    <value>Segoe UI</value>
+  </data>
+  <data name="id_115" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="id_116" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="id_117" xml:space="preserve">
+    <value>Itallic</value>
+  </data>
+  <data name="id_118" xml:space="preserve">
+    <value>Semibold</value>
+  </data>
+  <data name="id_119" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="id_12" xml:space="preserve">
+    <value>Please write some text.Flash card's back side cannot be empty</value>
+  </data>
+  <data name="id_120" xml:space="preserve">
+    <value>Bold Itallic</value>
+  </data>
+  <data name="id_121" xml:space="preserve">
+    <value>10pt</value>
+  </data>
+  <data name="id_122" xml:space="preserve">
+    <value>12pt</value>
+  </data>
+  <data name="id_123" xml:space="preserve">
+    <value>14pt</value>
+  </data>
+  <data name="id_124" xml:space="preserve">
+    <value> Upload side logo:</value>
+  </data>
+  <data name="id_125" xml:space="preserve">
+    <value>Do you want the Bottom bar?</value>
+  </data>
+  <data name="id_126" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="id_127" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="id_128" xml:space="preserve">
+    <value>Style Guide</value>
+  </data>
+  <data name="id_129" xml:space="preserve">
+    <value>Bottom bar color :</value>
+  </data>
+  <data name="id_13" xml:space="preserve">
+    <value>Flash card already exists. Please change title</value>
+  </data>
+  <data name="id_130" xml:space="preserve">
+    <value>Times New Roman</value>
+  </data>
+  <data name="id_131" xml:space="preserve">
+    <value>Segoe UI</value>
+  </data>
+  <data name="id_132" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="id_133" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="id_134" xml:space="preserve">
+    <value>Itallic</value>
+  </data>
+  <data name="id_135" xml:space="preserve">
+    <value>Semibold</value>
+  </data>
+  <data name="id_136" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="id_137" xml:space="preserve">
+    <value>Bold Itallic</value>
+  </data>
+  <data name="id_138" xml:space="preserve">
+    <value>10pt</value>
+  </data>
+  <data name="id_139" xml:space="preserve">
+    <value>12pt</value>
+  </data>
+  <data name="id_14" xml:space="preserve">
+    <value>Flash card already exists, please change title</value>
+  </data>
+  <data name="id_140" xml:space="preserve">
+    <value>14pt</value>
+  </data>
+  <data name="id_141" xml:space="preserve">
+    <value> Change/Upload Logo:</value>
+  </data>
+  <data name="id_142" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="id_143" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="id_144" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="id_145" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="id_146" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="id_147" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="id_148" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="id_149" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_15" xml:space="preserve">
+    <value>Flash card has been successfully saved</value>
+  </data>
+  <data name="id_150" xml:space="preserve">
+    <value>Please select at least one feature.</value>
+  </data>
+  <data name="id_151" xml:space="preserve">
+    <value>Publish your App</value>
+  </data>
+  <data name="id_152" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="id_153" xml:space="preserve">
+    <value>Create apps on the simple ‘n easy </value>
+  </data>
+  <data name="id_154" xml:space="preserve">
+    <value>WAGmob App Platform for anywhere, anytime and any device on –the- go learning, training and selling.</value>
+  </data>
+  <data name="id_155" xml:space="preserve">
+    <value>Beautiful Design</value>
+  </data>
+  <data name="id_156" xml:space="preserve">
+    <value> Provide your app a cool appearance and an  amazing feel with a plethora of beautiful designs available.</value>
+  </data>
+  <data name="id_157" xml:space="preserve">
+    <value>Marketable</value>
+  </data>
+  <data name="id_158" xml:space="preserve">
+    <value>Creating an app is not the end of the story. Get it published on every existent platform- Windows, Apple, Android, Browser, Android Nook, Android Kindle, Android Google, Android Samsung Phone, Apple IPod,  Apple IPad, Apple IPhone, Windows Tab, Windows Phone, and Android Samsung Tab.</value>
+  </data>
+  <data name="id_159" xml:space="preserve">
+    <value>Edit Photos</value>
+  </data>
+  <data name="id_16" xml:space="preserve">
+    <value>Flash card already exists. Please change title</value>
+  </data>
+  <data name="id_160" xml:space="preserve">
+    <value>Visual stimulus is key. Earlier you had your users’ curiosity. Edit photos on the apps and have their attention!</value>
+  </data>
+  <data name="id_161" xml:space="preserve">
+    <value>Edit Colors</value>
+  </data>
+  <data name="id_162" xml:space="preserve">
+    <value> Apps are meant to receive user attention and colors play an important role. Edit colors of your choice to gain interest of your app users.</value>
+  </data>
+  <data name="id_163" xml:space="preserve">
+    <value>User Friendly</value>
+  </data>
+  <data name="id_164" xml:space="preserve">
+    <value>We continuously strive to create the best user experience possible Make your apps a friend, philosopher and guide to your users.</value>
+  </data>
+  <data name="id_165" xml:space="preserve">
+    <value>100% Editable</value>
+  </data>
+  <data name="id_166" xml:space="preserve">
+    <value> Our core philosophy is Kaizen (continuous improvement). Edit mistakes to correct them as your app enjoys the freedom of being 100% editable.</value>
+  </data>
+  <data name="id_167" xml:space="preserve">
+    <value> What's WAGmob App Platform all about ?</value>
+  </data>
+  <data name="id_168" xml:space="preserve">
+    <value>WAGmob App Platform exists to exploit the transition of users from PCs to post PC devices.</value>
+  </data>
+  <data name="id_169" xml:space="preserve">
+    <value>With the audience owning a wide range of hand-held devices, we make apps for various UIs and different platforms.</value>
+  </data>
+  <data name="id_17" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="id_170" xml:space="preserve">
+    <value>Pricing plans</value>
+  </data>
+  <data name="id_171" xml:space="preserve">
+    <value>Select one of the pricing plans displayed below best suited to your capacity.</value>
+  </data>
+  <data name="id_172" xml:space="preserve">
+    <value>$9.99 / App</value>
+  </data>
+  <data name="id_173" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="id_174" xml:space="preserve">
+    <value> To learn more about our publishing services contact us at Team@WAGmob.com</value>
+  </data>
+  <data name="id_175" xml:space="preserve">
+    <value>2014 WAGmob | team@wagmob.com | Redmond, WA, USA.</value>
+  </data>
+  <data name="id_176" xml:space="preserve">
+    <value>Splash image width and height should be 1920x1080</value>
+  </data>
+  <data name="id_177" xml:space="preserve">
+    <value>Square logo width and height should be 1024x1024</value>
+  </data>
+  <data name="id_178" xml:space="preserve">
+    <value>Invalid App Title</value>
+  </data>
+  <data name="id_179" xml:space="preserve">
+    <value>Invalid splash file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_18" xml:space="preserve">
+    <value>Option:(Enter each choice on a seprate line)</value>
+  </data>
+  <data name="id_180" xml:space="preserve">
+    <value>Invalid logo file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_181" xml:space="preserve">
+    <value>eBook</value>
+  </data>
+  <data name="id_182" xml:space="preserve">
+    <value> For which platforms?</value>
+  </data>
+  <data name="id_183" xml:space="preserve">
+    <value> Orientation:</value>
+  </data>
+  <data name="id_184" xml:space="preserve">
+    <value> Portrait Only.</value>
+  </data>
+  <data name="id_185" xml:space="preserve">
+    <value> Book Title:</value>
+  </data>
+  <data name="id_186" xml:space="preserve">
+    <value>Book Subtitle:</value>
+  </data>
+  <data name="id_187" xml:space="preserve">
+    <value>Book Description:</value>
+  </data>
+  <data name="id_188" xml:space="preserve">
+    <value> Author Name:</value>
+  </data>
+  <data name="id_189" xml:space="preserve">
+    <value>Book Front Cover:</value>
+  </data>
+  <data name="id_19" xml:space="preserve">
+    <value>Answer Description</value>
+  </data>
+  <data name="id_190" xml:space="preserve">
+    <value>Book Back Cover:</value>
+  </data>
+  <data name="id_191" xml:space="preserve">
+    <value>Please select at least one platform</value>
+  </data>
+  <data name="id_192" xml:space="preserve">
+    <value>Invalid Book Title</value>
+  </data>
+  <data name="id_193" xml:space="preserve">
+    <value>Invalid Book Subtitle</value>
+  </data>
+  <data name="id_194" xml:space="preserve">
+    <value>Invalid Book Description</value>
+  </data>
+  <data name="id_195" xml:space="preserve">
+    <value>Invalid Author Name</value>
+  </data>
+  <data name="id_196" xml:space="preserve">
+    <value>Invalid file format. Only .jpg files allowed.</value>
+  </data>
+  <data name="id_197" xml:space="preserve">
+    <value>Invalid file format. Only .jpg files allowed.</value>
+  </data>
+  <data name="id_198" xml:space="preserve">
+    <value>Book Front Page filesize is too large. It should be 1MB</value>
+  </data>
+  <data name="id_199" xml:space="preserve">
+    <value>Book Front Page width and height should be 750x1000</value>
+  </data>
+  <data name="id_2" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_20" xml:space="preserve">
+    <value>Question 1</value>
+  </data>
+  <data name="id_200" xml:space="preserve">
+    <value>Book Front Page filesize is too large. It should be 1MB</value>
+  </data>
+  <data name="id_201" xml:space="preserve">
+    <value>Book Back Page width and height should be 750x1000</value>
+  </data>
+  <data name="id_202" xml:space="preserve">
+    <value> eBook</value>
+  </data>
+  <data name="id_203" xml:space="preserve">
+    <value>Do you want to add:</value>
+  </data>
+  <data name="id_204" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="id_205" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="id_206" xml:space="preserve">
+    <value>No App Available</value>
+  </data>
+  <data name="id_207" xml:space="preserve">
+    <value>Scroll</value>
+  </data>
+  <data name="id_208" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="id_209" xml:space="preserve">
+    <value> To learn more about our publishing services contact us at Team@WAGmob.com</value>
+  </data>
+  <data name="id_21" xml:space="preserve">
+    <value>Question has been successfully saved</value>
+  </data>
+  <data name="id_210" xml:space="preserve">
+    <value>2014 WAGmob | team@wagmob.com | Redmond, WA, USA.</value>
+  </data>
+  <data name="id_211" xml:space="preserve">
+    <value>1 Upload your application Logo</value>
+  </data>
+  <data name="id_212" xml:space="preserve">
+    <value>First logo :</value>
+  </data>
+  <data name="id_213" xml:space="preserve">
+    <value>Please make sure the image size of square logo is 1024x1024 (.png).</value>
+  </data>
+  <data name="id_214" xml:space="preserve">
+    <value>Second logo :</value>
+  </data>
+  <data name="id_215" xml:space="preserve">
+    <value>Please make sure the image size of rectangle logo is 1024x500 (.png).</value>
+  </data>
+  <data name="id_216" xml:space="preserve">
+    <value>Please upload square logo image.</value>
+  </data>
+  <data name="id_217" xml:space="preserve">
+    <value>Please upload rectangle logo image.</value>
+  </data>
+  <data name="id_218" xml:space="preserve">
+    <value>Square logo width and height should be 1024x1024</value>
+  </data>
+  <data name="id_219" xml:space="preserve">
+    <value>Rectangle logo width and height should be 1024x500</value>
+  </data>
+  <data name="id_22" xml:space="preserve">
+    <value>Please enter question</value>
+  </data>
+  <data name="id_220" xml:space="preserve">
+    <value>Create Template</value>
+  </data>
+  <data name="id_221" xml:space="preserve">
+    <value>For which platforms?</value>
+  </data>
+  <data name="id_222" xml:space="preserve">
+    <value> Orientation:</value>
+  </data>
+  <data name="id_223" xml:space="preserve">
+    <value>Tablet: Landscape and Portrait  Phone: Portrait only</value>
+  </data>
+  <data name="id_224" xml:space="preserve">
+    <value> Device:</value>
+  </data>
+  <data name="id_225" xml:space="preserve">
+    <value> Tablet and Phone.</value>
+  </data>
+  <data name="id_226" xml:space="preserve">
+    <value> Title of the App:</value>
+  </data>
+  <data name="id_227" xml:space="preserve">
+    <value>App name already exists. Please select another name.</value>
+  </data>
+  <data name="id_228" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_229" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_23" xml:space="preserve">
+    <value>Please enter Option A</value>
+  </data>
+  <data name="id_230" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+  <data name="id_231" xml:space="preserve">
+    <value> eBook</value>
+  </data>
+  <data name="id_232" xml:space="preserve">
+    <value> Choose a Template</value>
+  </data>
+  <data name="id_233" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_234" xml:space="preserve">
+    <value>Scroll</value>
+  </data>
+  <data name="id_235" xml:space="preserve">
+    <value>
+</value>
+  </data>
+  <data name="id_236" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="id_237" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="id_238" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="id_239" xml:space="preserve">
+    <value>Don't have an account? Sign Up Now</value>
+  </data>
+  <data name="id_24" xml:space="preserve">
+    <value>Please enter Option B</value>
+  </data>
+  <data name="id_240" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="id_241" xml:space="preserve">
+    <value>Create User Account:</value>
+  </data>
+  <data name="id_242" xml:space="preserve">
+    <value>Caps Lock is on.</value>
+  </data>
+  <data name="id_243" xml:space="preserve">
+    <value> Name of your organization</value>
+  </data>
+  <data name="id_244" xml:space="preserve">
+    <value>Already Registered? Sign In Now</value>
+  </data>
+  <data name="id_245" xml:space="preserve">
+    <value>Forgot your Password</value>
+  </data>
+  <data name="id_246" xml:space="preserve">
+    <value>Already Registered? Sign In Now</value>
+  </data>
+  <data name="id_247" xml:space="preserve">
+    <value>Say Hi and Get in Touch</value>
+  </data>
+  <data name="id_248" xml:space="preserve">
+    <value> To learn more about our publishing services contact us at Team@WAGmob.com</value>
+  </data>
+  <data name="id_249" xml:space="preserve">
+    <value>2014 WAGmob | team@wagmob.com | Redmond, WA, USA.</value>
+  </data>
+  <data name="id_25" xml:space="preserve">
+    <value>Please enter Option C</value>
+  </data>
+  <data name="id_250" xml:space="preserve">
+    <value>Regitration Process Failed</value>
+  </data>
+  <data name="id_251" xml:space="preserve">
+    <value>Email address already exists</value>
+  </data>
+  <data name="id_252" xml:space="preserve">
+    <value>Invalid Email or Password</value>
+  </data>
+  <data name="id_253" xml:space="preserve">
+    <value>Invalid Email or Password</value>
+  </data>
+  <data name="id_254" xml:space="preserve">
+    <value>This Email ID is not registered with us.</value>
+  </data>
+  <data name="id_255" xml:space="preserve">
+    <value>Invalid Email.</value>
+  </data>
+  <data name="id_256" xml:space="preserve">
+    <value>2. You can upload an image or video</value>
+  </data>
+  <data name="id_257" xml:space="preserve">
+    <value>Image :</value>
+  </data>
+  <data name="id_258" xml:space="preserve">
+    <value>Please make sure the splash size is 1920x1080(.png)</value>
+  </data>
+  <data name="id_259" xml:space="preserve">
+    <value>Video :</value>
+  </data>
+  <data name="id_26" xml:space="preserve">
+    <value>Please enter Option D</value>
+  </data>
+  <data name="id_260" xml:space="preserve">
+    <value>Please make sure the video format is .mp4</value>
+  </data>
+  <data name="id_261" xml:space="preserve">
+    <value>Splash image width and height should be 1920x1080</value>
+  </data>
+  <data name="id_262" xml:space="preserve">
+    <value>Splash video uploaded succesfully.</value>
+  </data>
+  <data name="id_263" xml:space="preserve">
+    <value>Please upload splash image.</value>
+  </data>
+  <data name="id_264" xml:space="preserve">
+    <value> Style Guide</value>
+  </data>
+  <data name="id_265" xml:space="preserve">
+    <value>Index Headings:</value>
+  </data>
+  <data name="id_266" xml:space="preserve">
+    <value>Upload Flashcard Background </value>
+  </data>
+  <data name="id_267" xml:space="preserve">
+    <value>Flashcard Background Image</value>
+  </data>
+  <data name="id_268" xml:space="preserve">
+    <value>Background Image width and height should be 650x520</value>
+  </data>
+  <data name="id_269" xml:space="preserve">
+    <value>Please upload Background Image.</value>
+  </data>
+  <data name="id_27" xml:space="preserve">
+    <value>Please enter question</value>
+  </data>
+  <data name="id_270" xml:space="preserve">
+    <value>Background Image width and height should be 650x520</value>
+  </data>
+  <data name="id_271" xml:space="preserve">
+    <value>Learn</value>
+  </data>
+  <data name="id_272" xml:space="preserve">
+    <value>Tile Resolution : 1024x756</value>
+  </data>
+  <data name="id_273" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_274" xml:space="preserve">
+    <value>Please upload all Tile images.</value>
+  </data>
+  <data name="id_275" xml:space="preserve">
+    <value>Tile Image width and height should be 1024x756</value>
+  </data>
+  <data name="id_276" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="id_277" xml:space="preserve">
+    <value>Tile Resolution : 1024x756</value>
+  </data>
+  <data name="id_278" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_279" xml:space="preserve">
+    <value>Please upload all Tile images.</value>
+  </data>
+  <data name="id_28" xml:space="preserve">
+    <value>Your browser does not support the video tag.</value>
+  </data>
+  <data name="id_280" xml:space="preserve">
+    <value>Tile Image width and height should be 1024x756</value>
+  </data>
+  <data name="id_281" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="id_282" xml:space="preserve">
+    <value>Tile Resolution : 1024x756</value>
+  </data>
+  <data name="id_283" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_284" xml:space="preserve">
+    <value>Tile Image width and height should be 1024x756</value>
+  </data>
+  <data name="id_285" xml:space="preserve">
+    <value>Please upload all Tile images."</value>
+  </data>
+  <data name="id_286" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="id_287" xml:space="preserve">
+    <value>Tile Resolution : 1024x756</value>
+  </data>
+  <data name="id_288" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_289" xml:space="preserve">
+    <value>Tile Image width and height should be 1024x756</value>
+  </data>
+  <data name="id_29" xml:space="preserve">
+    <value>Upload your video</value>
+  </data>
+  <data name="id_290" xml:space="preserve">
+    <value>Upload Tile 01:</value>
+  </data>
+  <data name="id_291" xml:space="preserve">
+    <value>Upload Tile 02:</value>
+  </data>
+  <data name="id_292" xml:space="preserve">
+    <value>Please upload portrait background.</value>
+  </data>
+  <data name="id_293" xml:space="preserve">
+    <value>Data Format:{FirstName, LastName, EmailId, Organization, RegionId;}</value>
+  </data>
+  <data name="id_294" xml:space="preserve">
+    <value>Add Manually</value>
+  </data>
+  <data name="id_295" xml:space="preserve">
+    <value>Add In Bulk</value>
+  </data>
+  <data name="id_296" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="id_297" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="id_298" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="id_299" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="id_3" xml:space="preserve">
+    <value>Chapter cannot be empty.</value>
+  </data>
+  <data name="id_30" xml:space="preserve">
+    <value>Video :</value>
+  </data>
+  <data name="id_300" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="id_301" xml:space="preserve">
+    <value>Save &amp; Next</value>
+  </data>
+  <data name="id_302" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="id_303" xml:space="preserve">
+    <value>Data Inserted successfully!</value>
+  </data>
+  <data name="id_304" xml:space="preserve">
+    <value>Error:-Duplicate Email Id.</value>
+  </data>
+  <data name="id_305" xml:space="preserve">
+    <value>Error:-FistName can not be more than 30 Charaters long</value>
+  </data>
+  <data name="id_306" xml:space="preserve">
+    <value>Error:-LastName can not be more than 30 Charaters long</value>
+  </data>
+  <data name="id_307" xml:space="preserve">
+    <value>Error:-EmailId can not be more than 50 Charaters long</value>
+  </data>
+  <data name="id_308" xml:space="preserve">
+    <value>Error:-Organization name can not be more than 30 Charaters long</value>
+  </data>
+  <data name="id_309" xml:space="preserve">
+    <value>EmailId Already Exist, Please select Another Email Id.</value>
+  </data>
+  <data name="id_31" xml:space="preserve">
+    <value>Please make sure the video size is not more than 5mb(.mp4).</value>
+  </data>
+  <data name="id_310" xml:space="preserve">
+    <value>Please Provide data in correct format!</value>
+  </data>
+  <data name="id_311" xml:space="preserve">
+    <value>Please Provide data in correct format!</value>
+  </data>
+  <data name="id_312" xml:space="preserve">
+    <value>Please Provide data in correct format!</value>
+  </data>
+  <data name="id_313" xml:space="preserve">
+    <value>EmailId Already Exist, Please select Another Email Id.</value>
+  </data>
+  <data name="id_314" xml:space="preserve">
+    <value>Record inserted successfully!</value>
+  </data>
+  <data name="id_315" xml:space="preserve">
+    <value>EmailId Already Exist, Please select Another Email Id.</value>
+  </data>
+  <data name="id_316" xml:space="preserve">
+    <value>Record inserted successfully!</value>
+  </data>
+  <data name="id_317" xml:space="preserve">
+    <value>Record inserted successfully!</value>
+  </data>
+  <data name="id_318" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="id_319" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="id_32" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="id_320" xml:space="preserve">
+    <value>Are you sure you want to delete Selected User?</value>
+  </data>
+  <data name="id_321" xml:space="preserve">
+    <value>No User Selected. Please select user!</value>
+  </data>
+  <data name="id_322" xml:space="preserve">
+    <value>Manage User</value>
+  </data>
+  <data name="id_323" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="id_324" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="id_325" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="id_326" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="id_327" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="id_328" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="id_329" xml:space="preserve">
+    <value>Alphabet Only</value>
+  </data>
+  <data name="id_33" xml:space="preserve">
+    <value>Invalid file format. Only .mp4 files allowed.</value>
+  </data>
+  <data name="id_330" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="id_331" xml:space="preserve">
+    <value>Alphabet Only</value>
+  </data>
+  <data name="id_332" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="id_333" xml:space="preserve">
+    <value>Invalid Email</value>
+  </data>
+  <data name="id_334" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="id_335" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
+  <data name="id_336" xml:space="preserve">
+    <value>Groups</value>
+  </data>
+  <data name="id_337" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="id_338" xml:space="preserve">
+    <value>+ Add New</value>
+  </data>
+  <data name="id_339" xml:space="preserve">
+    <value>Create Group</value>
+  </data>
+  <data name="id_34" xml:space="preserve">
+    <value>File size cannot be greater than 5 MB</value>
+  </data>
+  <data name="id_340" xml:space="preserve">
+    <value>Add User</value>
+  </data>
+  <data name="id_341" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="id_342" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="id_343" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="id_344" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="id_345" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="id_346" xml:space="preserve">
+    <value>New Group</value>
+  </data>
+  <data name="id_347" xml:space="preserve">
+    <value>Please enter a new group name.</value>
+  </data>
+  <data name="id_348" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="id_349" xml:space="preserve">
+    <value>Invalid group name</value>
+  </data>
+  <data name="id_35" xml:space="preserve">
+    <value>File uploaded successfully</value>
+  </data>
+  <data name="id_350" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="id_351" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="id_352" xml:space="preserve">
+    <value>Change the group name.</value>
+  </data>
+  <data name="id_353" xml:space="preserve">
+    <value>Invalid group name</value>
+  </data>
+  <data name="id_354" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="id_355" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="id_356" xml:space="preserve">
+    <value>Group not created</value>
+  </data>
+  <data name="id_357" xml:space="preserve">
+    <value>Group Created Successfully!</value>
+  </data>
+  <data name="id_358" xml:space="preserve">
+    <value>Group Name Already Exist. Select Another Name!</value>
+  </data>
+  <data name="id_359" xml:space="preserve">
+    <value>Select Group Member!</value>
+  </data>
+  <data name="id_36" xml:space="preserve">
+    <value>Upload .docx File</value>
+  </data>
+  <data name="id_360" xml:space="preserve">
+    <value>Group Deleted Successfully!</value>
+  </data>
+  <data name="id_361" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="id_362" xml:space="preserve">
+    <value>Group Name Already Exist. Select Another Name!</value>
+  </data>
+  <data name="id_363" xml:space="preserve">
+    <value>Group Name Updated!</value>
+  </data>
+  <data name="id_364" xml:space="preserve">
+    <value>Somthing went wrong try again later!</value>
+  </data>
+  <data name="id_365" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="id_366" xml:space="preserve">
+    <value>No Recipients</value>
+  </data>
+  <data name="id_367" xml:space="preserve">
+    <value>There are no emails in your Draft folder!</value>
+  </data>
+  <data name="id_368" xml:space="preserve">
+    <value>No Recipients</value>
+  </data>
+  <data name="id_369" xml:space="preserve">
+    <value>There are no emails in your Sent folder!</value>
+  </data>
+  <data name="id_37" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="id_370" xml:space="preserve">
+    <value>Message Not Send for:-</value>
+  </data>
+  <data name="id_371" xml:space="preserve">
+    <value>Please select atleast one recipients</value>
+  </data>
+  <data name="id_372" xml:space="preserve">
+    <value>Message Not Saved for:-</value>
+  </data>
+  <data name="id_373" xml:space="preserve">
+    <value>Please provide recevier EmailId</value>
+  </data>
+  <data name="id_374" xml:space="preserve">
+    <value>Please provide mail subject</value>
+  </data>
+  <data name="id_375" xml:space="preserve">
+    <value>Please provide message, it can not be empty</value>
+  </data>
+  <data name="id_376" xml:space="preserve">
+    <value>Message Manager</value>
+  </data>
+  <data name="id_377" xml:space="preserve">
+    <value>Create New Message</value>
+  </data>
+  <data name="id_378" xml:space="preserve">
+    <value>Draft Messages</value>
+  </data>
+  <data name="id_379" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="id_38" xml:space="preserve">
+    <value>Unknown error in database connection</value>
+  </data>
+  <data name="id_380" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="id_381" xml:space="preserve">
+    <value>Sent Messages</value>
+  </data>
+  <data name="id_382" xml:space="preserve">
+    <value>Receiver</value>
+  </data>
+  <data name="id_383" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="id_384" xml:space="preserve">
+    <value>Sent Date</value>
+  </data>
+  <data name="id_385" xml:space="preserve">
+    <value>Save and Continue</value>
+  </data>
+  <data name="id_386" xml:space="preserve">
+    <value>Save as Draft</value>
+  </data>
+  <data name="id_387" xml:space="preserve">
+    <value>Send to EveryOne</value>
+  </data>
+  <data name="id_388" xml:space="preserve">
+    <value>Add Manually</value>
+  </data>
+  <data name="id_389" xml:space="preserve">
+    <value>Create Message</value>
+  </data>
+  <data name="id_39" xml:space="preserve">
+    <value>Unknown error in database connection</value>
+  </data>
+  <data name="id_390" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="id_391" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="id_392" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="id_393" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="id_394" xml:space="preserve">
+    <value>No User to Delete!</value>
+  </data>
+  <data name="id_395" xml:space="preserve">
+    <value>Are you sure you want to delete Selected User?</value>
+  </data>
+  <data name="id_396" xml:space="preserve">
+    <value>No User Selected. Please select user!</value>
+  </data>
+  <data name="id_397" xml:space="preserve">
+    <value>No Recipients to Delete!</value>
+  </data>
+  <data name="id_398" xml:space="preserve">
+    <value>Are you sure you want to delete Selected Recipients?</value>
+  </data>
+  <data name="id_399" xml:space="preserve">
+    <value>No Recipients Selected. Please select Recipient!</value>
+  </data>
+  <data name="id_4" xml:space="preserve">
+    <value>Chapter</value>
+  </data>
+  <data name="id_40" xml:space="preserve">
+    <value>This page already exists. Please choose another one.</value>
+  </data>
+  <data name="id_400" xml:space="preserve">
+    <value>No Message to Delete!</value>
+  </data>
+  <data name="id_401" xml:space="preserve">
+    <value>Are you sure you want to delete Selected Messages?</value>
+  </data>
+  <data name="id_402" xml:space="preserve">
+    <value>No Message Selected. Please select Message!</value>
+  </data>
+  <data name="id_403" xml:space="preserve">
+    <value>No Message to Delete!</value>
+  </data>
+  <data name="id_404" xml:space="preserve">
+    <value>Are you sure you want to delete Selected Messages?</value>
+  </data>
+  <data name="id_405" xml:space="preserve">
+    <value>No Message Selected. Please select Message!</value>
+  </data>
+  <data name="id_406" xml:space="preserve">
+    <value>Please select a user group</value>
+  </data>
+  <data name="id_407" xml:space="preserve">
+    <value>Please select atleast one user option</value>
+  </data>
+  <data name="id_408" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="id_409" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="id_41" xml:space="preserve">
+    <value>Files with only .doc and .docx extensions are allowed</value>
+  </data>
+  <data name="id_42" xml:space="preserve">
+    <value>File size cannot be greater than 2 MB</value>
+  </data>
+  <data name="id_43" xml:space="preserve">
+    <value>File uploaded successfully</value>
+  </data>
+  <data name="id_44" xml:space="preserve">
+    <value>Please upload again.</value>
+  </data>
+  <data name="id_45" xml:space="preserve">
+    <value>Learn&gt;</value>
+  </data>
+  <data name="id_46" xml:space="preserve">
+    <value>Invalid Chapter Name</value>
+  </data>
+  <data name="id_47" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="id_48" xml:space="preserve">
+    <value>Only .docx file is allowed!</value>
+  </data>
+  <data name="id_49" xml:space="preserve">
+    <value>Are you sure you want to delete this chapter?</value>
+  </data>
+  <data name="id_5" xml:space="preserve">
+    <value>A chapter with that title already exists. Please choose another title.</value>
+  </data>
+  <data name="id_50" xml:space="preserve">
+    <value>File cannot be empty. Please write some content</value>
+  </data>
+  <data name="id_51" xml:space="preserve">
+    <value>Chapter already exists. Please change title</value>
+  </data>
+  <data name="id_52" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_53" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_54" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_55" xml:space="preserve">
+    <value>Chapter cannot be empty</value>
+  </data>
+  <data name="id_56" xml:space="preserve">
+    <value>Files with only .doc and .docx extensions are allowed</value>
+  </data>
+  <data name="id_57" xml:space="preserve">
+    <value>File size cannot be greater than 5 MB</value>
+  </data>
+  <data name="id_58" xml:space="preserve">
+    <value>File uploaded successfully</value>
+  </data>
+  <data name="id_59" xml:space="preserve">
+    <value>Please upload again.</value>
+  </data>
+  <data name="id_6" xml:space="preserve">
+    <value>Add New Flash Card +</value>
+  </data>
+  <data name="id_60" xml:space="preserve">
+    <value>Please select a file</value>
+  </data>
+  <data name="id_61" xml:space="preserve">
+    <value>Learn</value>
+  </data>
+  <data name="id_62" xml:space="preserve">
+    <value>Designer</value>
+  </data>
+  <data name="id_63" xml:space="preserve">
+    <value>Create your own apps</value>
+  </data>
+  <data name="id_64" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="id_65" xml:space="preserve">
+    <value>Edit your apps</value>
+  </data>
+  <data name="id_66" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="id_67" xml:space="preserve">
+    <value>Analyzer</value>
+  </data>
+  <data name="id_68" xml:space="preserve">
+    <value>Your browser does not support the video tag.</value>
+  </data>
+  <data name="id_69" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="id_7" xml:space="preserve">
+    <value>Flash Card Title:</value>
+  </data>
+  <data name="id_70" xml:space="preserve">
+    <value>For which platforms?</value>
+  </data>
+  <data name="id_71" xml:space="preserve">
+    <value>  Orientation:</value>
+  </data>
+  <data name="id_72" xml:space="preserve">
+    <value>Tablet: Landscape and Portrait    Phone: Portrait only</value>
+  </data>
+  <data name="id_73" xml:space="preserve">
+    <value> Device:</value>
+  </data>
+  <data name="id_74" xml:space="preserve">
+    <value> Tablet and Phone.</value>
+  </data>
+  <data name="id_75" xml:space="preserve">
+    <value> Title of the App:</value>
+  </data>
+  <data name="id_76" xml:space="preserve">
+    <value>Please select at least one platform</value>
+  </data>
+  <data name="id_77" xml:space="preserve">
+    <value>App name already exists. Please select another name.</value>
+  </data>
+  <data name="id_78" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_79" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_8" xml:space="preserve">
+    <value>Flash Card Content</value>
+  </data>
+  <data name="id_80" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_81" xml:space="preserve">
+    <value>Unbound</value>
+  </data>
+  <data name="id_82" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="id_83" xml:space="preserve">
+    <value> Do you want to add:</value>
+  </data>
+  <data name="id_84" xml:space="preserve">
+    <value> 1. Name your Application</value>
+  </data>
+  <data name="id_85" xml:space="preserve">
+    <value>Application Name</value>
+  </data>
+  <data name="id_86" xml:space="preserve">
+    <value>Oops! An error occurred. Please try again later.</value>
+  </data>
+  <data name="id_87" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="id_88" xml:space="preserve">
+    <value>Coming Soon...</value>
+  </data>
+  <data name="id_89" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="id_9" xml:space="preserve">
+    <value>Front Side Content</value>
+  </data>
+  <data name="id_90" xml:space="preserve">
+    <value>Coming Soon...</value>
+  </data>
+  <data name="id_91" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="id_92" xml:space="preserve">
+    <value>Coming Soon...</value>
+  </data>
+  <data name="id_93" xml:space="preserve">
+    <value>3. Upload your application background</value>
+  </data>
+  <data name="id_94" xml:space="preserve">
+    <value>Invalid file format. Only .png files allowed.</value>
+  </data>
+  <data name="id_95" xml:space="preserve">
+    <value>Please make sure the background size is 1920x1080 (.png)</value>
+  </data>
+  <data name="id_96" xml:space="preserve">
+    <value>Bg image Width and Height should be 1080x1920</value>
+  </data>
+  <data name="id_97" xml:space="preserve">
+    <value>Please upload background image.</value>
+  </data>
+  <data name="id_98" xml:space="preserve">
+    <value>Application type</value>
+  </data>
+  <data name="id_99" xml:space="preserve">
+    <value>Level by Level</value>
+  </data>
+</root>

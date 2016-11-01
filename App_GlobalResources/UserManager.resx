@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GENERAL_ERROR" xml:space="preserve">
+    <value>Oops! Something went wrong. Please try again after some time.</value>
+  </data>
+  <data name="MGR_ADDED" xml:space="preserve">
+    <value>Successfully added as a manager.</value>
+  </data>
+  <data name="MGR_EXCEPTION" xml:space="preserve">
+    <value>There is some error in fetching the Manager list. Please try again!</value>
+  </data>
+  <data name="MGR_EXPORT_ERROR" xml:space="preserve">
+    <value>Some error occurred. Please try again!</value>
+  </data>
+  <data name="MGR_MANAGER_DELETED_SUCCESS" xml:space="preserve">
+    <value>Manager has been deleted successfully!</value>
+  </data>
+  <data name="MGR_MANAGER_NOT_SELECTED" xml:space="preserve">
+    <value>Please select a manager from drop down list.</value>
+  </data>
+  <data name="MGR_NO_MANAGERS_FOUND" xml:space="preserve">
+    <value>No manager found!</value>
+  </data>
+  <data name="MGR_NO_USER_SELECTED" xml:space="preserve">
+    <value>Please select user from the drop down list.</value>
+  </data>
+  <data name="MGR_USER_ASSIGNED_FAILED" xml:space="preserve">
+    <value>Error occurred. Please try again!</value>
+  </data>
+  <data name="MGR_USER_ASSIGNED_SUCCESS" xml:space="preserve">
+    <value>Users assigned successfully to Manager!</value>
+  </data>
+  <data name="MGR_USER_COUNT_ZERO" xml:space="preserve">
+    <value>Please select users to assign Manager!</value>
+  </data>
+  <data name="MGR_USER_NOT_SELECTED" xml:space="preserve">
+    <value>Please select user from the drop down list.</value>
+  </data>
+  <data name="MGR_USER_REMOVED_SUCCESS" xml:space="preserve">
+    <value>User has been removed successfully!</value>
+  </data>
+  <data name="MM_ASSIGNED_SUCCESS" xml:space="preserve">
+    <value>Mentor assigned successfully!</value>
+  </data>
+  <data name="MM_CONFIRM_DELETION" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="MM_DELETED" xml:space="preserve">
+    <value>Mentor/Mentee deleted successfully!</value>
+  </data>
+  <data name="MM_ERROR" xml:space="preserve">
+    <value>Something went wrong. Please try again!</value>
+  </data>
+  <data name="MM_NO_MENTEE_SELECTED" xml:space="preserve">
+    <value>Please select a mentee to assign!</value>
+  </data>
+  <data name="MM_NO_MENTOR" xml:space="preserve">
+    <value>No mentor found!</value>
+  </data>
+  <data name="MM_SAME_ID" xml:space="preserve">
+    <value>Mentor &amp; Mentee id\'s should be different.</value>
+  </data>
+  <data name="MM_SEARCH_NULL" xml:space="preserve">
+    <value>No data available for the given search.</value>
+  </data>
+  <data name="MM_SELECT_MENTOR_MENTEE" xml:space="preserve">
+    <value>Please select the combination of mentor-mentee and then click on the Assign!</value>
+  </data>
+  <data name="MM_SUBJECT_NOT_SELECTED" xml:space="preserve">
+    <value>Please select the subject first!</value>
+  </data>
+  <data name="MM_UPDATED" xml:space="preserve">
+    <value>Mentor/Mentee updated successfully!</value>
+  </data>
+  <data name="PD_INVALID_EMAIL" xml:space="preserve">
+    <value>Please enter a valid email Id.</value>
+  </data>
+  <data name="PD_SECOND_DATE_SMALL" xml:space="preserve">
+    <value>Second date should be greater than first date!</value>
+  </data>
+  <data name="SA_CLICK_EDIT" xml:space="preserve">
+    <value>Click on edit button to update user assignment</value>
+  </data>
+  <data name="SA_DAY_NOT_SELECTED" xml:space="preserve">
+    <value>Please select at least one day for training</value>
+  </data>
+  <data name="SA_END_DATE_INVALID" xml:space="preserve">
+    <value>End date should be greater than start date!</value>
+  </data>
+  <data name="SA_END_DATE_NOT_SELECTED" xml:space="preserve">
+    <value>Please select end date</value>
+  </data>
+  <data name="SA_GROUP_SELECTED_DEFAULT" xml:space="preserve">
+    <value>Please select a group from drop down</value>
+  </data>
+  <data name="SA_INVALID_END_GRID" xml:space="preserve">
+    <value>End date should be greater than start date.</value>
+  </data>
+  <data name="SA_INVALID_TIME" xml:space="preserve">
+    <value>Invalid time.It should be in HH:MM:SS format.</value>
+  </data>
+  <data name="SA_LIMIT_INVALID" xml:space="preserve">
+    <value>Please enter only numeric value greater than zero</value>
+  </data>
+  <data name="SA_NO_GROUP" xml:space="preserve">
+    <value>No group found!</value>
+  </data>
+  <data name="SA_NO_USER_SELECTED" xml:space="preserve">
+    <value>Please select at least one user.</value>
+  </data>
+  <data name="SA_SCHEDULE_NULL" xml:space="preserve">
+    <value>Please create a schedule for training</value>
+  </data>
+  <data name="SA_SELECT_USER" xml:space="preserve">
+    <value>Choose user to assign selected subject</value>
+  </data>
+  <data name="SA_START_DATE_INVALID" xml:space="preserve">
+    <value>Start date should be equal or greater than today's date!</value>
+  </data>
+  <data name="SA_SUBJECT_ASSIGNED_SUCCESS" xml:space="preserve">
+    <value>Subject assigned successfully</value>
+  </data>
+  <data name="SA_SUBJECT_NOT_SELECTED" xml:space="preserve">
+    <value>Please select the subject from dropdown</value>
+  </data>
+  <data name="SA_TRAINING_EMPTY" xml:space="preserve">
+    <value>No Training found!</value>
+  </data>
+  <data name="SA_TRAINING_LIMIT_NULL" xml:space="preserve">
+    <value>Please enter training limit</value>
+  </data>
+  <data name="SA_UPDATE_FAILED" xml:space="preserve">
+    <value>Update failed for subject/subjects :</value>
+  </data>
+  <data name="SA_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Changes saved successfully!</value>
+  </data>
+  <data name="SETTING_IMG_SIZE_ERROR" xml:space="preserve">
+    <value>Image size can't be greater than 1MB</value>
+  </data>
+  <data name="SETTING_IMG_UPLOAD_FAIL" xml:space="preserve">
+    <value>Failed to upload image to server.Please try again!</value>
+  </data>
+  <data name="SETTING_OLD_NEW_PWD_SAME" xml:space="preserve">
+    <value>Old password can't be used as new Password!</value>
+  </data>
+  <data name="SETTING_PROFILE_INVALID_DETAIL" xml:space="preserve">
+    <value>Invalid user details</value>
+  </data>
+  <data name="SETTING_PROFILE_UPDATED_SUCCESS" xml:space="preserve">
+    <value>Your profile has been updated successfully!</value>
+  </data>
+  <data name="SMA_ACTION_ASSIGN" xml:space="preserve">
+    <value>Click on edit button to update user assignment</value>
+  </data>
+  <data name="SMA_ACTION_UNASSIGN" xml:space="preserve">
+    <value>Choose user to assign selected submilestone</value>
+  </data>
+  <data name="SMA_ASSIGNMENT_SUCCESS" xml:space="preserve">
+    <value>Submilestone assigned successfully!</value>
+  </data>
+  <data name="SMA_ASSIGNMENT_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Assignment updated successfully!</value>
+  </data>
+  <data name="SMA_INVALID_MILESTONE" xml:space="preserve">
+    <value>Please select a milestone from dropdown.</value>
+  </data>
+  <data name="SMA_NO_MILESTONE" xml:space="preserve">
+    <value>No milestone found!</value>
+  </data>
+  <data name="SMA_NO_SUBMILESTONE" xml:space="preserve">
+    <value>No submilestone found!</value>
+  </data>
+  <data name="SMA_UNASSIGN_USER" xml:space="preserve">
+    <value>Are you sure you want to unassign selected user?</value>
+  </data>
+  <data name="SUBJECT_NOT_FOUND" xml:space="preserve">
+    <value>No subject found.</value>
+  </data>
+  <data name="SUBSCRIPTION_DELETE_SUCCESS" xml:space="preserve">
+    <value>SKU deleted successfully!</value>
+  </data>
+  <data name="SUBSCRIPTION_INVALID_AMOUNT_VAL" xml:space="preserve">
+    <value>You have entered invalid Price!</value>
+  </data>
+  <data name="SUBSCRIPTION_INVALID_VALIDITY" xml:space="preserve">
+    <value>Validity should be between 1 to 365 days!</value>
+  </data>
+  <data name="SUBSCRIPTION_NEW_SUCCESS" xml:space="preserve">
+    <value>New SKU created successfully!</value>
+  </data>
+  <data name="SUBSCRIPTION_UPDATE_SUCCESS" xml:space="preserve">
+    <value>SKU updated successfully!</value>
+  </data>
+  <data name="UMC_ADD_MEMBER_SUCCESS" xml:space="preserve">
+    <value>Users added successfully to this group!</value>
+  </data>
+  <data name="UMC_CIRCLE_EXIST" xml:space="preserve">
+    <value>Circle name already exist. Please enter new name!</value>
+  </data>
+  <data name="UMC_CIRCLE_NAME_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Circle name updated successfully!</value>
+  </data>
+  <data name="UMC_CONFIRM_CIRCLE_DELETION" xml:space="preserve">
+    <value>Are you sure you want to delete this circle?</value>
+  </data>
+  <data name="UMC_CONFIRM_DELETE" xml:space="preserve">
+    <value>Are you sure you want to delete Selected Recipients?</value>
+  </data>
+  <data name="UMC_EMPTY_RECIPIENTS" xml:space="preserve">
+    <value>No Recipients to Delete!</value>
+  </data>
+  <data name="UMC_ERROR" xml:space="preserve">
+    <value>Somthing went wrong try again later!</value>
+  </data>
+  <data name="UMC_GRP_CREATED" xml:space="preserve">
+    <value>Circle created successfully!</value>
+  </data>
+  <data name="UMC_GRP_CREATION_FAILED" xml:space="preserve">
+    <value>Circle creation failed!</value>
+  </data>
+  <data name="UMC_GRP_DELETED" xml:space="preserve">
+    <value>Circle deleted successfully!</value>
+  </data>
+  <data name="UMC_GRP_EXIST" xml:space="preserve">
+    <value>Group name already exist. Please select another name!</value>
+  </data>
+  <data name="UMC_GRP_UPDATED" xml:space="preserve">
+    <value>Circle name updated!</value>
+  </data>
+  <data name="UMC_GRP_USER_ASSIGNMENT" xml:space="preserve">
+    <value>Select the user you want to assign in this circle</value>
+  </data>
+  <data name="UMC_INVALID_GROUP" xml:space="preserve">
+    <value>Invalid circle name</value>
+  </data>
+  <data name="UMC_MEMBER_REMOVED_SUCCESS" xml:space="preserve">
+    <value>User has been removed successfully from this Circle!</value>
+  </data>
+  <data name="UMC_NO_CIRCLE" xml:space="preserve">
+    <value>No circle available</value>
+  </data>
+  <data name="UMC_SELECT_CRL_MEMBER" xml:space="preserve">
+    <value>Please select a circle member!</value>
+  </data>
+  <data name="UMC_SELECT_RECIPIENT" xml:space="preserve">
+    <value>No recipients selected. Please select recipient!</value>
+  </data>
+  <data name="UMI_BULK_USER_FILE_TYPE_ERROR" xml:space="preserve">
+    <value>Only .xls &amp; .xlsx files can be uploaded</value>
+  </data>
+  <data name="UMI_DATA_INSERTED" xml:space="preserve">
+    <value>Data Inserted successfully!</value>
+  </data>
+  <data name="UMI_DELETE_REGION_SUCCESS" xml:space="preserve">
+    <value>Region deleted successfully!</value>
+  </data>
+  <data name="UMI_DROP_MULTIPLE" xml:space="preserve">
+    <value>Please drop a single file.</value>
+  </data>
+  <data name="UMI_DUPLICATE_EMAIL" xml:space="preserve">
+    <value>Error:-Duplicate Email Id.</value>
+  </data>
+  <data name="UMI_EMAIL_EXIST" xml:space="preserve">
+    <value>EmailId already exist!</value>
+  </data>
+  <data name="UMI_EMAIL_EXIST_ORG_DIFF" xml:space="preserve">
+    <value>EmailId already exist.</value>
+  </data>
+  <data name="UMI_EMAIL_LENGTH_ERROR" xml:space="preserve">
+    <value>Error:-EmailId can not be more than 50 Charaters long</value>
+  </data>
+  <data name="UMI_EMAIL_PRESENT" xml:space="preserve">
+    <value>EmailId Already Exist, Please select Another Email Id.</value>
+  </data>
+  <data name="UMI_EXCEL_INVALID_DETAIL" xml:space="preserve">
+    <value>Invalid Detail</value>
+  </data>
+  <data name="UMI_EXCEL_INVALID_EMAIL" xml:space="preserve">
+    <value>Invalid EmailId</value>
+  </data>
+  <data name="UMI_INVALID_FORMAT" xml:space="preserve">
+    <value>Please Provide data in correct format!</value>
+  </data>
+  <data name="UMI_LAST_NAME_LENGTH_ERROR" xml:space="preserve">
+    <value>Error:-LastName can not be more than 30 Charaters long</value>
+  </data>
+  <data name="UMI_NAME_LENGTH_ERROR" xml:space="preserve">
+    <value>Error:-FistName can not be more than 30 Charaters long</value>
+  </data>
+  <data name="UMI_NEW_REGION" xml:space="preserve">
+    <value>Enter new region</value>
+  </data>
+  <data name="UMI_ORG_LENGTH_ERROR" xml:space="preserve">
+    <value>Error:-Organization name can not be more than 30 Charaters long</value>
+  </data>
+  <data name="UMI_REGION_ADD_SUCCESS" xml:space="preserve">
+    <value>Region added successfully!</value>
+  </data>
+  <data name="UMI_REGION_DELETE_CONFIRM" xml:space="preserve">
+    <value>Are you sure you want to delete  SELECTED_REGION_NAME region?&lt;br&gt; If yes then all users belongs to this region will be moved to default region.</value>
+  </data>
+  <data name="UMI_REGION_NAME_INVALID" xml:space="preserve">
+    <value>Only alphabets are allowed!</value>
+  </data>
+  <data name="UMI_REGION_NAME_NULL" xml:space="preserve">
+    <value>Region name can't be empty!</value>
+  </data>
+  <data name="UMI_REGION_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Region name updated successfully!</value>
+  </data>
+  <data name="UMI_TEMPLATE_INCORRECT" xml:space="preserve">
+    <value>File uploaded doesn't match the template.Please dowload template and try again!</value>
+  </data>
+  <data name="UMI_TEMPLATE_NULL" xml:space="preserve">
+    <value>No data found in uploaded file.</value>
+  </data>
+  <data name="UMI_USER_DELETED_SUCCESS" xml:space="preserve">
+    <value>User has been deleted successfully!</value>
+  </data>
+  <data name="UMI_USER_INSERTED" xml:space="preserve">
+    <value>User added successfully!</value>
+  </data>
+  <data name="UMI_USER_UPDATE_SUCCESS" xml:space="preserve">
+    <value>User details updated successfully!</value>
+  </data>
+  <data name="UMO_ALERT_SELECT_ROLE" xml:space="preserve">
+    <value>Please select Role!</value>
+  </data>
+  <data name="UMO_ALERT_SELECT_USER" xml:space="preserve">
+    <value>No User Selected. Please select user!</value>
+  </data>
+  <data name="UMO_CONFIRM_USER_DELETION" xml:space="preserve">
+    <value>Are you sure you want to delete selected user?</value>
+  </data>
+  <data name="UMO_INVALID_EMAIL" xml:space="preserve">
+    <value>Invalid Email</value>
+  </data>
+  <data name="UMO_NO_DATA" xml:space="preserve">
+    <value>No Data To Display!</value>
+  </data>
+  <data name="UMO_NO_USER_TO_DELETE" xml:space="preserve">
+    <value>No User to Delete!</value>
+  </data>
+  <data name="UMO_VALIDATE_USER" xml:space="preserve">
+    <value>Alphabet Only</value>
+  </data>
+  <data name="UP_INVALID_DATE" xml:space="preserve">
+    <value>Invalid date format</value>
+  </data>
+  <data name="UP_MULTIPLE_USER_SELECTED" xml:space="preserve">
+    <value>Please select only one user at a time</value>
+  </data>
+  <data name="UP_NO_ITEM_SELECTED" xml:space="preserve">
+    <value>Please select at least one item</value>
+  </data>
+  <data name="UP_NO_USER_SELECTED" xml:space="preserve">
+    <value>Please select a user.</value>
+  </data>
+  <data name="UP_NO_USER_TO_DELETE" xml:space="preserve">
+    <value>No User to Delete!</value>
+  </data>
+  <data name="UP_PAYMENT_FAILED" xml:space="preserve">
+    <value>Payment Failed!</value>
+  </data>
+  <data name="UP_PAYMENT_SUCCESS" xml:space="preserve">
+    <value>Payment done successfully!</value>
+  </data>
+  <data name="UP_PAYMENT_UPDATE_SUCCESS" xml:space="preserve">
+    <value>Payment has been updated successfully!</value>
+  </data>
+  <data name="UP_SELECT_SUBSCRIPTION" xml:space="preserve">
+    <value>Please select subscription to save payment</value>
+  </data>
+  <data name="UP_SMALLER_DATE" xml:space="preserve">
+    <value>Selected date must be greater than today's date</value>
+  </data>
+  <data name="UP_UNSUBSCRIBE_NOTE" xml:space="preserve">
+    <value>Note : Please select end date as today's date to unsubscribe item for user</value>
+  </data>
+</root>

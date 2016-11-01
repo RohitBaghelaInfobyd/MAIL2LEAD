@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAF66A63-D37E-4A4C-9958-87B41C0541F8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdminTool</RootNamespace>
+    <AssemblyName>AdminTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\Rohit\admin\bAdmin Production Code6\bAdmin Production Code7Sep\AdminTool\bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\Rohit\admin\bAdmin Production Code6\bAdmin Production Code7Sep\AdminTool\bin\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="S22.Imap, Version=3.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Rohit\Alok\4Pillers_M2L_Code -1.5\Mail2Lead\bin\Debug\S22.Imap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="bin\Ionic.Zip.dll" />
+    <Content Include="bin\MSCaptcha.dll" />
+    <Content Include="Checkout\CheckoutCancel.aspx" />
+    <Content Include="Checkout\CheckoutComplete.aspx" />
+    <Content Include="Checkout\CheckoutError.aspx" />
+    <Content Include="Checkout\CheckoutReview.aspx" />
+    <Content Include="Checkout\CheckoutStart.aspx" />
+    <Content Include="Checkout\Images\buslogo.png" />
+    <Content Include="Contact.aspx" />
+    <Content Include="cronJob.aspx" />
+    <Content Include="css-js\css\animate.css" />
+    <Content Include="css-js\css\custom.css" />
+    <Content Include="css-js\css\hover.css" />
+    <Content Include="css-js\css\libs\animate.css" />
+    <Content Include="css-js\css\normalize.css" />
+    <Content Include="css-js\css\responsive.css" />
+    <Content Include="css-js\css\site.css" />
+    <Content Include="css-js\css\slide_login_register.css" />
+    <Content Include="css-js\css\style.css" />
+    <Content Include="css-js\css\team-page.css" />
+    <Content Include="css-js\css\zoho-plans.css" />
+    <Content Include="css-js\js\email.js" />
+    <Content Include="css-js\js\formslider.js" />
+    <Content Include="css-js\js\jquery-1.11.1.js" />
+    <Content Include="css-js\js\jquery.counterup.min.js" />
+    <Content Include="css-js\js\jquery.easing.min.js" />
+    <Content Include="css-js\js\jquery.shuffle.min.js" />
+    <Content Include="css-js\js\modernizr-2.6.2.min.js" />
+    <Content Include="css-js\js\script.js" />
+    <Content Include="css-js\js\scrolling-nav.js" />
+    <Content Include="css-js\js\slideShow.js" />
+    <Content Include="css-js\js\smoothscroll.min.js" />
+    <Content Include="css-js\js\waypoints.min.js" />
+    <Content Include="css-js\js\wow.js" />
+    <Content Include="css-js\js\wow.min.js" />
+    <Content Include="css-js\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="css-js\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="css-js\vendor\flat-icon\flaticon.css" />
+    <Content Include="css-js\vendor\flat-icon\flaticon.html" />
+    <Content Include="css-js\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="css-js\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="css-js\vendor\mmenu\css\demo.css" />
+    <Content Include="css-js\vendor\mmenu\css\jquery.mmenu.css" />
+    <Content Include="css-js\vendor\mmenu\js\jquery.mmenu.min.js" />
+    <Content Include="css-js\vendor\owl\css\owl.carousel.css" />
+    <Content Include="css-js\vendor\owl\css\owl.theme.css" />
+    <Content Include="css-js\vendor\owl\css\owl.theme.default.css" />
+    <Content Include="css-js\vendor\owl\js\owl.carousel.min.js" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrowleft.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrowright.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_large_left.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_large_right.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_left.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_left2.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_right.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\arrow_right2.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\black50.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\boxed_bgtile.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\bullet.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\bullets.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\bullets2.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\bullet_boxed.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\coloredbg.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\grain.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\gridtile.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\gridtile_3x3.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\gridtile_3x3_white.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\gridtile_white.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\large_left.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\large_right.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\loader.gif" />
+    <Content Include="css-js\vendor\rs-plugin\assets\loader2.gif" />
+    <Content Include="css-js\vendor\rs-plugin\assets\navigdots.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\navigdots_bgtile.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\shadow1.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\shadow2.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\shadow3.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\small_left.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\small_left_boxed.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\small_right.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\small_right_boxed.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\timer.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\timerdot.png" />
+    <Content Include="css-js\vendor\rs-plugin\assets\transparent.jpg" />
+    <Content Include="css-js\vendor\rs-plugin\assets\white50.png" />
+    <Content Include="css-js\vendor\rs-plugin\css\extralayer.css" />
+    <Content Include="css-js\vendor\rs-plugin\css\settings-ie8.css" />
+    <Content Include="css-js\vendor\rs-plugin\css\settings.css" />
+    <Content Include="css-js\vendor\rs-plugin\js\jquery.themepunch.plugins.min.js" />
+    <Content Include="css-js\vendor\rs-plugin\js\jquery.themepunch.revolution.js" />
+    <Content Include="css-js\vendor\rs-plugin\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="frmApiReport.aspx" />
+    <Content Include="frmCategory.aspx" />
+    <Content Include="frmCreateSMS.aspx" />
+    <Content Include="frmError.aspx" />
+    <Content Include="frmMailContentSplitInfo.aspx" />
+    <Content Include="frmPayment.aspx" />
+    <Content Include="frmPaymentHistory.aspx" />
+    <Content Include="frmUserDetailViewScreen.aspx" />
+    <Content Include="frmUserList.aspx" />
+    <Content Include="frmUserMailReport.aspx" />
+    <Content Include="frmUserMailToLead.aspx" />
+    <Content Include="frmViewMailReport.aspx" />
+    <Content Include="frmViewSubjectInfo.aspx" />
+    <Content Include="Images\4pillars-min.jpg" />
+    <Content Include="Images\add.png" />
+    <Content Include="Images\add_btn.png" />
+    <Content Include="Images\cancel.png" />
+    <Content Include="Images\cancel_new.png" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\Essentials_Icon_Set_V2.1_Expanded_Profile-128.png" />
+    <Content Include="Images\exporttocsv.png" />
+    <Content Include="Images\exporttopdf.png" />
+    <Content Include="Images\exporttoxls.png" />
+    <Content Include="Images\Globalcrossroad_logo-min.png" />
+    <Content Include="Images\goBack.png" />
+    <Content Include="Images\ifre_logo-min.png" />
+    <Content Include="Images\indian-rupee-symbol.png" />
+    <Content Include="Images\logo-infobyd.png" />
+    <Content Include="Images\more-128.png" />
+    <Content Include="Images\Optimum_Insurance_Logo-min.png" />
+    <Content Include="Images\save.png" />
+    <Content Include="Images\search_User.png" />
+    <Content Include="Images\view_userDetail.png" />
+    <Content Include="Images\yck49aazi.png" />
+    <Content Include="LoginAssets\1.jpg" />
+    <Content Include="LoginAssets\ad_status.js" />
+    <Content Include="LoginAssets\animate.css" />
+    <Content Include="LoginAssets\Authorized-partner.png" />
+    <Content Include="LoginAssets\base.js" />
+    <Content Include="LoginAssets\bootstrap.css" />
+    <Content Include="LoginAssets\D-SgoaHv3h8.html" />
+    <Content Include="LoginAssets\drawchat.html" />
+    <Content Include="LoginAssets\email.js" />
+    <Content Include="LoginAssets\floatchat.css" />
+    <Content Include="LoginAssets\floatchat.js" />
+    <Content Include="LoginAssets\floatsupportbtn.css" />
+    <Content Include="LoginAssets\font-awesome.min.css" />
+    <Content Include="LoginAssets\formslider.js" />
+    <Content Include="LoginAssets\fv342kghuNUujcC_ClPUQ2k9fzbAyE7zuiriFiokw08.js" />
+    <Content Include="LoginAssets\gstart_tour2.png" />
+    <Content Include="LoginAssets\guest.png" />
+    <Content Include="LoginAssets\jquery-1.11.1.js" />
+    <Content Include="LoginAssets\jquery.counterup.min.js" />
+    <Content Include="LoginAssets\jquery.mmenu.css" />
+    <Content Include="LoginAssets\jquery.mmenu.min.js" />
+    <Content Include="LoginAssets\jquery.shuffle.min.js" />
+    <Content Include="LoginAssets\jquery.themepunch.plugins.min.js" />
+    <Content Include="LoginAssets\jquery.themepunch.revolution.js" />
+    <Content Include="LoginAssets\logo-infobyd.png" />
+    <Content Include="LoginAssets\modernizr-2.6.2.min.js" />
+    <Content Include="LoginAssets\owl.carousel.min.js" />
+    <Content Include="LoginAssets\PS1PSSHIN9NT-180x180.PNG" />
+    <Content Include="LoginAssets\resource.js" />
+    <Content Include="LoginAssets\script.js" />
+    <Content Include="LoginAssets\slide_login_register.css" />
+    <Content Include="LoginAssets\spacer.gif" />
+    <Content Include="LoginAssets\style.css" />
+    <Content Include="LoginAssets\testimonial.jpg" />
+    <Content Include="LoginAssets\track.js" />
+    <Content Include="LoginAssets\waypoints.min.js" />
+    <Content Include="LoginAssets\wmsliteapi.js" />
+    <Content Include="LoginAssets\wow.min.js" />
+    <Content Include="LoginAssets\www-embed-player-webp-vflrzpRjS.css" />
+    <Content Include="LoginAssets\www-embed-player.js" />
+    <Content Include="LoginAssets\_5795de7c5d6a4_1469439612.png" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="packages.config" />
+    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
+    <None Include="css-js\vendor\bootstrap\css\bootstrap.css.map" />
+    <None Include="css-js\vendor\flat-icon\fonts\flaticon.eot" />
+    <None Include="css-js\vendor\flat-icon\fonts\flaticon.svg" />
+    <None Include="css-js\vendor\flat-icon\fonts\flaticon.ttf" />
+    <None Include="css-js\vendor\flat-icon\fonts\flaticon.woff" />
+    <None Include="css-js\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="css-js\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="css-js\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="css-js\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="css-js\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="css-js\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="css-js\vendor\font-awesome\less\animated.less" />
+    <None Include="css-js\vendor\font-awesome\less\bordered-pulled.less" />
+    <None Include="css-js\vendor\font-awesome\less\core.less" />
+    <None Include="css-js\vendor\font-awesome\less\fixed-width.less" />
+    <None Include="css-js\vendor\font-awesome\less\font-awesome.less" />
+    <None Include="css-js\vendor\font-awesome\less\icons.less" />
+    <None Include="css-js\vendor\font-awesome\less\larger.less" />
+    <None Include="css-js\vendor\font-awesome\less\list.less" />
+    <None Include="css-js\vendor\font-awesome\less\mixins.less" />
+    <None Include="css-js\vendor\font-awesome\less\path.less" />
+    <None Include="css-js\vendor\font-awesome\less\rotated-flipped.less" />
+    <None Include="css-js\vendor\font-awesome\less\stacked.less" />
+    <None Include="css-js\vendor\font-awesome\less\variables.less" />
+    <None Include="css-js\vendor\font-awesome\scss\font-awesome.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_animated.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_core.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_fixed-width.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_icons.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_larger.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_list.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_mixins.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_path.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_stacked.scss" />
+    <None Include="css-js\vendor\font-awesome\scss\_variables.scss" />
+    <None Include="css-js\vendor\rs-plugin\assets\arrows.psd" />
+    <None Include="css-js\vendor\rs-plugin\assets\bullets.psd" />
+    <None Include="css-js\vendor\rs-plugin\assets\small_arrows.psd" />
+    <None Include="css-js\vendor\rs-plugin\assets\Thumbs.db" />
+    <None Include="css-js\vendor\rs-plugin\font\revicons.eot" />
+    <None Include="css-js\vendor\rs-plugin\font\revicons.svg" />
+    <None Include="css-js\vendor\rs-plugin\font\revicons.ttf" />
+    <None Include="css-js\vendor\rs-plugin\font\revicons.woff" />
+    <None Include="css-js\vendor\rs-plugin\images\Thumbs.db" />
+    <None Include="css-js\vendor\rs-plugin\js\index.php" />
+    <None Include="LoginAssets\css" />
+    <None Include="LoginAssets\css%281%29" />
+    <None Include="LoginAssets\float.ls" />
+    <None Include="Properties\PublishProfiles\AdminPublished.pubxml" />
+    <None Include="Properties\PublishProfiles\Admin_23.pubxml" />
+    <None Include="Properties\PublishProfiles\Admin_Sep.pubxml" />
+    <None Include="Properties\PublishProfiles\EditerToolV2.pubxml" />
+    <None Include="Properties\PublishProfiles\GLB_31.pubxml" />
+    <None Include="Properties\PublishProfiles\temp.pubxml" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutCancel.aspx.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutCancel.aspx.designer.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.designer.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.designer.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.designer.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.designer.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cronJob.aspx.cs">
+      <DependentUpon>cronJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cronJob.aspx.designer.cs">
+      <DependentUpon>cronJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmApiReport.aspx.cs">
+      <DependentUpon>frmApiReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmApiReport.aspx.designer.cs">
+      <DependentUpon>frmApiReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateSMS.aspx.cs">
+      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCreateSMS.aspx.designer.cs">
+      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.aspx.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmError.aspx.designer.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayment.aspx.cs">
+      <DependentUpon>frmPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPayment.aspx.designer.cs">
+      <DependentUpon>frmPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaymentHistory.aspx.cs">
+      <DependentUpon>frmPaymentHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPaymentHistory.aspx.designer.cs">
+      <DependentUpon>frmPaymentHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewMailReport.aspx.cs">
+      <DependentUpon>frmViewMailReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmViewMailReport.aspx.designer.cs">
+      <DependentUpon>frmViewMailReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PayPalFunctions.cs" />
+    <Compile Include="SMSService\Action.cs" />
+    <Compile Include="SMSService\RingCentral.cs" />
+    <Compile Include="SMSService\Zoho.cs" />
+    <Content Include="App_Code\BundleConfig.cs" />
+    <Content Include="App_Code\RouteConfig.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DataBaseProvider.cs" />
+    <Compile Include="DataBase\ExportSupport.cs" />
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExceptionAndErrorClass.cs" />
+    <Compile Include="frmCategory.aspx.cs">
+      <DependentUpon>frmCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCategory.aspx.designer.cs">
+      <DependentUpon>frmCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmMailContentSplitInfo.aspx.cs">
+      <DependentUpon>frmMailContentSplitInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmMailContentSplitInfo.aspx.designer.cs">
+      <DependentUpon>frmMailContentSplitInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserDetailViewScreen.aspx.cs">
+      <DependentUpon>frmUserDetailViewScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserDetailViewScreen.aspx.designer.cs">
+      <DependentUpon>frmUserDetailViewScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserList.aspx.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserList.aspx.designer.cs">
+      <DependentUpon>frmUserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserMailReport.aspx.cs">
+      <DependentUpon>frmUserMailReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserMailReport.aspx.designer.cs">
+      <DependentUpon>frmUserMailReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserMailToLead.aspx.cs">
+      <DependentUpon>frmUserMailToLead.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserMailToLead.aspx.designer.cs">
+      <DependentUpon>frmUserMailToLead.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmViewSubjectInfo.aspx.cs">
+      <DependentUpon>frmViewSubjectInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmViewSubjectInfo.aspx.designer.cs">
+      <DependentUpon>frmViewSubjectInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HelperClass.cs" />
+    <Compile Include="Model\MailHelper.cs" />
+    <Compile Include="Model\MainTimeTicker.cs" />
+    <Compile Include="Model\SendInformationIntoCrm.cs" />
+    <Compile Include="Model\summaryEmail.cs" />
+    <Compile Include="Model\ZohoCRMAPI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="Content\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59663</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
