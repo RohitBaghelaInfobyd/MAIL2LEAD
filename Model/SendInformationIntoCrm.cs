@@ -57,14 +57,27 @@ namespace AdminTool.Model
                     {  //Get Record Data in XML Format
 
                         sLeadSourceValue = valueDataTable.Rows[xy]["FiledValue"].ToString();
-                        sLeadSourceValue = sLeadSourceValue.Replace('£', ' ');
+                        sLeadSourceValue = sLeadSourceValue.Replace('£', ' ').Trim();
                         Lead_Column_Header = valueDataTable.Rows[xy]["Lead_Column_Header"].ToString();
                         if (!string.IsNullOrEmpty(sLeadSourceValue))
+                        {
                             if (Lead_Column_Header.ToLower().Contains("email"))
                             {
                                 UniqueValueToCheckExisingValue = sLeadSourceValue;
                             }
-                        sTmpDataStr += "<FL val=" + Convert.ToChar(34) + Lead_Column_Header + Convert.ToChar(34) + ">" + sLeadSourceValue + "</FL>" + CRLF;
+                            else if (Lead_Column_Header.ToLower().Contains("price"))
+                            {
+                                int finalResult = 0;
+                                bool output;
+                                output = int.TryParse(sLeadSourceValue, out finalResult);
+                                if (!output)
+                                {
+                                    sLeadSourceValue = "0.0";
+                                }
+                            }
+
+                            sTmpDataStr += "<FL val=" + Convert.ToChar(34) + Lead_Column_Header + Convert.ToChar(34) + ">" + sLeadSourceValue + "</FL>" + CRLF;
+                        }
                     }
 
 
@@ -96,18 +109,6 @@ namespace AdminTool.Model
                     sTmpDataStr += "</row>" + CRLF;
                     sTmpDataStr += "</Leads>";
                     sRes = string.Empty;
-
-                    //Insert Record in CRM and Update Log
-
-                    /*
-                    <?xml version="1.0" encoding="UTF-8" ?>
-                    <response uri="/crm/private/xml/Leads/getSearchRecords"><result><Leads><row no="1"><FL val="LEADID">1950638000000623001</FL>
-                    <FL val="Email"><![CDATA[mgerakaris@creto.co.uk]]></FL></row></Leads></result></response>
-
-                    <?xml version="1.0" encoding="UTF-8" ?>
-                    <response uri="/crm/private/xml/Leads/getSearchRecords"><nodata><code>4422</code><message>There is no data to show</message></nodata></response>
-
-                    */
 
                     if (exitingEntryEvent > 1)
                     {
@@ -148,7 +149,7 @@ namespace AdminTool.Model
                                             }
                                             catch (Exception ex)
                                             {
-                                                databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM " + ex.Message, "Information");
+                                                databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM 4 " + ex.Message, "Information");
                                             }
                                             System.Threading.Thread.Sleep(30);
                                         }
@@ -163,7 +164,7 @@ namespace AdminTool.Model
                                 }
                                 catch (Exception ex)
                                 {
-                                    databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM " + ex.Message, "Information");
+                                    databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM 5 " + ex.Message, "Information");
                                 }
                             }
                             else
@@ -184,7 +185,7 @@ namespace AdminTool.Model
             }
             catch (Exception ex)
             {
-                databaseProvider.logApplicationError(ex.Message + "__FAILED TO INSERT DATA ONTO CRM", "Information");
+                databaseProvider.logApplicationError(ex.Message + "__FAILED TO INSERT DATA ONTO CRM 1 ", "Information");
             }
 
         }
@@ -212,7 +213,7 @@ namespace AdminTool.Model
                     }
                     catch (Exception ex)
                     {
-                        databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM" + ex.Message, "Information");
+                        databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM 2 " + ex.Message, "Information");
                     }
                     System.Threading.Thread.Sleep(30);
                 }
@@ -225,7 +226,7 @@ namespace AdminTool.Model
             }
             else
             {
-                databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM", "Information");
+                databaseProvider.logApplicationError(MailId + "__FAILED TO INSERT DATA ONTO CRM 3 ", "Information");
             }
         }
     }

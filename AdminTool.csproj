@@ -49,6 +49,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>E:\Rohit\admin\bAdmin Production Code6\bAdmin Production Code7Sep\AdminTool\bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\Rohit\admin\bAdmin Production Code6\bAdmin Production Code7Sep\AdminTool\bin\itextsharp.dll</HintPath>
     </Reference>
@@ -78,6 +81,7 @@
       <HintPath>bin\System.Net.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -98,6 +102,7 @@
     <Content Include="Checkout\Images\buslogo.png" />
     <Content Include="Contact.aspx" />
     <Content Include="cronJob.aspx" />
+    <Content Include="css-js\css\calendar.css" />
     <Content Include="css-js\css\animate.css" />
     <Content Include="css-js\css\custom.css" />
     <Content Include="css-js\css\hover.css" />
@@ -185,11 +190,15 @@
     <Content Include="frmCategory.aspx" />
     <Content Include="frmCreateSMS.aspx" />
     <Content Include="frmError.aspx" />
+    <Content Include="frmForgotPassword.aspx" />
     <Content Include="frmMailContentSplitInfo.aspx" />
+    <Content Include="frmpassword.aspx" />
     <Content Include="frmPayment.aspx" />
     <Content Include="frmPaymentHistory.aspx" />
+    <Content Include="frmSignup.aspx" />
     <Content Include="frmUserDetailViewScreen.aspx" />
     <Content Include="frmUserList.aspx" />
+    <Content Include="frmUserMailDetailInfo.aspx" />
     <Content Include="frmUserMailReport.aspx" />
     <Content Include="frmUserMailToLead.aspx" />
     <Content Include="frmViewMailReport.aspx" />
@@ -199,9 +208,10 @@
     <Content Include="Images\add_btn.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\cancel_new.png" />
+    <Content Include="Images\calender_icon.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
-    <Content Include="Images\Essentials_Icon_Set_V2.1_Expanded_Profile-128.png" />
+    <Content Include="Images\detail_screen.png" />
     <Content Include="Images\exporttocsv.png" />
     <Content Include="Images\exporttopdf.png" />
     <Content Include="Images\exporttoxls.png" />
@@ -257,6 +267,7 @@
     <Content Include="LoginAssets\www-embed-player-webp-vflrzpRjS.css" />
     <Content Include="LoginAssets\www-embed-player.js" />
     <Content Include="LoginAssets\_5795de7c5d6a4_1469439612.png" />
+    <Content Include="mailChart.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="packages.config" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
@@ -399,6 +410,20 @@
     <Compile Include="frmError.aspx.designer.cs">
       <DependentUpon>frmError.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmForgotPassword.aspx.cs">
+      <DependentUpon>frmForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmForgotPassword.aspx.designer.cs">
+      <DependentUpon>frmForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmpassword.aspx.cs">
+      <DependentUpon>frmpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmpassword.aspx.designer.cs">
+      <DependentUpon>frmpassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmPayment.aspx.cs">
       <DependentUpon>frmPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,12 +438,33 @@
     <Compile Include="frmPaymentHistory.aspx.designer.cs">
       <DependentUpon>frmPaymentHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmSignup.aspx.cs">
+      <DependentUpon>frmSignup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSignup.aspx.designer.cs">
+      <DependentUpon>frmSignup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserMailDetailInfo.aspx.cs">
+      <DependentUpon>frmUserMailDetailInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserMailDetailInfo.aspx.designer.cs">
+      <DependentUpon>frmUserMailDetailInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmViewMailReport.aspx.cs">
       <DependentUpon>frmViewMailReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="frmViewMailReport.aspx.designer.cs">
       <DependentUpon>frmViewMailReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mailChart.aspx.cs">
+      <DependentUpon>mailChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mailChart.aspx.designer.cs">
+      <DependentUpon>mailChart.aspx</DependentUpon>
     </Compile>
     <Compile Include="PayPalFunctions.cs" />
     <Compile Include="SMSService\Action.cs" />
@@ -511,6 +557,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />

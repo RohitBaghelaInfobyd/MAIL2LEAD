@@ -71,26 +71,69 @@ namespace AdminTool.Model
         }
         public IEnumerable<MailMessage> getMsgSentAfter(DateTime dateTime)
         {
-
-            Console.WriteLine("get mails after date: " + dateTime);
-            if (!isConnected)
+            IEnumerable<MailMessage> mailMessages = Enumerable.Empty<MailMessage>();
+            try
             {
-                return null;
+                if (!isConnected)
+                {
+                    return null;
+                }
+
+                IEnumerable<uint> uids = client.Search(
+
+                        SearchCondition.SentSince(dateTime), "[Gmail]/All Mail"   //select if Mail Sent after dateTime specified
+
+                        );
+                foreach (uint item in uids)
+                {
+                    IEnumerable<uint> uids1 = (new[] { item });
+                    IEnumerable<MailMessage> mailMessages1 = client.GetMessages(uids1, false, "[Gmail]/All Mail"); // get the messages without setting status as read
+                    mailMessages = mailMessages.Concat(mailMessages1.AsEnumerable());
+                }
             }
-
-            IEnumerable<uint> uids = client.Search(
-
-                    SearchCondition.SentSince(dateTime), "[Gmail]/All Mail"   //select if Mail Sent after dateTime specified
-
-                    );
-
-            IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, false, "[Gmail]/All Mail"); // get the messages without setting status as read
-                                                                                                         //IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, true); // get the message and set status as read
-            client.Dispose();
+            catch (Exception ex)
+            {
+            }
             return mailMessages;
-
         }
 
+        public IEnumerable<uint> getAllMailsUid(DateTime dateTime)
+        {
+            IEnumerable<uint> uids = null;
+            try
+            {
+                if (!isConnected)
+                {
+                    return null;
+                }
+
+                uids = client.Search(
+
+                        SearchCondition.SentSince(dateTime), "[Gmail]/All Mail"   //select if Mail Sent after dateTime specified
+
+                        );
+            }
+            catch (Exception ex)
+            { }
+            return uids;
+        }
+
+        public IEnumerable<MailMessage> getMailByUids(IEnumerable<uint> uids)
+        {
+            IEnumerable<MailMessage> mailMessages = Enumerable.Empty<MailMessage>();
+            try
+            {
+                if (!isConnected)
+                {
+                    return null;
+                }
+                mailMessages = client.GetMessages(uids, false, "[Gmail]/All Mail"); // get the messages without setting status as read
+            }
+            catch (Exception ex)
+            {
+            }
+            return mailMessages;
+        }
 
         public int getNoOfMsg()
         {
@@ -127,7 +170,7 @@ namespace AdminTool.Model
                     );
 
             IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, false); // get the messages without setting status as read
-            //IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, true); // get the message and set status as read
+                                                                                     //IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, true); // get the message and set status as read
 
             return mailMessages;
         }
@@ -145,7 +188,7 @@ namespace AdminTool.Model
                     );
 
             IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, false); // get the messages without setting status as read
-            //IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, true); // get the message and set status as read
+                                                                                     //IEnumerable<MailMessage> mailMessages = client.GetMessages(uids, true); // get the message and set status as read
 
             return mailMessages;
         }

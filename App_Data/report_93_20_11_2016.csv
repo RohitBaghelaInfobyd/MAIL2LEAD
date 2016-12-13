@@ -1,0 +1,20 @@
+DatabaseId,record_id,subjectLine,value_from_mail,serviceTime,STATUS,lead_to_mail_column_header_id
+3426,532018000007190001,New PPC Drip Lead Lead Received:,asha@gmail.com,11/15/2016 6:03:41 AM,ADD,101
+3427,532018000007191001,New PPC Drip Lead Lead Received:,mihi@gmail.com,11/15/2016 6:03:46 AM,ADD,101
+3428,532018000007190015,New PPC Drip Lead Lead Received:,Test1test11@gmail.com,11/15/2016 6:12:37 AM,ADD,101
+3434,532018000007191015,New PPC Drip Lead Lead Received:,rashi@gmail.com,11/17/2016 8:25:40 AM,ADD,101
+3459,532018000007301027,New PPC Drip Lead Lead Received:,test1test1mail@gmail.com,11/20/2016 9:00:16 AM,ADD,101
+3460,532018000007294143,New PPC Drip Lead Lead Received:,test2test2mail@infobyd.com,11/20/2016 9:08:39 AM,ADD,101
+3461,532018000007294157,New PPC Drip Lead Lead Received:,test4test4e@gmail.com,11/20/2016 9:28:45 AM,ADD,101
+3462,532018000007295155,New PPC Drip Lead Lead Received:,test3test3e@gmail.com,11/20/2016 9:28:47 AM,ADD,101
+3463,532018000007295169,New PPC Drip Lead Lead Received:,test5test5e@gmail.com,11/20/2016 9:36:37 AM,ADD,101
+3464,532018000007301041,New PPC Drip Lead Lead Received:,test6test6e@gmail.com,11/20/2016 9:53:18 AM,ADD,101
+3465,532018000007294171,New PPC Drip Lead Lead Received:,test7test7e@gmail.com,11/20/2016 10:04:37 AM,ADD,101
+3466,532018000007294171,New PPC Drip Lead Lead Received:,test7test7e@gmail.com,11/20/2016 10:14:40 AM,ADD,101
+3467,532018000007301055,New PPC Drip Lead Lead Received:,test12test12e@gmail.com,11/20/2016 10:40:08 AM,ADD,101
+3468,532018000007294185,New PPC Drip Lead Lead Received:,test11test11e@gmail.com,11/20/2016 10:40:10 AM,ADD,101
+3469,532018000007295183,New PPC Drip Lead Lead Received:,test10test10e@gmail.com,11/20/2016 10:40:11 AM,ADD,101
+3470,532018000007301069,New PPC Drip Lead Lead Received:,test8test8e@gmail.com,11/20/2016 10:40:13 AM,ADD,101
+3471,532018000007301083,New WFG Referral Lead Received,wfg1wfg1@infobyd.com,11/20/2016 11:05:52 AM,ADD,101
+3472,532018000007301101,New WFG Referral Lead Received,wfg3wfg3@infobyd.com,11/20/2016 11:21:21 AM,ADD,101
+3473,532018000007294199,New WFG Referral Lead Received,wfg2wfg2@infobyd.com,11/20/2016 11:21:21 AM,ADD,101

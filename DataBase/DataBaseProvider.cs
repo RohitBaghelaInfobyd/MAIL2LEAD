@@ -35,7 +35,7 @@ namespace AdminTool.DataBase
         }
 
 
-        public string AddNewUserIntoDatabase(int CreatorId, string FirstName, string LastName, string EmailId, string Password, int sType)
+        public DataTable AddNewUserIntoDatabase(int CreatorId, string FirstName, string LastName, string EmailId, string Password, int sType)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(myConnectionString))
@@ -51,9 +51,31 @@ namespace AdminTool.DataBase
                     cmd.Parameters.Add("@sProfileImage", MySqlDbType.VarChar).Value = "NA";
                     cmd.Parameters.Add("@sType", MySqlDbType.Int32).Value = sType;
                     cmd.Parameters.Add("@sCreatorId", MySqlDbType.Int32).Value = CreatorId;
+
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dt);
-                    return dt.Rows[0]["result"].ToString().ToUpper();
+                    return dt;
+                }
+            }
+        }
+
+        internal DataTable getUserMailChartInfo(int userId)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_number_of_mails_count_between_date", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+                    cmd.Parameters.Add("@sStartDate", MySqlDbType.VarChar).Value = "29/10/2014";
+                    cmd.Parameters.Add("@sEndDate", MySqlDbType.VarChar).Value = "29/10/2017"; ;
+                    cmd.Parameters.Add("@sSubjectId", MySqlDbType.Int32).Value = 0;
+                    cmd.Parameters.Add("@sStatusId", MySqlDbType.Int32).Value = 0;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    return dt;
                 }
             }
         }
@@ -83,7 +105,7 @@ namespace AdminTool.DataBase
         }
 
 
-        internal string InsertUserGmailInfo(int viewUserId, string gmailId, string gmailPassword, string configurationToken, int existingEntry)
+        internal string InsertUserGmailInfo(int viewUserId, string gmailId, string gmailPassword, string configurationToken, int existingEntry, int reportType)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(myConnectionString))
@@ -97,7 +119,7 @@ namespace AdminTool.DataBase
                     cmd.Parameters.Add("sGmailPassword", MySqlDbType.VarChar).Value = gmailPassword;
                     cmd.Parameters.Add("sConfigurationToken", MySqlDbType.VarChar).Value = configurationToken;
                     cmd.Parameters.Add("sExistingEntry", MySqlDbType.Int32).Value = existingEntry;
-
+                    cmd.Parameters.Add("sReportType", MySqlDbType.Int32).Value = reportType;
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dt);
                     return dt.Rows[0]["result"].ToString().ToUpper();
@@ -134,6 +156,25 @@ namespace AdminTool.DataBase
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandTimeout = 500;
                     cmd.Parameters.Add("sUserid", MySqlDbType.VarChar).Value = userId;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        public DataTable getUserAutoSyncReport(int userId, int Days)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_daily_report_data", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("sUserid", MySqlDbType.Int32).Value = userId;
+                    cmd.Parameters.Add("sNumberOfDays", MySqlDbType.Int32).Value = Days;
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
                     da.Fill(dt);
@@ -267,6 +308,22 @@ namespace AdminTool.DataBase
             return dt;
         }
 
+        public DataTable getListOfAllUserToSendReport()
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_list_of_all_user_to_send_api_report", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
         public int spInsertCronJobStatus(string Description, string AutoSyncFrom)
         {
             DataTable dt = new DataTable();
@@ -365,17 +422,21 @@ namespace AdminTool.DataBase
             return dt;
         }
 
-        public DataTable getMailReport(int UserId)
+        public DataTable getMailReport(int UserId, string StartDate, string EndDate, int SubjectId, int StatusId)
         {
 
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(myConnectionString))
             {
-                using (MySqlCommand cmd = new MySqlCommand("sp_get_user_mail_report", con))
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_report_data_between_date", con))
                 {
 
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("sUserId", MySqlDbType.VarChar).Value = UserId;
+                    cmd.Parameters.Add("sUserId", MySqlDbType.Int32).Value = UserId;
+                    cmd.Parameters.Add("sStartDate", MySqlDbType.VarChar).Value = StartDate;
+                    cmd.Parameters.Add("sEndDate", MySqlDbType.VarChar).Value = EndDate;
+                    cmd.Parameters.Add("sSubjectId", MySqlDbType.Int32).Value = SubjectId;
+                    cmd.Parameters.Add("sStatusId", MySqlDbType.Int32).Value = StatusId;
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -420,8 +481,13 @@ namespace AdminTool.DataBase
                     cmd.Parameters.Add("sIsApprovedOrAll", MySqlDbType.Int32).Value = IsApprovedOrAll;
                     cmd.Parameters.Add("sSubjectId", MySqlDbType.Int32).Value = subjectId;
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
                     da.Fill(dt);
+
+                    DataRow dr = dt.NewRow();
+                    dr[0] = "0";
+                    dr[1] = "All";
+                    dr[2] = "0";
+                    dt.Rows.InsertAt(dr, 0);
                 }
             }
             return dt;
@@ -800,15 +866,9 @@ namespace AdminTool.DataBase
 
                 }
             }
-
-
         }
 
-
-
         /************** Following For Automation */
-
-
 
         public DateTime GetLastProcessedTime(int userId)
         {
@@ -836,7 +896,7 @@ namespace AdminTool.DataBase
             return result;
         }
 
-        public int InsertMailIntoDataBase(int SubjectId, string mailBody, DateTime mailTime, string SyncType)
+        public int InsertMailIntoDataBase(int SubjectId, string mailBody, DateTime mailTime, string SyncType, uint mailUid)
         {
             DataTable dt = new DataTable();
             using (MySqlConnection con = new MySqlConnection(myConnectionString))
@@ -849,11 +909,85 @@ namespace AdminTool.DataBase
                     cmd.Parameters.Add("@sMail_content_body", MySqlDbType.Text).Value = mailBody;
                     cmd.Parameters.Add("@sMail_actual_date_time", MySqlDbType.DateTime).Value = mailTime;
                     cmd.Parameters.Add("@sSyncType", MySqlDbType.Text).Value = SyncType;
+                    cmd.Parameters.Add("@sMailUid", MySqlDbType.UInt32).Value = mailUid;
+
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dt);
                     return int.Parse(dt.Rows[0]["result"].ToString().ToUpper());
                 }
             }
+        }
+
+        public string get_new_token_for_user(int userId)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_generate_new_token", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    return dt.Rows[0]["result"].ToString();
+                }
+            }
+        }
+
+        public string InsertUserMail2LeadReportStatus(int userId, int status)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_insert_report_status", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+                    cmd.Parameters.Add("@sStatus", MySqlDbType.Int32).Value = status;
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    return dt.Rows[0]["result"].ToString();
+                }
+            }
+        }
+
+        public string sp_reset_new_password(int userId, string password)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_reset_user_password", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+                    cmd.Parameters.Add("@sPassword", MySqlDbType.VarChar).Value = password;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    return dt.Rows[0]["result"].ToString().ToUpper();
+                }
+            }
+        }
+
+        public DataTable CheckUserToken(string Token)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_check_user_token", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sToken", MySqlDbType.VarChar).Value = Token;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
         }
 
         public string InsertMailSplitInfoFromBody(int MailDataBaseId, string Value, int contentSplitId)
@@ -888,6 +1022,23 @@ namespace AdminTool.DataBase
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandTimeout = 500;
                     cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+        public DataTable getUserInfoByEmailID(string emailId)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_user_info_by_emailid", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sEmailId", MySqlDbType.VarChar).Value = emailId;
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     da.Fill(dt);
                 }
@@ -1001,8 +1152,43 @@ namespace AdminTool.DataBase
             }
             return dt;
         }
+        public DataTable GetReportType()
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_report_types", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
 
 
+        public DataTable GetListOfAllMailUids(int userId, string type)
+        {
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("get_list_of_all_mail_uids", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = userId;
+                    if (type.ToLower().Contains("auto"))
+                        cmd.Parameters.Add("@sType", MySqlDbType.Int32).Value = 1;
+                    else
+                        cmd.Parameters.Add("@sType", MySqlDbType.Int32).Value = 0;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
+            return dt;
+        }
 
         internal string UpdatePaymentInfoByUserId(int UserId, string TransactionId, string PaymentSource, string PaymentAmount, int ApiCount)
         {
@@ -1026,6 +1212,48 @@ namespace AdminTool.DataBase
             }
             return result;
         }
+
+        internal string InsertNewMailUidIntoDataBase(int UserId, uint MailUId)
+        {
+            string result = string.Empty;
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_insert_new_mail_uid", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = UserId;
+                    cmd.Parameters.Add("@sUid", MySqlDbType.Int32).Value = MailUId;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    result = dt.Rows[0]["result"].ToString().ToUpper();
+                }
+            }
+            return result;
+        }
+
+        internal string UpdateMailUidIntoDataBase(int UserId, uint MailUId)
+        {
+            string result = string.Empty;
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_update_mail_uid_info", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 500;
+                    cmd.Parameters.Add("@sUserId", MySqlDbType.Int32).Value = UserId;
+                    cmd.Parameters.Add("@sUid", MySqlDbType.Int32).Value = MailUId;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    result = dt.Rows[0]["result"].ToString().ToUpper();
+                }
+            }
+            return result;
+        }
+
+
 
 
         internal DataTable GetPendingReceivedMessage()

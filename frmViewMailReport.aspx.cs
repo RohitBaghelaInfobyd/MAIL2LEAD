@@ -40,6 +40,9 @@ namespace AdminTool
                     }
                     else
                     {
+
+                        tbEndDate.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+                        tbStartDate.Text = DateTime.Now.Date.AddDays(-30).ToString("dd/MM/yyyy"); ;
                         GetMailStatus(userId);
                         FillDropDown();
 
@@ -57,12 +60,14 @@ namespace AdminTool
         public void GetMailStatus(int UserId)
         {
             DataTable dt = new DataTable();
-            dt = dataBaseProvider.getMailReport(UserId);
+            string startDate = tbStartDate.Text.ToString();
+            string endDate = tbEndDate.Text.ToString();
+
+            dt = dataBaseProvider.getMailReport(UserId, startDate, endDate, 0, 0);
             ViewState["DefaultMailReportDataTable"] = dt;
 
             if (dt.Rows.Count < 1)
             {
-                //lblMsg.Text = "No Record Found";
                 GridViewMailReport.Visible = false;
 
             }
@@ -154,10 +159,14 @@ namespace AdminTool
             int ViewUserId;
             ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
             DataTable dt = new DataTable();
-            dt = dataBaseProvider.getMailReport(ViewUserId);
-            // AddNewSubject.Visible = false;
-            ViewState["DefaultSubjectDataTable"] = dt;
 
+            string startDate = tbStartDate.Text.ToString();
+            string endDate = tbEndDate.Text.ToString();
+            int SubjectId = Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue.ToString());
+            int StatusId = Convert.ToInt32(dropDownStatusOfReport.SelectedValue.ToString());
+            dt = dataBaseProvider.getMailReport(ViewUserId, startDate, endDate, SubjectId, StatusId);
+            ViewState["DefaultSubjectDataTable"] = dt;
+            lblMsg.Visible = false;
             if (!string.IsNullOrEmpty(hdnSearchTxt.Value))
             {
                 dt = FilterData(hdnSearchTxt.Value, dt);
@@ -181,39 +190,30 @@ namespace AdminTool
                 GridViewMailReport.Visible = false;
                 lblMsg.Text = "No DataFound";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
+                lblMsg.Visible = true;
             }
         }
 
 
         private void FillDropDown()
         {
-
-
             int ViewUserId;
             ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
             DataTable dt = dataBaseProvider.getListOfAllUserSubject(ViewUserId, 0, 0);
+
             if (dt.Rows.Count < 1)
             {
-                ListOfAllSubjectList.DataSource = new DataTable();
-                ListOfAllSubjectList.DataBind();
-                // lblMsg.Visible = false;
-                //lblMsg.Text = "No More Data Available";
+                dropDpownListOfAllSubjectList.DataSource = new DataTable();
+                dropDpownListOfAllSubjectList.DataBind();
             }
             else
             {
-                //lblMsg.Visible = false;
-
-                ListOfAllSubjectList.DataSource = dt;
-                ListOfAllSubjectList.DataTextField = "subjectLine";
-                ListOfAllSubjectList.DataValueField = "id";
-                ListOfAllSubjectList.DataBind();
-
+                dropDpownListOfAllSubjectList.DataSource = dt;
+                dropDpownListOfAllSubjectList.DataTextField = "subjectLine";
+                dropDpownListOfAllSubjectList.DataValueField = "id";
+                dropDpownListOfAllSubjectList.DataBind();
             }
         }
-
-
-
-
 
         protected void ImgExportToExcel_Click(object sender, EventArgs e)
         {
@@ -331,7 +331,6 @@ namespace AdminTool
         {
             try
             {
-
                 string FileName = "MailReport";
                 DataTable dt = GetDataTable();
                 GridView GridView1 = new GridView();
@@ -374,6 +373,19 @@ namespace AdminTool
         protected void txtSearchBox_TextChanged(object sender, EventArgs e)
         {
             Search();
+        }
+
+        protected void btnApplyFilter_Click(object sender, EventArgs e)
+        {
+            FillDefaultGridView(true);
+        }
+
+        protected void imgMailDetailInfo_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton img = sender as ImageButton;
+            int databaseId = Convert.ToInt32(img.CommandArgument);
+            Session["DatabaseId"] = databaseId;
+            Response.Redirect("~/frmUserMailDetailInfo.aspx");
         }
     }
 }

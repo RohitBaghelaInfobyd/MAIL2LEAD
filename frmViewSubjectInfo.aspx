@@ -84,7 +84,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">&nbsp;
+                    <td colspan="3">
+                         <br />
+                        <script type="text/javascript">
+                            function confirmation() {
+                                if (confirm('Are you sure you want to delete this Subject ?')) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </td>
                 </tr>
                 <tr>
@@ -155,7 +165,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
-                                            IsApproved
+                                            Is Approved
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblIsApproved" runat="server" Text='<%# Eval("isApproved") %>'
@@ -170,7 +180,7 @@
 
                                     <asp:CommandField ButtonType="Image" EditImageUrl="~/Images/edit.png" CancelImageUrl="~/Images/cancel_new.png"
                                         DeleteImageUrl="~/Images/delete.png" UpdateImageUrl="~/Images/save.png" ShowCancelButton="true"
-                                        ShowDeleteButton="true" ShowEditButton="true" ItemStyle-Width="50" ItemStyle-HorizontalAlign="Right">
+                                        ShowDeleteButton="false" ShowEditButton="true" ItemStyle-Width="50" ItemStyle-HorizontalAlign="Right">
                                         <ItemStyle HorizontalAlign="Right" Width="100px"></ItemStyle>
                                     </asp:CommandField>
                                     <asp:TemplateField>
@@ -178,6 +188,8 @@
                                             Action
                                         </HeaderTemplate>
                                         <ItemTemplate>
+                                              <asp:ImageButton ID="imgBtnDelete" runat="server" ToolTip="Delete User Record" OnClick="imgBtnDelete_Click"
+                                                OnClientClick="return confirmation();" CommandArgument='<%# Eval("Id") %>' ImageUrl="~/Images/delete.png" />
                                             <asp:ImageButton ID="imgBtnSubjectDetail" runat="server" OnClick="imgBtnSubjectDetail_Click"
                                                 OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>'
                                                 ImageUrl="~/Images/Essentials_Icon_Set_V2.1_Expanded_Profile-128.png" Width="20px"

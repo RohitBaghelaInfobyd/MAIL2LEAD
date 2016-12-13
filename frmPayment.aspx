@@ -64,6 +64,7 @@
                             <asp:Button runat="server" ID="ImgPaymentHistory" Text="Payment History" OnClick="ImgPaymentHistory_Click"
                                 CssClass="btn" EnableViewState="false" Width="151px" CausesValidation="true" ValidationGroup="Group1"
                                 BackColor="#3E75CD" ForeColor="White" />
+                            
                         </div>
                     </td>
                 </tr>
@@ -71,6 +72,7 @@
                     <td colspan="3">
                         <br />
                         <div id="GroupDetails" runat="server" width="100%">
+                            
                             <asp:GridView ID="GridPaymentDetails" runat="server" Width="101%" AllowPaging="True"
                                 AutoGenerateColumns="False" GridLines="None" DataKeyNames="Id">
                                 <HeaderStyle CssClass="ListHeaderGrid" HorizontalAlign="Left" BorderColor="#bbd3e9"

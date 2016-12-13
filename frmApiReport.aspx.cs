@@ -37,6 +37,19 @@ namespace AdminTool
                         GetApiStatus(userId);
 
                     }
+                    int UserType = Convert.ToInt32(Session["UserType"].ToString());
+                    if (UserType == 1)
+                    {
+                        // Response.Redirect("~/frmCategory.aspx");
+                        ImageGoBack2.Visible = false;
+
+                    }
+                    else
+                    {
+                        //Response.Redirect("~/frmUserList.aspx");
+                        ImageGoBack2.Visible = true;
+                    }
+
                     ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception exc)
@@ -91,7 +104,8 @@ namespace AdminTool
             int UserType = Convert.ToInt32(Session["UserType"].ToString());
             if (UserType == 1)
             {
-                Response.Redirect("~/frmCategory.aspx");
+                // Response.Redirect("~/frmCategory.aspx");
+               
             }
             else
             {

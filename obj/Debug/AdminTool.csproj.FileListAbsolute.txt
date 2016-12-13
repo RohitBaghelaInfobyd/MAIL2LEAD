@@ -87,3 +87,12 @@ E:\Mail2Lead\bin\MySql.Data.xml
 E:\Mail2Lead\obj\Debug\AdminTool.dll
 E:\Mail2Lead\obj\Debug\AdminTool.pdb
 E:\Mail2Lead\obj\Debug\AdminTool.csprojResolveAssemblyReference.cache
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\AdminTool.dll.config
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\AdminTool.dll
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\AdminTool.pdb
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\MySql.Data.dll
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\MySql.Data.xml
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.dll
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.pdb
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.csprojResolveAssemblyReference.cache
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\AjaxControlToolkit.dll

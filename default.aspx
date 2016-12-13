@@ -114,15 +114,23 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Password"
                                                     CssClass="text-danger" ErrorMessage="required." Font-Size="10" />
                                                 <br />
-                                                <p align="right" style="margin:10px 0;">
-                                                    <asp:Button runat="server" ID="forgotPassword" OnClick="LoginButton_Click" UseSubmitBehavior="false"
-                                                        Text="forgot Password" class="btn" TabIndex="1" />
-                                               
-                                                    <asp:Button runat="server" ID="LoginButton" OnClick="LoginButton_Click" UseSubmitBehavior="false"
-                                                        Text="Login" class="btn" TabIndex="1" />
+                                                <p>
+                                                    <a href="/frmsignup.aspx">
+                                                        <asp:LinkButton id="linkforgotPassword" Text="Forgot Password?" EnableViewState="true" Font-Size="12"
+                                                            OnClick="linkforgotPassword_Click" CausesValidation="false" style="float: right; margin-right: 20%;"
+                                                            runat="server" />
+                                                    </a>
+                                                    <br />
                                                 </p>
+                                                <asp:Button runat="server" ID="LoginButton" OnClick="LoginButton_Click" EnableViewState="true" autopost="true" CausesValidation="false" UseSubmitBehavior="false"
+                                                    Text="Login" class="btn" TabIndex="1" style="float: right; margin-right: -23%; margin-top: 2%;" />
 
+                                                <a href="/frmsignup.aspx">
+                                                    <asp:Button runat="server" ID="btnSignup" OnClick="SignupButton_Click" autopost="true" EnableViewState="true" CausesValidation="false" UseSubmitBehavior="false"
+                                                        Text="Signup" class="btn" TabIndex="1" style="float: right; margin-right: -5%; margin-top: 2%;" />
+                                                </a>
                                             </form>
+
                                         </div>
                                     </div>
                                     <!-- /end #content-login -->

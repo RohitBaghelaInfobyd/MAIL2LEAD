@@ -15,7 +15,7 @@ namespace AdminTool
     {
 
         static DataBaseProvider dataBaseProvider = new DataBaseProvider();
-        static int UserType, SelectedExistingEntryId;
+        static int UserType, SelectedExistingEntryId, SelectedReportType;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -33,11 +33,12 @@ namespace AdminTool
                     {
                         EnableDisable(false);
                         SetUserInfoIntoForm(UserId);
+                        getBasicInfoUser(UserId);
                         tbGmailPassword.Attributes.Add("value", tbGmailPassword.Text);
                         tbSmsUserPassword.Attributes.Add("value", tbSmsUserPassword.Text);
                         tbPassword.Attributes.Add("value", tbPassword.Text);
                     }
-
+                     ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception ex)
                 { }
@@ -92,6 +93,7 @@ namespace AdminTool
 
                     ImgCrmSetting.Visible = true;
                     GetExistingEntryEvent();
+                    fileReportDropDown();
                     EnableDisable(false);
                 }
             }
@@ -123,6 +125,16 @@ namespace AdminTool
 
         }
 
+        private void fileReportDropDown()
+        {
+            DataTable reporttype = dataBaseProvider.GetReportType();
+            dropdownReporttype.DataSource = reporttype;
+            dropdownReporttype.DataTextField = "type";
+            dropdownReporttype.DataValueField = "id";
+            dropdownReporttype.DataBind();
+            dropdownReporttype.SelectedIndex = SelectedReportType - 1;
+
+        }
 
 
         private void EnableDisable(bool isEnable)
@@ -173,7 +185,7 @@ namespace AdminTool
                  * 
                   */
 
-                MainTimeTicker.SendEmailStarted(ViewUserId, 2, 1, 0, "ForceSync");
+                MainTimeTicker.SubmitEmailFromMailToCRM(ViewUserId, 1, 1, 0, "ForceSync");
             }
             else
             {
@@ -220,7 +232,8 @@ namespace AdminTool
             }
             else
             {
-                result = dataBaseProvider.AddNewUserIntoDatabase(LoggedInuserId, FirstName, LastName, EmailId, password, userType);
+                DataTable te = dataBaseProvider.AddNewUserIntoDatabase(LoggedInuserId, FirstName, LastName, EmailId, password, userType);
+                result = te.Rows[0]["result"].ToString().ToUpper();
                 if (result.Equals("SUCCESS"))
                 {
                     lblMsg.Text = "User Added Successfully";
@@ -259,6 +272,7 @@ namespace AdminTool
             tbGmailPassword.Enabled = isEnable;
             tbConfigurationToken.Enabled = isEnable;
             dropExistingEntry.Enabled = isEnable;
+            dropdownReporttype.Enabled = isEnable;
             SaveCRMinfoDiv.Visible = isEnable;
 
         }
@@ -266,18 +280,19 @@ namespace AdminTool
         protected void btnSaveCRM_Click(object sender, EventArgs e)
         {
             int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
-            int existingEntry;
+            int existingEntry, reportType;
 
             string GmailId, GmailPassword, ConfigurationToken, result;
             GmailId = tbGmailId.Text;
             GmailPassword = tbGmailPassword.Text;
             ConfigurationToken = tbConfigurationToken.Text;
             existingEntry = Convert.ToInt32(dropExistingEntry.SelectedValue.ToString());
+            reportType = Convert.ToInt32(dropdownReporttype.SelectedValue.ToString());
 
             EnableDisable(true);
             if (ViewUserId > 0)
             {
-                result = dataBaseProvider.InsertUserGmailInfo(ViewUserId, GmailId, GmailPassword, ConfigurationToken, existingEntry);
+                result = dataBaseProvider.InsertUserGmailInfo(ViewUserId, GmailId, GmailPassword, ConfigurationToken, existingEntry, reportType);
                 if (result.Equals("SUCCESS"))
                 {
                     lblMsg.Text = "Information Update Successfully";
@@ -310,6 +325,7 @@ namespace AdminTool
 
                     ImgCrmSetting.Visible = true;
                     GetExistingEntryEvent();
+                    fileReportDropDown();
                     EnableDisable(false);
 
                 }
@@ -388,10 +404,11 @@ namespace AdminTool
                     tbPassword.Text = UserInfo.Rows[0]["gmailPassword"].ToString();
                     tbConfigurationToken.Text = UserInfo.Rows[0]["configurationAuthToken"].ToString();
                     SelectedExistingEntryId = Convert.ToInt32(UserInfo.Rows[0]["existingInfoEvent"].ToString());
-
+                    SelectedReportType = Convert.ToInt32(UserInfo.Rows[0]["reportType"].ToString());
 
                     // ImgCrmSetting.Visible = true;
                     GetExistingEntryEvent();
+                    fileReportDropDown();
                     EnableDisable(false);
 
                 }

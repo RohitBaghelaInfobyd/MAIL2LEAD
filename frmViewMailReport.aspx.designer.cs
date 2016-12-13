@@ -112,13 +112,13 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// ListOfAllSubjectList control.
+        /// dropDpownListOfAllSubjectList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ListOfAllSubjectList;
+        protected global::System.Web.UI.WebControls.DropDownList dropDpownListOfAllSubjectList;
         
         /// <summary>
         /// Label3 control.
@@ -130,49 +130,94 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// StatusOfReport control.
+        /// dropDownStatusOfReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StatusOfReport;
+        protected global::System.Web.UI.WebControls.DropDownList dropDownStatusOfReport;
         
         /// <summary>
-        /// Label4 control.
+        /// lblstartText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblstartText;
         
         /// <summary>
-        /// StartDate control.
+        /// tbStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StartDate;
+        protected global::System.Web.UI.WebControls.TextBox tbStartDate;
         
         /// <summary>
-        /// Label5 control.
+        /// calStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::AjaxControlToolkit.CalendarExtender calStartDate;
         
         /// <summary>
-        /// EndDate control.
+        /// requiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator2;
+        
+        /// <summary>
+        /// lblEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEndDate;
+        
+        /// <summary>
+        /// tbEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEndDate;
+        
+        /// <summary>
+        /// calEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender calEndDate;
+        
+        /// <summary>
+        /// requiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator1;
+        
+        /// <summary>
+        /// btnApplyFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApplyFilter;
         
         /// <summary>
         /// GroupDetails control.
@@ -191,14 +236,5 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewMailReport;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
     }
 }

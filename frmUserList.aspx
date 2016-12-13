@@ -74,12 +74,12 @@
             <div>
                 <table width="100%">
                     <tr>
-                        <td style="vertical-align: middle;" class="style3">
-                            <asp:ImageButton ID="ImageGoBack5" runat="server" ImageUrl="~/Images/goBack.png"
+                       <%-- <td style="vertical-align: middle;" class="style3">--%>
+                            <%--<asp:ImageButton ID="ImageGoBack5" runat="server" ImageUrl="~/Images/goBack.png"
                                 OnClick="ImageGoBack5_Click" Style="height: 30px; width: 30px; vertical-align: middle; margin: 5px;"
-                                ValidationGroup="text" align="left" />
-                        </td>
-                        <td style="vertical-align: middle; margin: 1%;" class="style4">
+                                ValidationGroup="text" align="left" />--%>
+                       <%-- </td>--%>
+                        <td style="vertical-align: middle; margin:1%;" class="style4">
                             <asp:Label ID="lblHeader" runat="server" Text="Manage Users" Style="font-weight: bold; text-align: left;" Font-Size="18" Font-Names="Forum"></asp:Label>
                         </td>
                         <td style="vertical-align: middle; float: right; margin: 1%;">
@@ -222,7 +222,7 @@
                                                 OnClientClick="return confirmation();" CommandArgument='<%# Eval("Id") %>' ImageUrl="~/Images/delete.png" />
                                             <asp:ImageButton ID="imgBtnUserDetail" runat="server" ToolTip="User Details" OnClick="imgBtnUserDetail_Click"
                                                 OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>'
-                                                ImageUrl="~/Images/Essentials_Icon_Set_V2.1_Expanded_Profile-128.png" Width="20px" />
+                                                ImageUrl="~/Images/detail_screen.png" Width="20px" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>

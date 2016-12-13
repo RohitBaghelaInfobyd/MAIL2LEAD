@@ -506,10 +506,10 @@ namespace AdminTool
             }
         }
 
-        protected void ImageGoBack5_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("frmCategory.aspx");
-        }
+        //protected void ImageGoBack5_Click(object sender, ImageClickEventArgs e)
+        //{
+        //    Response.Redirect("frmCategory.aspx");
+        //}
 
         protected void txtSearchBox_TextChanged(object sender, EventArgs e)
         {

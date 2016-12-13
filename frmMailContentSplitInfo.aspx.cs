@@ -812,7 +812,7 @@ namespace AdminTool
                 *                  CASE 1 sync only approved mail 
                 * 
                  */
-                    MainTimeTicker.SendEmailStarted(ViewUserId, 30, 0, SubjectID,"TestSplit");
+                    MainTimeTicker.SubmitEmailFromMailToCRM(ViewUserId, 1, 0, SubjectID, "TestSplit");
                 }
                 else
                 {

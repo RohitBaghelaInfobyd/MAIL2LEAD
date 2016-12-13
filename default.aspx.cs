@@ -17,38 +17,45 @@ namespace AdminTool
             if (!Page.IsPostBack)
             {
                 EnableViewState = true;
+                ErrorMessage.Visible = false;
             }
         }
 
+
+        protected void linkforgotPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/frmForgotPassword.aspx");
+        }
+
+        protected void SignupButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/frmSignup.aspx");
+        }
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-
-            if (IsValid)
+            String EmailId = string.Empty, PasswordText = string.Empty;
+            int UserId;
+            UserId = Convert.ToInt32(Session["LoggedInuserId"]);
+            if (UserId > 0)
             {
-                String EmailId = string.Empty, PasswordText = string.Empty;
-                int UserId;
-                UserId = Convert.ToInt32(Session["LoggedInuserId"]);
+                Response.Redirect("~/frmCategory.aspx");
+            }
+
+            {
+                EmailId = UserName.Text;
+                PasswordText = Password.Text;
+                UserId = databaseProvider.LoginUser(EmailId, PasswordText);
+
                 if (UserId > 0)
                 {
+                    Session["LoggedInuserId"] = UserId;
+                    Session["ViewUserId"] = UserId;
                     Response.Redirect("~/frmCategory.aspx");
                 }
-
+                else
                 {
-                    EmailId = UserName.Text;
-                    PasswordText = Password.Text;
-                    UserId = databaseProvider.LoginUser(EmailId, PasswordText);
-
-                    if (UserId > 0)
-                    {
-                        Session["LoggedInuserId"] = UserId;
-                        Session["ViewUserId"] = UserId;
-                        Response.Redirect("~/frmCategory.aspx");
-                    }
-                    else
-                    {
-                        ErrorMessage.Text = "Invalid username or password.";
-                          ErrorMessage.Visible = true;
-                    }
+                    ErrorMessage.Text = "Invalid username or password.";
+                    ErrorMessage.Visible = true;
                 }
             }
         }

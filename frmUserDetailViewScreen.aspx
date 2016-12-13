@@ -22,12 +22,12 @@
             if (doc.style.display == "none") {
                 document.getElementById("tblCRMSetting").style.display = "block";
                 document.getElementById("tblAccountSetting").style.display = "none";
-                document.getElementById("tblSMSSetting").style.display = "none";
+              //  document.getElementById("tblSMSSetting").style.display = "none";
                 document.getElementById("<%= ImgCrmSetting.ClientID %>").value = "Account Setting";
-                document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "SMS Setting";
+               // document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "SMS Setting";
             } else {
                 document.getElementById("tblCRMSetting").style.display = "none";
-                document.getElementById("tblSMSSetting").style.display = "none";
+              //  document.getElementById("tblSMSSetting").style.display = "none";
                 document.getElementById("tblAccountSetting").style.display = "block";
                 document.getElementById("<%= ImgCrmSetting.ClientID %>").value = "CRM Setting";
             }
@@ -37,26 +37,26 @@
         function smsClickEvent() {
             var doc = document.getElementById("tblSMSSetting")
             if (doc.style.display == "none") {
-                document.getElementById("tblSMSSetting").style.display = "block";
+               // document.getElementById("tblSMSSetting").style.display = "block";
                 document.getElementById("tblCRMSetting").style.display = "none";
                 document.getElementById("tblAccountSetting").style.display = "none";
                 document.getElementById("<%= ImgCrmSetting.ClientID %>").value = "CRM Setting";
-                document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "Account Setting";
+            //    document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "Account Setting";
             } else {
                 document.getElementById("tblCRMSetting").style.display = "none";
-                document.getElementById("tblSMSSetting").style.display = "none";
+              //  document.getElementById("tblSMSSetting").style.display = "none";
                 document.getElementById("tblAccountSetting").style.display = "block";
                 document.getElementById("<%= ImgCrmSetting.ClientID %>").value = "CRM Setting";
-                document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "SMS Setting";
+             //   document.getElementById("<%= ImgSmsSetting.ClientID %>").value = "SMS Setting";
             }
             document.getElementById("lblerrmsg").style.display = "none";
         }
 
 
         function onCheckChange() {
-            
+
             if (document.getElementById("<%= chkIsUseDefault.ClientID %>").checked) {
-                document.getElementById("<%=tbSmsUserID.ClientID %>").setAttribute("disabled",true);
+                document.getElementById("<%=tbSmsUserID.ClientID %>").setAttribute("disabled", true);
                 document.getElementById("<%=tbSmsUserPassword.ClientID %>").setAttribute("disabled", true);
                 document.getElementById("<%=tbAppKey.ClientID %>").setAttribute("disabled", true);
                 document.getElementById("<%=tbAppSecretKey.ClientID %>").setAttribute("disabled", true);
@@ -127,9 +127,9 @@
                         <div id="DivExport" runat="server" style="text-align: right;">
                             <asp:Button ID="ImgCrmSetting" runat="server" Text="CRM Setting" CssClass="btn"
                                 OnClientClick="crmClickEvent();return false;" Width="163px" BackColor="#3E75CD" ForeColor="White" />
-                            <asp:Button ID="ImgSmsSetting" runat="server" Text="SMS Setting" CssClass="btn"
+                            <!--   <asp:Button ID="ImgSmsSetting" runat="server" Text="SMS Setting" CssClass="btn"
                                 OnClientClick="smsClickEvent();return false;" Width="163px" BackColor="#3E75CD" ForeColor="White" />
-
+                             -->
                             <asp:Button ID="ImgViewSubject" runat="server" Text="View Subject" CssClass="btn"
                                 EnableViewState="false" CausesValidation="true" ValidationGroup="Group1" OnClick="ImgViewSubject_Click"
                                 Width="163px" BackColor="#3E75CD" ForeColor="White" />
@@ -199,6 +199,15 @@
                                     <asp:Label runat="server" ID="lblUpdateNote" Style="vertical-align: middle; display: none; font-size: 14px; color: red" CssClass="col-md-12 control-label">Note : Existing info will be update only on behalf of your Lead email column value.</asp:Label>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <p>&nbsp;</p>
+                                     <asp:Label runat="server" ID="lblreportType" Style="vertical-align: middle;" CssClass="col-md-6 control-label">Required Report : </asp:Label>
+                                    <div class="col-md-5">
+                                        <asp:DropDownList runat="server" ID="dropdownReporttype" CssClass="form-control" BorderColor="#bbd3e9" onchange="HideTextBox(this);" Style="background-color: #e5eef6" />
+                                    </div>
+                                </td>
+                            </tr>
 
                             <tr>
                                 <td colspan="3">&nbsp;&nbsp;&nbsp;
@@ -220,7 +229,7 @@
                         </table>
                     </td>
 
-                    <td id="tblSMSSetting" style="display: none;">
+                    <!-- <td id="tblSMSSetting" style="display: none;">
                         <table>
                             <tr>
                                 <td>
@@ -321,14 +330,14 @@
                                             BackColor="#3E75CD" ForeColor="White" />
                                         &nbsp;<asp:Button ID="btnSmsCancel" runat="server" Text="Cancel" CssClass="btn"
                                             Width="125" CausesValidation="true" OnClientClick="smsClickEvent();" BackColor="#3E75CD"
-                                            ForeColor="White" />                                         
+                                            ForeColor="White" />
                                     </div>
                                 </td>
                             </tr>
                         </table>
                     </td>
 
-
+                    -->
 
                     <td id="tblAccountSetting">
                         <table>
