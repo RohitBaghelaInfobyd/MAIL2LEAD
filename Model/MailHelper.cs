@@ -127,7 +127,7 @@ namespace AdminTool.Model
                 {
                     return null;
                 }
-                mailMessages = client.GetMessages(uids, false, "[Gmail]/All Mail"); // get the messages without setting status as read
+                mailMessages = client.GetMessages(uids,FetchOptions.Normal, false, "[Gmail]/All Mail"); // get the messages without setting status as read
             }
             catch (Exception ex)
             {

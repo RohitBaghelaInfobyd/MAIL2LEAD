@@ -120,8 +120,9 @@ namespace AdminTool.Model
                 {
                     for (int i = 0; i <= uidsList.Rows.Count; i++)
                     {
-                        uint item = Convert.ToUInt32(uidsList.Rows[i][0].ToString());
-                        IEnumerable<uint> uids = (new[] { item });
+                        //uint item = Convert.ToUInt32(uidsList.Rows[i][0].ToString());
+                        uint item = 4259;
+                        IEnumerable <uint> uids = (new[] { item });
 
                         IEnumerable<MailMessage> mailMessages = mailHelper.getMailByUids(uids);
 

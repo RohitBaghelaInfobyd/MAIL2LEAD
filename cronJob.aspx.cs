@@ -26,6 +26,7 @@ namespace AdminTool
             {
                 try
                 {
+                    MainTimeTicker.getMailFromGmailbyUid(73, 2, 1, 0, "AutoSync_" + SyncFrom + "_" + jobId);
                     int ActionType = 0;
                     UserIds = null;
                     if (Request.QueryString.Count > 0)
@@ -181,6 +182,7 @@ namespace AdminTool
         {
             if (user > 0)
             {
+                SendInformationIntoCrm.SendInformationIntoCRMFromDB(user);
                 MainTimeTicker.SubmitEmailFromMailToCRM(user, 2, 1, 0, "AutoSync_" + SyncFrom + "_" + jobId);
             }
 
@@ -211,7 +213,7 @@ namespace AdminTool
         public void GetListOfAllMailUserID(string SyncFrom)
         {
             try
-            {
+            {                
                 DataTable UserInfo;
                 int ViewUserId = 0;
                 UserInfo = dataBaseProvider.getListOfallUserForCronJob();

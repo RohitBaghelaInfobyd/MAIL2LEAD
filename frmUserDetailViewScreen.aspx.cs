@@ -91,6 +91,10 @@ namespace AdminTool
                         chkIsUseDefault.Checked = false;
                     }
 
+                    tbGmailPassword.Attributes.Add("value", tbGmailPassword.Text);
+                    tbSmsUserPassword.Attributes.Add("value", tbSmsUserPassword.Text);
+                    tbPassword.Attributes.Add("value", tbPassword.Text);
+
                     ImgCrmSetting.Visible = true;
                     GetExistingEntryEvent();
                     fileReportDropDown();
