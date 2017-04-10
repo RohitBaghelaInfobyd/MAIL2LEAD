@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmSignup.aspx.cs"
+﻿<%@ Page Language="C#" MasterPageFile="~/withoutsidepannel.Master" AutoEventWireup="true" CodeBehind="frmSignup.aspx.cs"
     Inherits="AdminTool.frmSignup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -34,14 +34,13 @@
         .table td {
             text-align: right;
         }
-
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
                         <td style="vertical-align: middle; text-align: center; margin: 1%;">
                             <asp:Label ID="lblHeader" runat="server" Text="Signup" Style="font-weight: bold; text-align: left;" Font-Size="25"
@@ -59,37 +58,48 @@
                         <p>&nbsp;</p>
                     </td>
                 </tr>
-                <tr valign="middle">
-                    <td valign="middle">
+                <tr style="vertical-align: middle">
+                    <td style="vertical-align: middle">
                         <asp:Label ID="lblFirstName" runat="server" Text="First Name" Style="font-size: 22px;"></asp:Label>
                     </td>
-                    <td valign="middle">
+                    <td style="vertical-align: middle">
                         <asp:TextBox ID="tbFirstName" placeholder="First Name" ValidationGroup="text"
-                            runat="server" MaxLength="30" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size:22px;" />
+                            runat="server" MaxLength="30" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatortbEndText" runat="server" ControlToValidate="tbFirstName"
                             ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                 </tr>
-                <tr valign="middle">
-                    <td valign="middle">
+                <tr style="vertical-align: middle">
+                    <td style="vertical-align: middle">
                         <asp:Label ID="lbllastName" runat="server" Text="Last Name" Style="font-size: 22px;"></asp:Label>
                     </td>
-                    <td valign="middle">
+                    <td style="vertical-align: middle">
                         <asp:TextBox ID="tbLastName" placeholder="Last Name" ValidationGroup="text"
-                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size:22px;" />
+                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbLastName"
                             ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
-                <tr valign="middle"> 
-                    <td valign="middle">
+                <tr style="vertical-align: middle">
+                    <td style="vertical-align: middle">
                         <asp:Label ID="lblEmailId" runat="server" Text="EmailId" Style="font-size: 22px;"></asp:Label>
                     </td>
-                    <td valign="middle">
+                    <td style="vertical-align: middle">
                         <asp:TextBox ID="tbEmailID" placeholder="Email Id" ValidationGroup="text"
-                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size:22px;" />
+                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbEmailID"
+                            ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr style="vertical-align: middle">
+                    <td style="vertical-align: middle">
+                        <asp:Label ID="lblPassword" runat="server" Text="Password" Style="font-size: 22px;"></asp:Label>
+                    </td>
+                    <td style="vertical-align: middle">
+                        <asp:TextBox ID="tbPassword" placeholder="Password" ValidationGroup="text"
+                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPassword"
                             ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                 </tr>

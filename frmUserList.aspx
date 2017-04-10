@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Manage User" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="frmUserList.aspx.cs" Inherits="AdminTool.frmUserList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -43,7 +43,7 @@
 
         function onlyAlphabets(e, t) {
             try {
-                var msg = document.getElementById("<%= emptyListMsg.ClientID %>");
+                var msg = document.getElementById("<%= lblMsg.ClientID %>");
                 msg.style.color = "Red";
                 if (window.event) {
                     var charCode = window.event.keyCode;
@@ -69,21 +69,16 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
-                       <%-- <td style="vertical-align: middle;" class="style3">--%>
-                            <%--<asp:ImageButton ID="ImageGoBack5" runat="server" ImageUrl="~/Images/goBack.png"
-                                OnClick="ImageGoBack5_Click" Style="height: 30px; width: 30px; vertical-align: middle; margin: 5px;"
-                                ValidationGroup="text" align="left" />--%>
-                       <%-- </td>--%>
-                        <td style="vertical-align: middle; margin:1%;" class="style4">
+                        <td style="vertical-align: middle; margin: 1%;" class="style4">
                             <asp:Label ID="lblHeader" runat="server" Text="Manage Users" Style="font-weight: bold; text-align: left;" Font-Size="18" Font-Names="Forum"></asp:Label>
                         </td>
                         <td style="vertical-align: middle; float: right; margin: 1%;">
-                            <asp:TextBox ID="txtSearchBox" placeholder="Search here" runat="server" EnableViewState="true" AutoPostBack="true" Style="width: 200px; height: 25px; vertical-align: middle;"
+                            <asp:TextBox ID="txtSearchBox" runat="server" EnableViewState="true" AutoPostBack="true" Style="width: 200px; height: 25px; vertical-align: middle;"
                                 MaxLength="50" CssClass="form-control" OnTextChanged="txtSearchBox_TextChanged"
                                 BorderColor="#bbd3e9" />
                             <asp:ImageButton ID="btnSearch" ValidationGroup="text" runat="server" ImageUrl="~/Images/search_User.png"
@@ -96,12 +91,12 @@
             </div>
         </div>
         <div style="padding: 20px;">
-            <table width="100%">
+            <table style="width: 100%">
                 <tr>
                     <td class="style1">
                         <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
                     </td>
-                    <td colspan="2" align="right" class="style1">
+                    <td colspan="2" style="text-align: right" class="style1">
                         <div id="DivExport" runat="server">
                             <asp:Button runat="server" ID="ImgAddNewUser" Text="Add New User" OnClick="ImgAddNewUser_Click1"
                                 CssClass="btn" EnableViewState="false" Width="139px" CausesValidation="true"
@@ -130,13 +125,12 @@
                                 }
                             }
                         </script>
-                        <div id="GroupDetails" runat="server" width="100%">
-                            <asp:GridView ID="GridUserDetails" runat="server" Width="101%" AllowPaging="True"
-                                OnPageIndexChanging="GridUserDetails_PageIndexChanging" AutoGenerateColumns="False"
+                        <div id="GroupDetails" runat="server" style="width: 100%">
+                            <asp:GridView ID="GridUserDetails" runat="server" Width="101%"
+                                AutoGenerateColumns="False"
                                 GridLines="None" DataKeyNames="Id" OnRowEditing="GridUserDetails_RowEditing"
                                 OnRowDeleting="GridUserDetails_RowDeleting" OnRowCancelingEdit="GridUserDetails_RowCancelingEdit"
-                                OnRowUpdating="GridUserDetails_RowUpdating"
-                                OnRowDataBound="GridUserDetails_RowDataBound" PageSize="20">
+                                OnRowUpdating="GridUserDetails_RowUpdating">
                                 <HeaderStyle CssClass="ListHeaderGrid" HorizontalAlign="Left" BorderColor="#bbd3e9"
                                     BackColor="#e5eef6" />
                                 <RowStyle CssClass="ListRowGrid" />
@@ -211,7 +205,8 @@
                                     <asp:CommandField ButtonType="Image" EditImageUrl="~/Images/edit.png" CancelImageUrl="~/Images/cancel_new.png"
                                         DeleteImageUrl="~/Images/delete.png" UpdateImageUrl="~/Images/save.png" ShowCancelButton="true"
                                         ShowDeleteButton="false" ShowEditButton="true" ItemStyle-Width="50" ItemStyle-HorizontalAlign="Right">
-                                        <ItemStyle HorizontalAlign="Right" Width="100px"></ItemStyle>
+                                        <ItemStyle HorizontalAlign="center" Width="100px"></ItemStyle>
+                                        <HeaderStyle CssClass="commondClass" />
                                     </asp:CommandField>
                                     <asp:TemplateField>
                                         <HeaderTemplate>
@@ -224,6 +219,7 @@
                                                 OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>'
                                                 ImageUrl="~/Images/detail_screen.png" Width="20px" />
                                         </ItemTemplate>
+                                         <HeaderStyle CssClass="commondClass" />
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
@@ -234,5 +230,4 @@
         </div>
         <br />
     </div>
-    <asp:Label ID="emptyListMsg" runat="server" Text="NA"></asp:Label>
 </asp:Content>

@@ -91,16 +91,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="bin\Ionic.Zip.dll" />
     <Content Include="bin\MSCaptcha.dll" />
-    <Content Include="Checkout\CheckoutCancel.aspx" />
-    <Content Include="Checkout\CheckoutComplete.aspx" />
-    <Content Include="Checkout\CheckoutError.aspx" />
-    <Content Include="Checkout\CheckoutReview.aspx" />
-    <Content Include="Checkout\CheckoutStart.aspx" />
-    <Content Include="Checkout\Images\buslogo.png" />
-    <Content Include="Contact.aspx" />
+    <Content Include="CheckoutCancel.aspx" />
+    <Content Include="CheckoutComplete.aspx" />
+    <Content Include="CheckoutError.aspx" />
+    <Content Include="CheckoutReview.aspx" />
+    <Content Include="CheckoutStart.aspx" />
     <Content Include="cronJob.aspx" />
     <Content Include="css-js\css\calendar.css" />
     <Content Include="css-js\css\animate.css" />
@@ -186,44 +183,52 @@
     <Content Include="css-js\vendor\rs-plugin\js\jquery.themepunch.revolution.min.js" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="frmApiReport.aspx" />
-    <Content Include="frmCategory.aspx" />
-    <Content Include="frmCreateSMS.aspx" />
+    <Content Include="frmDashBoard.aspx" />
+    <Content Include="frmForceSync.aspx" />
+    <Content Include="frmLeadAssignment.aspx" />
+    <Content Include="frmLeadUniqueIdentifier.aspx" />
+    <Content Include="frmSettingCRM.aspx" />
     <Content Include="frmError.aspx" />
     <Content Include="frmForgotPassword.aspx" />
     <Content Include="frmMailContentSplitInfo.aspx" />
     <Content Include="frmpassword.aspx" />
     <Content Include="frmPayment.aspx" />
     <Content Include="frmPaymentHistory.aspx" />
+    <Content Include="frmSettingSetup.aspx" />
     <Content Include="frmSignup.aspx" />
-    <Content Include="frmUserDetailViewScreen.aspx" />
+    <Content Include="frmSettingUser.aspx" />
     <Content Include="frmUserList.aspx" />
     <Content Include="frmUserMailDetailInfo.aspx" />
-    <Content Include="frmUserMailReport.aspx" />
-    <Content Include="frmUserMailToLead.aspx" />
+    <Content Include="frmLeadInfo.aspx" />
     <Content Include="frmViewMailReport.aspx" />
-    <Content Include="frmViewSubjectInfo.aspx" />
+    <Content Include="frmTemplate.aspx" />
     <Content Include="Images\4pillars-min.jpg" />
     <Content Include="Images\add.png" />
     <Content Include="Images\add_btn.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\cancel_new.png" />
     <Content Include="Images\calender_icon.png" />
+    <Content Include="Images\crm_setting.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\detail_screen.png" />
     <Content Include="Images\exporttocsv.png" />
     <Content Include="Images\exporttopdf.png" />
     <Content Include="Images\exporttoxls.png" />
+    <Content Include="Images\force_sync.png" />
     <Content Include="Images\Globalcrossroad_logo-min.png" />
     <Content Include="Images\goBack.png" />
     <Content Include="Images\ifre_logo-min.png" />
     <Content Include="Images\indian-rupee-symbol.png" />
+    <Content Include="Images\lead_assignment.png" />
     <Content Include="Images\logo-infobyd.png" />
     <Content Include="Images\more-128.png" />
     <Content Include="Images\Optimum_Insurance_Logo-min.png" />
+    <Content Include="Images\payment.png" />
+    <Content Include="Images\profile_setting.png" />
     <Content Include="Images\save.png" />
     <Content Include="Images\search_User.png" />
+    <Content Include="Images\unique_identifier.png" />
     <Content Include="Images\view_userDetail.png" />
     <Content Include="Images\yck49aazi.png" />
     <Content Include="LoginAssets\1.jpg" />
@@ -267,10 +272,7 @@
     <Content Include="LoginAssets\www-embed-player-webp-vflrzpRjS.css" />
     <Content Include="LoginAssets\www-embed-player.js" />
     <Content Include="LoginAssets\_5795de7c5d6a4_1469439612.png" />
-    <Content Include="mailChart.aspx" />
-    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="packages.config" />
-    <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="css-js\vendor\bootstrap\css\bootstrap.css.map" />
     <None Include="css-js\vendor\flat-icon\fonts\flaticon.eot" />
     <None Include="css-js\vendor\flat-icon\fonts\flaticon.svg" />
@@ -321,12 +323,6 @@
     <None Include="LoginAssets\css" />
     <None Include="LoginAssets\css%281%29" />
     <None Include="LoginAssets\float.ls" />
-    <None Include="Properties\PublishProfiles\AdminPublished.pubxml" />
-    <None Include="Properties\PublishProfiles\Admin_23.pubxml" />
-    <None Include="Properties\PublishProfiles\Admin_Sep.pubxml" />
-    <None Include="Properties\PublishProfiles\EditerToolV2.pubxml" />
-    <None Include="Properties\PublishProfiles\GLB_31.pubxml" />
-    <None Include="Properties\PublishProfiles\temp.pubxml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -338,48 +334,50 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Site.Master" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="withoutsidepannel.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="App_GlobalResources\AllString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllString.resx</DependentUpon>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Checkout\CheckoutCancel.aspx.cs">
+    <Compile Include="CheckoutCancel.aspx.cs">
       <DependentUpon>CheckoutCancel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout\CheckoutCancel.aspx.designer.cs">
+    <Compile Include="CheckoutCancel.aspx.designer.cs">
       <DependentUpon>CheckoutCancel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout\CheckoutComplete.aspx.cs">
+    <Compile Include="CheckoutComplete.aspx.cs">
       <DependentUpon>CheckoutComplete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout\CheckoutComplete.aspx.designer.cs">
+    <Compile Include="CheckoutComplete.aspx.designer.cs">
       <DependentUpon>CheckoutComplete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout\CheckoutError.aspx.cs">
+    <Compile Include="CheckoutError.aspx.cs">
       <DependentUpon>CheckoutError.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout\CheckoutError.aspx.designer.cs">
+    <Compile Include="CheckoutError.aspx.designer.cs">
       <DependentUpon>CheckoutError.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout\CheckoutReview.aspx.cs">
+    <Compile Include="CheckoutReview.aspx.cs">
       <DependentUpon>CheckoutReview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout\CheckoutReview.aspx.designer.cs">
+    <Compile Include="CheckoutReview.aspx.designer.cs">
       <DependentUpon>CheckoutReview.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout\CheckoutStart.aspx.cs">
+    <Compile Include="CheckoutStart.aspx.cs">
       <DependentUpon>CheckoutStart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout\CheckoutStart.aspx.designer.cs">
+    <Compile Include="CheckoutStart.aspx.designer.cs">
       <DependentUpon>CheckoutStart.aspx</DependentUpon>
     </Compile>
     <Compile Include="cronJob.aspx.cs">
@@ -389,19 +387,40 @@
     <Compile Include="cronJob.aspx.designer.cs">
       <DependentUpon>cronJob.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmApiReport.aspx.cs">
-      <DependentUpon>frmApiReport.aspx</DependentUpon>
+    <Compile Include="frmDashBoard.aspx.cs">
+      <DependentUpon>frmDashBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmApiReport.aspx.designer.cs">
-      <DependentUpon>frmApiReport.aspx</DependentUpon>
+    <Compile Include="frmDashBoard.aspx.designer.cs">
+      <DependentUpon>frmDashBoard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmCreateSMS.aspx.cs">
-      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+    <Compile Include="frmForceSync.aspx.cs">
+      <DependentUpon>frmForceSync.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmCreateSMS.aspx.designer.cs">
-      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+    <Compile Include="frmForceSync.aspx.designer.cs">
+      <DependentUpon>frmForceSync.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeadAssignment.aspx.cs">
+      <DependentUpon>frmLeadAssignment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmLeadAssignment.aspx.designer.cs">
+      <DependentUpon>frmLeadAssignment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeadUniqueIdentifier.aspx.cs">
+      <DependentUpon>frmLeadUniqueIdentifier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmLeadUniqueIdentifier.aspx.designer.cs">
+      <DependentUpon>frmLeadUniqueIdentifier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettingCRM.aspx.cs">
+      <DependentUpon>frmSettingCRM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSettingCRM.aspx.designer.cs">
+      <DependentUpon>frmSettingCRM.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmError.aspx.cs">
       <DependentUpon>frmError.aspx</DependentUpon>
@@ -438,6 +457,13 @@
     <Compile Include="frmPaymentHistory.aspx.designer.cs">
       <DependentUpon>frmPaymentHistory.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmSettingSetup.aspx.cs">
+      <DependentUpon>frmSettingSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmSettingSetup.aspx.designer.cs">
+      <DependentUpon>frmSettingSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmSignup.aspx.cs">
       <DependentUpon>frmSignup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -459,26 +485,19 @@
     <Compile Include="frmViewMailReport.aspx.designer.cs">
       <DependentUpon>frmViewMailReport.aspx</DependentUpon>
     </Compile>
-    <Compile Include="mailChart.aspx.cs">
-      <DependentUpon>mailChart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mailChart.aspx.designer.cs">
-      <DependentUpon>mailChart.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PayPalFunctions.cs" />
     <Compile Include="SMSService\Action.cs" />
     <Compile Include="SMSService\RingCentral.cs" />
     <Compile Include="SMSService\Zoho.cs" />
-    <Content Include="App_Code\BundleConfig.cs" />
-    <Content Include="App_Code\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="withoutsidepannel.Master.cs">
+      <DependentUpon>withoutsidepannel.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="withoutsidepannel.Master.designer.cs">
+      <DependentUpon>withoutsidepannel.Master</DependentUpon>
     </Compile>
+    <Content Include="App_Code\BundleConfig.cs" />
+    <Content Include="App_Code\RouteConfig.cs" />
     <Compile Include="DataBase\DataBaseProvider.cs" />
     <Compile Include="DataBase\ExportSupport.cs" />
     <Compile Include="default.aspx.cs">
@@ -489,13 +508,6 @@
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExceptionAndErrorClass.cs" />
-    <Compile Include="frmCategory.aspx.cs">
-      <DependentUpon>frmCategory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmCategory.aspx.designer.cs">
-      <DependentUpon>frmCategory.aspx</DependentUpon>
-    </Compile>
     <Compile Include="frmMailContentSplitInfo.aspx.cs">
       <DependentUpon>frmMailContentSplitInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -503,12 +515,12 @@
     <Compile Include="frmMailContentSplitInfo.aspx.designer.cs">
       <DependentUpon>frmMailContentSplitInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmUserDetailViewScreen.aspx.cs">
-      <DependentUpon>frmUserDetailViewScreen.aspx</DependentUpon>
+    <Compile Include="frmSettingUser.aspx.cs">
+      <DependentUpon>frmSettingUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmUserDetailViewScreen.aspx.designer.cs">
-      <DependentUpon>frmUserDetailViewScreen.aspx</DependentUpon>
+    <Compile Include="frmSettingUser.aspx.designer.cs">
+      <DependentUpon>frmSettingUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmUserList.aspx.cs">
       <DependentUpon>frmUserList.aspx</DependentUpon>
@@ -517,26 +529,19 @@
     <Compile Include="frmUserList.aspx.designer.cs">
       <DependentUpon>frmUserList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmUserMailReport.aspx.cs">
-      <DependentUpon>frmUserMailReport.aspx</DependentUpon>
+    <Compile Include="frmLeadInfo.aspx.cs">
+      <DependentUpon>frmLeadInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmUserMailReport.aspx.designer.cs">
-      <DependentUpon>frmUserMailReport.aspx</DependentUpon>
+    <Compile Include="frmLeadInfo.aspx.designer.cs">
+      <DependentUpon>frmLeadInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="frmUserMailToLead.aspx.cs">
-      <DependentUpon>frmUserMailToLead.aspx</DependentUpon>
+    <Compile Include="frmTemplate.aspx.cs">
+      <DependentUpon>frmTemplate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="frmUserMailToLead.aspx.designer.cs">
-      <DependentUpon>frmUserMailToLead.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="frmViewSubjectInfo.aspx.cs">
-      <DependentUpon>frmViewSubjectInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmViewSubjectInfo.aspx.designer.cs">
-      <DependentUpon>frmViewSubjectInfo.aspx</DependentUpon>
+    <Compile Include="frmTemplate.aspx.designer.cs">
+      <DependentUpon>frmTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -558,12 +563,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="App_GlobalResources\" />
     <Folder Include="Content\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\AllString.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>AllString.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

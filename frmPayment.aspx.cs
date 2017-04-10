@@ -29,7 +29,6 @@ namespace AdminTool
                     else
                     {
                         GetPaymentInfo(LoggedInuserId);
-
                     }
                     ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
@@ -59,12 +58,6 @@ namespace AdminTool
                 GridPaymentDetails.DataSource = dt;
                 GridPaymentDetails.DataBind();
             }
-        }
-
-
-        protected void ImageGoBack3_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("frmApiReport.aspx");
         }
 
         protected void imgButtonbuy_Command(object sender, CommandEventArgs e)
@@ -106,10 +99,8 @@ namespace AdminTool
                 Session["payment_name"] = PaymentDescription;
                 Session["payment_qty"] = "1";
                 Session["BRANDNAME"] = "Mail2Lead";
-                Response.Redirect("Checkout/CheckoutStart.aspx");
+                Response.Redirect("CheckoutStart.aspx");
             }
-
-
         }
 
         protected void ImgPaymentHistory_Click(object sender, EventArgs e)

@@ -19,15 +19,14 @@ namespace AdminTool
         static DataBaseProvider dataBaseProvider = new DataBaseProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             lblMsg.Style.Remove("color");
             lblMsg.Text = "";
-            Session["ViewUserId"] = 0;
             if (!IsPostBack)
             {
                 try
                 {
                     int LoggedInuserId;
+                    Session["ViewUserId"] = 0;
                     LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
                     if (LoggedInuserId < 1)
                     { Response.Redirect("~/default.aspx"); }
@@ -47,20 +46,11 @@ namespace AdminTool
 
         public void GetAllUserList(int UserId)
         {
-            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
-            DataTable dt = new DataTable();
-            if (categoryType == 1)
-            {
-                dt = dataBaseProvider.getListOfallUser(UserId);
-            }
-            else if (categoryType == 2)
-            {
-                dt = dataBaseProvider.getListOfallSMSUser(UserId);
-            }
+            DataTable dt = dataBaseProvider.getListOfallUser(UserId);
             ViewState["DefaultDataTable"] = dt;
             if (dt.Rows.Count < 1)
             {
-                emptyListMsg.Visible = true;
+                lblMsg.Visible = true;
                 GridUserDetails.Visible = false;
                 ImgExportToCSV.Enabled = false;
                 ImgExportToExcel.Enabled = false;
@@ -68,7 +58,7 @@ namespace AdminTool
             }
             else
             {
-                emptyListMsg.Visible = false;
+                lblMsg.Visible = false;
                 ImgExportToCSV.Enabled = true;
                 ImgExportToExcel.Enabled = true;
                 ImgExportToPDF.Enabled = true;
@@ -149,16 +139,8 @@ namespace AdminTool
         {
             int LoggedInuserId;
             LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
-            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
             DataTable dt = new DataTable();
-            if (categoryType == 1)
-            {
-                dt = dataBaseProvider.getListOfallUser(LoggedInuserId);
-            }
-            else if (categoryType == 2)
-            {
-                dt = dataBaseProvider.getListOfallSMSUser(LoggedInuserId);
-            }
+            dt = dataBaseProvider.getListOfallUser(LoggedInuserId);
             ViewState["DefaultDataTable"] = dt;
 
             if (!string.IsNullOrEmpty(hdnSearchTxt.Value))
@@ -269,27 +251,7 @@ namespace AdminTool
                 lblMsg.ForeColor = System.Drawing.Color.Red;
             }
         }
-
-        protected void GridUserDetails_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
-        }
-
-        protected void GridUserDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridUserDetails.PageIndex = e.NewPageIndex;
-            System.Data.DataTable dt = new DataTable();
-            dt = (System.Data.DataTable)ViewState["DefaultDataTable"];
-            string searchString = hdnSearchTxt.Value;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                dt = FilterDataForExport(dt, searchString);
-            }
-            GridUserDetails.EditIndex = -1;
-            GridUserDetails.DataSource = dt;
-            GridUserDetails.DataBind();
-        }
-
+        
         protected void imgBtnDelete_Click(object sender, ImageClickEventArgs e)
         {
 
@@ -482,39 +444,17 @@ namespace AdminTool
             ImageButton img = sender as ImageButton;
             int userId = Convert.ToInt32(img.CommandArgument);
             Session["ViewUserId"] = userId;
-            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
-            if (categoryType == 1)
-            {
-                Response.Redirect("~/frmApiReport.aspx");
-            }
-            else
-            {
-                Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
-            }
+            Response.Redirect("~/frmDashBoard.aspx");
         }
 
         protected void ImgAddNewUser_Click1(object sender, EventArgs e)
         {
-            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
-            if (categoryType == 1)
-            {
-                Response.Redirect("~/frmUserDetailViewScreen.aspx");
-            }
-            else
-            {
-                Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
-            }
+            Response.Redirect("~/frmSettingUser.aspx");
         }
-
-        //protected void ImageGoBack5_Click(object sender, ImageClickEventArgs e)
-        //{
-        //    Response.Redirect("frmCategory.aspx");
-        //}
 
         protected void txtSearchBox_TextChanged(object sender, EventArgs e)
         {
             search();
-
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="/~" title="Home" description="Home">    
+    <siteMapNode url="frmDashBoard.aspx" title="DashBoard"  description="Home" />
+    <siteMapNode url="frmLeadInfo.aspx" title="CRM Configuration"  description="Lead info Setting" />
+    <siteMapNode url="frmTemplate.aspx" title="Subject Configuration"  description="View Subject">
+      <!-- <siteMapNode url="frmMailContentSplitInfo.aspx" title="Subject Split info"  description="View Subject" /> -->
+    </siteMapNode>
+    <siteMapNode url="frmSettingSetup.aspx" title="Setup"  description="Home">
+      <!-- <siteMapNode url="frmSettingUser.aspx" title="General Setting"  description="General Setting" />
+      <siteMapNode url="frmSettingCRM.aspx" title="CRM Setting"  description="CRM Setting" />
+      <siteMapNode url="frmLeadUniqueIdentifier.aspx" title="Unique Identifier"  description="Unique Identifier" />
+      <siteMapNode url="frmLeadAssignment.aspx" title="Lead Assignment"  description="Lead Assignment" />
+      <siteMapNode url="frmForceSync.aspx" title="Force Sync"  description="Force Sync" />
+      <siteMapNode url="frmPaymentHistory.aspx" title="Payment History"  description="Payment History" />-->
+    </siteMapNode>
+
+    <siteMapNode url="frmViewMailReport.aspx" title="Analytics"  description="Mail Report" />
+
+  </siteMapNode>
+</siteMap>

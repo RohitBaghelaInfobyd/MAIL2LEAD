@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmViewMailReport.aspx.cs"
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmViewMailReport.aspx.cs" Title="Analytics"
     Inherits="AdminTool.frmViewMailReport" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -41,22 +41,20 @@
         .style3 {
             height: 86px;
         }
+          .commondClass {
+            text-align: center;
+        }
     </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
-                        <td style="vertical-align: middle;" class="style1">
-                            <asp:ImageButton ID="ImageGoBack" runat="server" ImageUrl="~/Images/goBack.png" OnClientClick="if(!ValidateSearch()) return false;"
-                                Style="height: 30px; width: 30px; vertical-align: middle; margin: 5px;" ValidationGroup="text"
-                                align="left" OnClick="ImageGoBack_Click" />
-                        </td>
                         <td style="vertical-align: middle; margin: 1%;" class="style2">
-                            <asp:Label ID="lblHeader" runat="server" Text="MAIL REPORT" Style="font-weight: bold; text-align: left;" Font-Size="18" Font-Names="Forum"></asp:Label>
+                            <asp:Label ID="lblHeader" runat="server" Text="Analytics " Style="font-weight: bold; text-align: left;" Font-Size="18" Font-Names="Forum"></asp:Label>
                         </td>
                         <td style="vertical-align: middle; float: right; margin: 1%; display: none;">
                             <asp:TextBox ID="txtSearchBox" placeholder="Search here" runat="server" Style="width: 200px; height: 25px; vertical-align: middle;"
@@ -72,12 +70,9 @@
             </div>
         </div>
         <div style="padding: 20px;">
-            <table width="100%">
+            <table style="width: 100%">
                 <tr>
-                    <td>
-                        <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
-                    </td>
-                    <td colspan="2" align="right">
+                    <td colspan="3" style="text-align: right">
                         <div id="DivExport" runat="server">
                             <asp:Button runat="server" ID="ImgExportToExcel" Text="Export EXCEL" OnClick="ImgExportToExcel_Click"
                                 CssClass="btn" EnableViewState="false" Width="125" CausesValidation="true" ValidationGroup="Group1"
@@ -157,7 +152,7 @@
                                             <asp:HiddenField ID="hiddenDataBaseId" runat="server" Value='<%# Eval("DatabaseId") %>'></asp:HiddenField>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:TemplateField>
+                                    <%-- <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
                                             CRM Record Id 
@@ -165,11 +160,11 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblRecordId" runat="server" Text='<%# Eval("record_id") %>'></asp:Label>
                                         </ItemTemplate>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
-                                            Subject Line
+                                            Subject Name
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblSubjectLine" runat="server" Text='<%# Eval("subjectLine") %>'></asp:Label>
@@ -178,7 +173,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
-                                            Lead EmailId
+                                            EmailId
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblLeadEmailId" runat="server" Text='<%# Eval("value_from_mail") %>' MaxLength="60"></asp:Label>
@@ -197,7 +192,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
-                                            Submit Status
+                                            Status
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblSubmitStatus" runat="server" Text='<%# Eval("STATUS") %>'></asp:Label>
@@ -213,11 +208,16 @@
                                                 CommandArgument='<%# Eval("DatabaseId") %>'
                                                 ImageUrl="~/Images/detail_screen.png" Width="20px" />
                                         </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="center" Width="100px"></ItemStyle>
+                                        <HeaderStyle CssClass="commondClass" />
                                     </asp:TemplateField>
 
                                 </Columns>
                             </asp:GridView>
                         </div>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
             </table>

@@ -52,7 +52,8 @@ namespace AdminTool.Model
                     sTmpDataStr = "<Leads>" + CRLF;
                     sTmpDataStr += "<row no=" + Convert.ToChar(34) + "1" + Convert.ToChar(34) + ">" + CRLF;
 
-                    //Assign all Local variables
+
+                    /******* Following to add all value comes from mail ***************************/
                     for (int xy = 0; xy < valueDataTable.Rows.Count; xy++)
                     {  //Get Record Data in XML Format
 
@@ -81,7 +82,7 @@ namespace AdminTool.Model
                     }
 
 
-
+                    /************* Following to add the all default value *******************/
                     int subjectId = Convert.ToInt32(valueDataTable.Rows[x]["subject_id"].ToString());
                     DataTable ListOfAllDefaultColumn = databaseProvider.getListOfAllDefaultLeadColumn(subjectId);
 
@@ -106,6 +107,24 @@ namespace AdminTool.Model
                             }
                         }
                     }
+
+
+                    /******** Following to Add the Lead Assignment info  *****************/
+                    DataTable assignmentInfoDataTable = databaseProvider.getMailLeasAssignmentInfoToSubmitIntoCRM(UserId);
+                    if (assignmentInfoDataTable.Rows.Count > 0)
+                    {
+                        for (int xy = 0; xy < assignmentInfoDataTable.Rows.Count; xy++)
+                        {  //Get Record Data in XML Format
+
+                            sLeadSourceValue = valueDataTable.Rows[xy]["FiledValue"].ToString();
+                            Lead_Column_Header = valueDataTable.Rows[xy]["Lead_Column_Header"].ToString();
+                            if (!string.IsNullOrEmpty(sLeadSourceValue))
+                            {
+                                sTmpDataStr += "<FL val=" + Convert.ToChar(34) + Lead_Column_Header + Convert.ToChar(34) + ">" + sLeadSourceValue + "</FL>" + CRLF;
+                            }
+                        }
+                    }
+                    /*************************************************************************/
                     sTmpDataStr += "</row>" + CRLF;
                     sTmpDataStr += "</Leads>";
                     sRes = string.Empty;

@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="withoutsidepannel.master.cs" Inherits="AdminTool.withoutsidepannel" %>
+
+
+<html lang="en">
+<head id="Head1" runat="server">
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="css-js/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css-js/css/style.css" />
+    <style>
+        footer {
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+            margin-bottom: 5px;
+        }
+
+        #lblUserName {
+            margin-right: 20px;
+        }
+
+        #lblLogout {
+            text-transform: none;
+        }
+
+        td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <form id="Form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="main">
+            <header class="header-part">
+                <div id="home" class="wrapper">
+                    <!-- Fixed navbar -->
+                    <div class="navi navbar-default" role="navigation" style="padding:40px;background-color:#E5EEF6">
+                        <div class="container">
+                            <div class="navbar-header page-scroll">
+                                <a class="navbar-brand" href="http://infobyd.com/">
+                                    <img src="images/logo-infobyd.png" alt="Infobyd" style="position: relative; width: 80%; bottom: 20px;"></a>
+                            </div>                          
+                        </div>
+                        <!-- End of Nav -->
+                    </div>
+                </div>
+            </header>
+        </div>
+        <!-- End of class="main" -->
+        <!--form -->
+        <div class="container" style="width: 100%;">
+            <div class="row">
+                <div>
+                    <table class="container body-content" style="width: 100%;">
+                        <tr>                           
+
+                            <td>
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--end form -->
+        <!-- footer -->
+        <footer>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>© 2015 All rights reserved. <a href="http://infobyd.com/" target="_blank">infobyd.com</a></p>
+                        </div>
+                        <!-- /.col-xs-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.creditwrapper -->
+        </footer>
+        <!-- /Footer -->
+        <!-- jQuery JS -->
+        <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script>
+        <!-- Modernizr JS -->
+        <script data-cfasync="false" src="css-js/js/modernizr-2.6.2.min.js"></script>
+        <!-- REVOLUTION Slider  -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
+        <!-- Shuffle JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.shuffle.min.js"></script>
+        <!-- mmenu -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
+        <!-- Owl Carosel -->
+        <script data-cfasync="false" src="css-js/vendor/owl/js/owl.carousel.min.js"></script>
+        <script data-cfasync="false" src="css-js/js/wow.min.js"></script>
+        <!-- Counterup JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.counterup.min.js"></script>
+        <!-- Custom Script JS -->
+        <script data-cfasync="false" src="css-js/js/script.js"></script>
+    </form>
+</body>
+</html>

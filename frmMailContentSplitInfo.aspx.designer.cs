@@ -13,13 +13,13 @@ namespace AdminTool {
     public partial class frmMailContentSplitInfo {
         
         /// <summary>
-        /// ImageGoBack control.
+        /// ImageGoBack3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack;
+        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack3;
         
         /// <summary>
         /// lblHeader control.
@@ -31,40 +31,22 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.Label lblHeader;
         
         /// <summary>
-        /// txtSearchBox control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchBox;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// btnSearch control.
+        /// dropDpownListOfAllSubjectList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSearch;
-        
-        /// <summary>
-        /// hdnSearchTxt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnSearchTxt;
-        
-        /// <summary>
-        /// lblMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMsg;
+        protected global::System.Web.UI.WebControls.DropDownList dropDpownListOfAllSubjectList;
         
         /// <summary>
         /// DivExport control.
@@ -85,40 +67,22 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.Button ImgAddSplitInfo;
         
         /// <summary>
-        /// ImgExportToExcel control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImgExportToExcel;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// ImgExportToCSV control.
+        /// pnlAddNewInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImgExportToCSV;
-        
-        /// <summary>
-        /// ImgExportToPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImgExportToPDF;
-        
-        /// <summary>
-        /// ImgTestMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImgTestMail;
+        protected global::System.Web.UI.WebControls.Panel pnlAddNewInfo;
         
         /// <summary>
         /// PnlAddNewSplitInfo control.
@@ -229,6 +193,15 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.DropDownList dropdownIsValueSplit;
         
         /// <summary>
+        /// txtValueToSplit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValueToSplit;
+        
+        /// <summary>
         /// lblIndex control.
         /// </summary>
         /// <remarks>
@@ -245,15 +218,6 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropdownValueIndex;
-        
-        /// <summary>
-        /// txtValueToSplit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValueToSplit;
         
         /// <summary>
         /// pnlIsDefaultValue control.

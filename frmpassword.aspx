@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
+<%@ Page Title="" Language="C#" MasterPageFile="~/withoutsidepannel.Master" AutoEventWireup="true"
     CodeBehind="frmpassword.aspx.cs" Inherits="AdminTool.frmpassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -37,10 +37,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
                         <td style="vertical-align: middle; text-align: center; margin: 1%;">
                             <asp:Label ID="lblHeader" runat="server" Text="Reset Password" Style="font-weight: bold; text-align: left;" Font-Size="25"
@@ -63,8 +63,8 @@
                         <asp:Label ID="lblpassword" runat="server" Text="Password" Style="font-size: 20px;"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="tbPassword" placeholder="Enter Password" ValidationGroup="text"  TextMode="Password"
-                            runat="server" MaxLength="15" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%;padding: 5px !important; font-size:22px;" />
+                        <asp:TextBox ID="tbPassword" placeholder="Enter Password" ValidationGroup="text" TextMode="Password"
+                            runat="server" MaxLength="15" class="form-control" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
                     </td>
                 </tr>
                 <tr>
@@ -73,12 +73,12 @@
                     </td>
                     <td>
                         <asp:TextBox ID="tbConfirmPassword" placeholder="Enter Confirm Password" ValidationGroup="text" TextMode="Password"
-                            runat="server" MaxLength="15" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%;padding: 5px !important; font-size:22px;" />
+                            runat="server" MaxLength="15" class="form-control" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <asp:Label ID="lblMsg" runat="server" Visible="false" Text="text" style="color:red;"></asp:Label></td>
+                        <asp:Label ID="lblMsg" runat="server" Visible="false" Text="text" Style="color: red;"></asp:Label></td>
                 </tr>
                 <tr>
                     <td colspan="2">

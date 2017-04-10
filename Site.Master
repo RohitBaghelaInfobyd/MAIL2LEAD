@@ -4,14 +4,13 @@
 <head id="Head1" runat="server">
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/Site.css" rel="stylesheet" />
     <!-- Bootstrap css-->
     <link rel="stylesheet" href="css-js/vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css-js/css/style.css" />
     <style>
-        footer
-        {
+        footer {
             position: fixed;
             bottom: 0px;
             left: 0px;
@@ -19,109 +18,132 @@
             height: 50px;
             margin-bottom: 5px;
         }
-        #lblUserName
-        {
+
+        #lblUserName {
             margin-right: 20px;
         }
-        #lblLogout
-        {
+
+        #lblLogout {
             text-transform: none;
         }
+
         td {
-        vertical-align:middle;}
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
     <form id="Form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-        <Scripts>
-            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-            <%--Site Scripts--%>
-        </Scripts>
-    </asp:ScriptManager>
-    <div class="main">
-        <header class="header-part">
-				<div id="home" class="wrapper"> 
-					<!-- Fixed navbar -->
-					<div class="navi navbar-default" role="navigation">
-						<div class="container">
-					  		<div class="navbar-header page-scroll"> 
-								<a class="navbar-brand" href="http://infobyd.com/"><img src="images/logo-infobyd.png" alt="Infobyd" style="position:relative; bottom:20px;"></a> 
-							</div>
-					  		<div id="navbar" class="navbar-collapse collapse pull-right hidden-xs">
-								<ul class="nav navbar-nav navbar-right" id="text-case">
-                                    <li> <asp:Label runat="server" ID="lblUserName" style='text-transform:uppercase' Text="USERNAME">USERNAME</asp:Label></li>
-                                    <li> <asp:LinkButton ID="linkLogout" runat="server" OnClick="linkLogout_Click">Logout</asp:LinkButton></li>
-									</ul>
-							<!--/.nav-collapse --> 
-						</div>
-				  	</div>
-				  	<!-- End of Nav --> 
-				</div>
-			</header>
-    </div>
-    <!-- End of class="main" -->
-    <!--form -->
-    <div class="container" style="margin-top: 2%;width:100%;margin-bottom:5%">
-        <div class="row">
-            <div>
-                <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
-                    <LoggedInTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a id="A3" runat="server" title="Manage your account">Hello</a></li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
-                <div class="container body-content" style="width:100%;">
-                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                    </asp:ContentPlaceHolder>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="main">
+            <header class="header-part">
+                <div id="home" class="wrapper">
+                    <!-- Fixed navbar -->
+                    <div class="navi navbar-default" role="navigation" style="padding: 20px; background-color: #E5EEF6">
+                        <div class="container" style="width: 100%;">
+                            <div class="navbar-header page-scroll">
+                                <a class="navbar-brand" href="http://infobyd.com/">
+                                    <img src="images/logo-infobyd.png" alt="Infobyd" style="position: relative; width: 80%; bottom: 20px;"></a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse pull-right hidden-xs">
+                                <ul class="nav navbar-nav navbar-right" id="text-case">
+                                    <li>
+                                        <asp:Label runat="server" ID="lblUserName" Style='text-transform: uppercase' Text="USERNAME">USERNAME</asp:Label></li>
+                                    <li>
+                                        <asp:Button runat="server" ID="btnLogout" Text="Logout" OnClick="btnLogout_Click"
+                                            CssClass="btn" EnableViewState="false" CausesValidation="true" ValidationGroup="Group1"
+                                            BackColor="#3E75CD" ForeColor="White" />
+                                    </li>
+                                </ul>
+                                <!--/.nav-collapse -->
+                            </div>
+                        </div>
+                        <!-- End of Nav -->
+                    </div>
+                </div>
+            </header>
+        </div>
+        <!-- End of class="main" -->
+        <!--form -->
+        <div class="container" style="width: 100%;">
+            <div class="row">
+                <div>
+                    <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a id="A3" runat="server" title="Manage your account">Hello</a></li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                    <table class="container body-content" style="width: 100%;">
+                        <tr>
+                            <td style="width: 15%; vertical-align: top; background-color: #E5EEF6; height: 100%;">
+                                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="Arrows" ExpandDepth="1" OnTreeNodeDataBound="TreeView1_TreeNodeDataBound">
+                                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                                    <NodeStyle Font-Names="inherit" Font-Size="18px" ForeColor="Black" HorizontalPadding="0px" NodeSpacing="0px" VerticalPadding="10px" />
+                                    <ParentNodeStyle Font-Bold="False" />
+                                    <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="10px" />
+                                </asp:TreeView>
+                                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                            </td>
+
+                            <td>
+                                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-    <!--end form -->
-    <!-- footer -->
-    <footer>
+        <!--end form -->
+        <!-- footer -->
+        <footer>
             <div class="footer-bottom">
-            <div class="container">
-            <div class="row">
-            <div class="col-xs-12">
-            <p>© 2015 All rights reserved. <a href="http://infobyd.com/" target="_blank">infobyd.com</a></p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>© 2015 All rights reserved. <a href="http://infobyd.com/" target="_blank">infobyd.com</a></p>
+                        </div>
+                        <!-- /.col-xs-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
             </div>
-            <!-- /.col-xs-12 --> 
-            </div>
-            <!-- /.row --> 
-            </div>
-            <!-- /.container --> 
-            </div>
-            <!-- /.creditwrapper --> 
+            <!-- /.creditwrapper -->
         </footer>
-    <!-- /Footer -->
-    <!-- jQuery JS -->
-    <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script>
-    <!-- Modernizr JS -->
-    <script data-cfasync="false" src="css-js/js/modernizr-2.6.2.min.js"></script>
-    <!-- REVOLUTION Slider  -->
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
-    <!-- Shuffle JS -->
-    <script data-cfasync="false" src="css-js/js/jquery.shuffle.min.js"></script>
-    <!-- mmenu -->
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
-    <!-- Owl Carosel -->
-    <script data-cfasync="false" src="css-js/vendor/owl/js/owl.carousel.min.js"></script>
-    <script data-cfasync="false" src="css-js/js/wow.min.js"></script>
-    <!-- Counterup JS -->
-    <script data-cfasync="false" src="css-js/js/jquery.counterup.min.js"></script>
-    <!-- Custom Script JS -->
-    <script data-cfasync="false" src="css-js/js/script.js"></script>
+        <!-- /Footer -->
+        <!-- jQuery JS -->
+        <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script>
+        <!-- Modernizr JS -->
+        <script data-cfasync="false" src="css-js/js/modernizr-2.6.2.min.js"></script>
+        <!-- REVOLUTION Slider  -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
+        <!-- Shuffle JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.shuffle.min.js"></script>
+        <!-- mmenu -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
+        <!-- Owl Carosel -->
+        <script data-cfasync="false" src="css-js/vendor/owl/js/owl.carousel.min.js"></script>
+        <script data-cfasync="false" src="css-js/js/wow.min.js"></script>
+        <!-- Counterup JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.counterup.min.js"></script>
+        <!-- Custom Script JS -->
+        <script data-cfasync="false" src="css-js/js/script.js"></script>
     </form>
 </body>
 </html>

@@ -13,13 +13,13 @@ namespace AdminTool {
     public partial class frmPaymentHistory {
         
         /// <summary>
-        /// ImageGoBack control.
+        /// ImageGoBack3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack;
+        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack3;
         
         /// <summary>
         /// lblHeader control.
@@ -56,14 +56,5 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridUserPaymentDetails;
-        
-        /// <summary>
-        /// emptyListMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emptyListMsg;
     }
 }

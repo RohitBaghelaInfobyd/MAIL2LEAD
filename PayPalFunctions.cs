@@ -13,7 +13,7 @@ using System.Linq;
 public class NVPAPICaller
 {
     //Flag that determines the PayPal environment (live or sandbox)
-    private const bool bSandbox = false;
+    private const bool bSandbox = true;
     private const string CVV2 = "CVV2";
 
     // Live strings.

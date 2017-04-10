@@ -1,6 +1,7 @@
 ﻿using AdminTool.DataBase;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,7 +14,6 @@ namespace AdminTool
         DataBaseProvider databaseProvider = new DataBaseProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack)
             {
                 EnableViewState = true;
@@ -33,24 +33,40 @@ namespace AdminTool
         }
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            String EmailId = string.Empty, PasswordText = string.Empty;
+            string userName = "Welcome", userType = "1", EmailId = string.Empty, PasswordText = string.Empty;
             int UserId;
+            DataTable dt;
             UserId = Convert.ToInt32(Session["LoggedInuserId"]);
             if (UserId > 0)
             {
-                Response.Redirect("~/frmCategory.aspx");
+                Response.Redirect("~/frmDashBoard.aspx");
             }
-
+            else
             {
                 EmailId = UserName.Text;
                 PasswordText = Password.Text;
-                UserId = databaseProvider.LoginUser(EmailId, PasswordText);
+                dt = databaseProvider.LoginUser(EmailId, PasswordText);
+                if (dt.Rows.Count > 0)
+                {
+                    UserId = Convert.ToInt32(dt.Rows[0]["id"].ToString());
+                    userName = dt.Rows[0]["name"].ToString();
+                    userType = dt.Rows[0]["userType"].ToString();
+                }
 
                 if (UserId > 0)
                 {
                     Session["LoggedInuserId"] = UserId;
                     Session["ViewUserId"] = UserId;
-                    Response.Redirect("~/frmCategory.aspx");
+                    Session["UserName"] = "Welcome, " + userName;
+                    Session["UserType"] = userType;
+                    if (Convert.ToInt32(userType) > 1)
+                    {
+                        Response.Redirect("~/frmUserList.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("~/frmDashBoard.aspx");
+                    }
                 }
                 else
                 {

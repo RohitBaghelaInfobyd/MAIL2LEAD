@@ -54,13 +54,13 @@ namespace AdminTool
             ViewState["DefaultUserPaymentDetailDataTable"] = dt;
             if (dt.Rows.Count < 1)
             {
-                emptyListMsg.Text = "No Payment Detail Available";
-                emptyListMsg.Visible = true;
+                lblMsg.Text = "No Payment Detail Available";
+                lblMsg.Visible = true;
                 GridUserPaymentDetails.Visible = false;
             }
             else
             {
-                emptyListMsg.Visible = false;
+                lblMsg.Visible = false;
                 GridUserPaymentDetails.Visible = true;
                 GridUserPaymentDetails.DataSource = dt;
                 GridUserPaymentDetails.DataBind();
@@ -70,11 +70,6 @@ namespace AdminTool
         protected void ImageGoBack_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("frmPayment.aspx");
-        }
-
-        protected void GridUserPaymentDetails_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -96,7 +91,8 @@ namespace AdminTool
         {
 
             int PaymentID = Convert.ToInt32(((HiddenField)GridUserPaymentDetails.Rows[e.RowIndex].FindControl("hiddenPaymentId")).Value.Trim());
-            int PaymentStatus = Convert.ToInt32(((DropDownList)GridUserPaymentDetails.Rows[e.RowIndex].FindControl("editDropDownActive")).SelectedValue);
+            Boolean IsApproved = ((CheckBox)GridUserPaymentDetails.Rows[e.RowIndex].FindControl("chkIsApproved")).Checked;
+            int PaymentStatus = (IsApproved) ? 1 : 0;
             string result = dataBaseProvider.updateUserPaymentStatus(PaymentID, PaymentStatus);
             if (result.Equals("SUCCESS"))
             {
@@ -119,8 +115,13 @@ namespace AdminTool
             int UserType = Convert.ToInt32(Session["UserType"].ToString());
             if (UserType <= 1)
             {
-                e.Row.Cells[8].Visible = false;
+                e.Row.Cells[7].Visible = false;
             }
+        }
+
+        protected void ImageGoBack3_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/frmPayment.aspx");
         }
     }
 }

@@ -47,7 +47,6 @@ namespace AdminTool
                         FillDropDown();
 
                     }
-                    ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception exc)
                 {
@@ -201,6 +200,11 @@ namespace AdminTool
             ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
             DataTable dt = dataBaseProvider.getListOfAllUserSubject(ViewUserId, 0, 0);
 
+            DataRow dr = dt.NewRow();
+            dr[0] = "0";
+            dr[1] = "All";
+            dr[2] = "0";
+            dt.Rows.InsertAt(dr, 0);
             if (dt.Rows.Count < 1)
             {
                 dropDpownListOfAllSubjectList.DataSource = new DataTable();

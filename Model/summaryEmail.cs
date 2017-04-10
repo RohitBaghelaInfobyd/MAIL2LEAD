@@ -131,7 +131,7 @@ namespace AdminTool.Model
                 Attachment attachment = null;
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("noreply@infobyd.com");
+                mail.From = new MailAddress("rohit.baghela@outlook.com");
                 mail.To.Add(toEmail);
                 mail.To.Add("alok@infobyd.com");
                 mail.Subject = subjectLine;
@@ -143,11 +143,10 @@ namespace AdminTool.Model
                     mail.Attachments.Add(attachment);
                 }
 
-                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("rohit.baghela@outlook.com", "888Jana*");
                 SmtpServer.Port = 587;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("noreply@infobyd.com", "info@noreply");
                 SmtpServer.EnableSsl = true;
-
+                SmtpServer.UseDefaultCredentials = true;
                 SmtpServer.Send(mail);
                 if (!string.IsNullOrEmpty(attachmentUrl))
                 {

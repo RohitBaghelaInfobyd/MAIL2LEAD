@@ -68,7 +68,8 @@ namespace AdminTool.Model
                 Email = UserInfo.Rows[0]["EmailId"].ToString();
                 Password = UserInfo.Rows[0]["password"].ToString();
                 APILimit = Convert.ToInt32(UserInfo.Rows[0]["apiLimit"].ToString());
-
+                Email = "westportinvestltd@gmail.com";
+                Password = "West$port";
                 MailHelper mailHelper = new MailHelper();
                 if (mailHelper.connect(Email, Password))
                 {

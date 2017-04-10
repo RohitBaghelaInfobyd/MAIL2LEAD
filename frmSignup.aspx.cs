@@ -41,9 +41,9 @@ namespace AdminTool
                     firstName = tbFirstName.Text;
                     lastName = tbLastName.Text;
                     emailId = tbEmailID.Text;
-                    if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(emailId))
+                    password = tbPassword.Text;
+                    if (!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName) && !string.IsNullOrEmpty(emailId) && password.Length > 5)
                     {
-                        password = Guid.NewGuid().ToString().Replace("-", string.Empty).Substring(0, 8);
                         DataTable dt = databaseProvider.AddNewUserIntoDatabase(1, firstName, lastName, emailId, password, 1);
                         result = dt.Rows[0]["result"].ToString().ToUpper();
                         if (result.Equals("SUCCESS"))
@@ -83,6 +83,10 @@ namespace AdminTool
                     else
                     {
                         lblMsg.Text = "Please provide all required information";
+                        if (password.Length < 5)
+                        {
+                            lblMsg.Text = "Password should be greater than 5";
+                        }
                         lblMsg.Visible = true;
                     }
 

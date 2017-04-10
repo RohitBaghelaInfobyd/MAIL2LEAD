@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
 
 namespace AdminTool
 {
@@ -15,20 +16,38 @@ namespace AdminTool
             {
                 try
                 {
-                    if (string.IsNullOrEmpty(Session["UserName"].ToString()))
+                    if (!string.IsNullOrEmpty(Session["UserName"].ToString()))
                     {
                         lblUserName.Text = Session["UserName"].ToString();
+                    }
+                    else
+                    {
+                        lblUserName.Text = "Welcome";
                     }
                 }
                 catch (Exception ex)
                 {
-                    lblUserName.Text = "Hello";
+                    lblUserName.Text = "Welcome";
                 }
             }
         }
 
+        protected void TreeView1_TreeNodeDataBound(object sender, TreeNodeEventArgs e)
+        {
+            int userType = Convert.ToInt32(Session["UserType"]);
+            if (userType > 1)
+            {
+                if (e.Node.Text.ToLower().Equals("dashboard"))
+                {
+                    TreeNode tree = new TreeNode();
+                    tree.NavigateUrl = "frmUserList.aspx";
+                    tree.Text = "Manage User";
+                    TreeView1.Nodes.AddAt(0, tree);
+                }
+            }
+        }
 
-        protected void linkLogout_Click(object sender, EventArgs e)
+        protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session["LoggedInuserId"] = 0;
             Session["ViewUserId"] = 0;

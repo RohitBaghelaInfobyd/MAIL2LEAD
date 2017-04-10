@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmUserMailDetailInfo.aspx.cs" Inherits="AdminTool.frmUserMailDetailInfo" %>
+﻿<%@ Page Title="Mail Detail" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmUserMailDetailInfo.aspx.cs" Inherits="AdminTool.frmUserMailDetailInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
@@ -34,14 +34,14 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
                         <td style="vertical-align: middle;" class="style2">
                             <asp:ImageButton ID="ImageGoBack3" ValidationGroup="text" runat="server" ImageUrl="~/Images/goBack.png"
-                                Style="height: 30px; width: 30px; vertical-align: middle; margin: 5px;" OnClientClick="if(!ValidateSearch()) return false;"
+                                Style="height: 30px; width: 30px; vertical-align: middle; margin: 5px;"
                                 OnClick="ImageGoBack3_Click" align="left" />
                         </td>
                         <td style="vertical-align: middle; float: left; margin: 1%;">
@@ -63,7 +63,7 @@
                     <td colspan="3">
                         <br />
                         <div id="GroupDetails" runat="server" width="100%">
-                            <asp:GridView ID="GridUserMailDetail" runat="server" Width="101%" AllowPaging="True"
+                            <asp:GridView ID="GridUserMailDetail" runat="server" Width="101%"
                                 AutoGenerateColumns="False" GridLines="None" DataKeyNames="subject_id">
                                 <HeaderStyle CssClass="ListHeaderGrid" HorizontalAlign="Left" BorderColor="#bbd3e9"
                                     BackColor="#e5eef6" />
@@ -72,7 +72,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" Width="20%" />
                                         <HeaderTemplate>
-                                           Lead Column Name
+                                            Lead Column Name
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblLeadColumnHeader" runat="server" Text='<%# Eval("Lead_Column_Header") %>'></asp:Label>
@@ -82,7 +82,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle CssClass="minWidth" />
                                         <HeaderTemplate>
-                                           Lead Column Value
+                                            Lead Column Value
                                         </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:Label ID="lblLeadColumnHeaderValue" runat="server" Text='<%# Eval("FiledValue") %>'></asp:Label>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="frmForgotPassword.aspx.cs" Inherits="AdminTool.frmForgotPassword" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/withoutsidepannel.Master" AutoEventWireup="true" CodeBehind="frmForgotPassword.aspx.cs" Inherits="AdminTool.frmForgotPassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 
@@ -36,10 +36,10 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="margin: 20px 20px; border: 1px solid #4090fd;">
+    <div style="margin: 20px 20px; margin-bottom: 6%; border: 1px solid #4090fd;">
         <div style="border-bottom: 1px solid #4090fd;">
             <div>
-                <table width="100%">
+                <table style="width: 100%">
                     <tr>
                         <td style="vertical-align: middle; text-align: center; margin: 1%;">
                             <asp:Label ID="lblHeader" runat="server" Text="Forgot Password" Style="font-weight: bold; text-align: left;" Font-Size="25"
@@ -64,7 +64,7 @@
                     </td>
                     <td valign="middle">
                         <asp:TextBox ID="tbEmailID" placeholder="Email Id" ValidationGroup="text"
-                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; margin-top: 3%; padding: 5px !important; font-size:22px;" />
+                            runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; margin-top: 3%; padding: 5px !important; font-size: 22px;" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbEmailID"
                             ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>

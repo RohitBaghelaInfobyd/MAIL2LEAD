@@ -1,17 +1,8 @@
 ﻿using AdminTool.DataBase;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.text.pdf;
-using System.IO;
-using System.Text;
-using AdminTool.Model;
 
 namespace AdminTool
 {
@@ -20,9 +11,6 @@ namespace AdminTool
         static DataBaseProvider dataBaseProvider = new DataBaseProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* Session["LoggedInuserId"] = 1;
-             Session["ViewUserId"] = 5;
-             Session["ViewUserSubjectId"] = 12;*/
             if (!IsPostBack)
             {
                 try
@@ -30,18 +18,15 @@ namespace AdminTool
                     int LoggedInuserId, SubjectID;
                     LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
                     SubjectID = Convert.ToInt32(Session["ViewUserSubjectId"]);
-                    PnlAddNewSplitInfo.Visible = false;
-                    PnlisValueSplitInfo.Visible = false;
-                    pnlIsDefaultValue.Visible = false;
-                    tbEndText.Text = "";
-                    tbStartText.Text = "";
                     if (LoggedInuserId < 1)
-                    { Response.Redirect("~/default.aspx"); }
+                    {
+                        Response.Redirect("~/default.aspx");
+                    }
                     else
                     {
+                        setupUserTemplateDropDown();
                         SetUserLeadMailSplitInfo(SubjectID);
                     }
-                    ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -53,29 +38,46 @@ namespace AdminTool
         }
 
 
+        public void setupUserTemplateDropDown()
+        {
+            int UserId = Convert.ToInt32(Session["ViewUserId"]);
+            if (UserId > 0)
+            {
+                DataTable dt = dataBaseProvider.getListOfAllUserSubject(UserId, 0, 0);
+                if (dt.Rows.Count < 1)
+                {
+                    dropDpownListOfAllSubjectList.DataSource = new DataTable();
+                    dropDpownListOfAllSubjectList.DataBind();
+                }
+                else
+                {
+                    dropDpownListOfAllSubjectList.DataSource = dt;
+                    dropDpownListOfAllSubjectList.DataTextField = "subjectLine";
+                    dropDpownListOfAllSubjectList.DataValueField = "id";
+                    dropDpownListOfAllSubjectList.DataBind();
+                    int SubjectID = Convert.ToInt32(Session["ViewUserSubjectId"]);
+                    dropDpownListOfAllSubjectList.SelectedValue = SubjectID.ToString();
+                }
+            }
+        }
         public void SetUserLeadMailSplitInfo(int SubjectID)
         {
             if (SubjectID > 0)
             {
                 DataTable dt = dataBaseProvider.getListOfMailContentSplitInfo(SubjectID);
-                ViewState["DefaultLeadSplitDataTable"] = dt;
                 if (dt.Rows.Count < 1)
                 {
-                    ImgExportToCSV.Enabled = false;
-                    ImgExportToExcel.Enabled = false;
-                    ImgExportToPDF.Enabled = false;
                     GridSplitDetail.Visible = false;
-                    ImgTestMail.Enabled = false;
-                    lblMsg.Text = "No Data Found";
+                    lblMsg.Text = "No any split info found. Please provide content split info.";
                     lblMsg.ForeColor = System.Drawing.Color.Red;
+                    pnlAddNewInfo.Visible = true;
+                    ImgAddSplitInfo.Enabled = false;
+                    FileHeaderComboBox();
+                    lblMsg.Visible = true;
                 }
                 else
                 {
                     GridSplitDetail.Visible = true;
-                    ImgExportToCSV.Enabled = true;
-                    ImgExportToExcel.Enabled = true;
-                    ImgExportToPDF.Enabled = true;
-                    ImgTestMail.Enabled = true;
                     GridSplitDetail.DataSource = dt;
                     GridSplitDetail.DataBind();
                 }
@@ -86,116 +88,29 @@ namespace AdminTool
             }
         }
 
-
-        protected void ImageGoBack_Click(object sender, ImageClickEventArgs e)
-        {
-            Response.Redirect("~/frmViewSubjectInfo.aspx");
-        }
-
-        protected void btnSearch_Click(object sender, ImageClickEventArgs e)
-        {
-
-            Search();
-        }
-
-        private void Search()
-        {
-            PnlAddNewSplitInfo.Visible = false;
-            PnlisValueSplitInfo.Visible = false;
-            pnlIsDefaultValue.Visible = false;
-            string searchstring = txtSearchBox.Text.Trim();
-            GridSplitDetail.EditIndex = -1;
-            if (string.IsNullOrEmpty(searchstring))
-            {
-                hdnSearchTxt.Value = "";
-                FillDefaultGridView(false);
-            }
-            else
-            {
-                hdnSearchTxt.Value = searchstring;
-                DataTable dt = new DataTable();
-                dt = (DataTable)ViewState["DefaultLeadSplitDataTable"];
-                if (dt.Rows.Count == 0)
-                {
-                    FillDefaultGridView(false);
-                    dt = (DataTable)ViewState["DefaultLeadSplitDataTable"];
-                }
-
-                Session["SearchString"] = searchstring;
-                dt = FilterData(searchstring, dt);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    GridSplitDetail.DataSource = dt;
-                    GridSplitDetail.DataBind();
-                    ImgExportToCSV.Enabled = true;
-                    ImgExportToExcel.Enabled = true;
-                    ImgExportToPDF.Enabled = true;
-                    ImgTestMail.Enabled = true;
-                }
-                else
-                {
-                    DataTable dtnew = dt;
-                    dtnew.Clear();
-                    GridSplitDetail.DataSource = dtnew;
-                    GridSplitDetail.DataBind();
-                    lblMsg.Text = "No Data Found";
-                    lblMsg.ForeColor = System.Drawing.Color.Red;
-                    ImgExportToCSV.Enabled = false;
-                    ImgExportToExcel.Enabled = false;
-                    ImgExportToPDF.Enabled = false;
-                    ImgTestMail.Enabled = false;
-                }
-            }
-        }
-
-        private void FillDefaultGridView(bool refresh)
+        private void FillDefaultGridView()
         {
             int SubjectID = Convert.ToInt32(Session["ViewUserSubjectId"]);
             DataTable dt = new DataTable();
             dt = dataBaseProvider.getListOfMailContentSplitInfo(SubjectID);
-            PnlAddNewSplitInfo.Visible = true;
-            PnlisValueSplitInfo.Visible = true;
-            pnlIsDefaultValue.Visible = true;
-            ViewState["DefaultSubjectDataTable"] = dt;
-
-            if (!string.IsNullOrEmpty(hdnSearchTxt.Value))
-            {
-                dt = FilterData(hdnSearchTxt.Value, dt);
-            }
-
-
             GridSplitDetail.DataSource = dt;
             GridSplitDetail.DataBind();
 
             if (dt != null && dt.Rows.Count > 0)
             {
-                ImgExportToCSV.Enabled = true;
-                ImgExportToExcel.Enabled = true;
-                ImgExportToPDF.Enabled = true;
-                ImgTestMail.Enabled = true;
                 GridSplitDetail.Visible = true;
             }
             else
             {
-                GridSplitDetail.Visible = true;
-                ImgExportToCSV.Enabled = false;
-                ImgExportToExcel.Enabled = false;
-                ImgExportToPDF.Enabled = false;
-                ImgTestMail.Enabled = false;
-                lblMsg.Text = "No DataFound";
+                GridSplitDetail.Visible = false;
+                lblMsg.Text = "No any split info found. Please provide content split info.";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
+                lblMsg.Visible = true;
             }
-            FileHeaderComboBox();
         }
 
         private void FileHeaderComboBox()
         {
-            if (GridSplitDetail.Rows.Count <= 0)
-            {
-                ImgExportToCSV.Enabled = false;
-                ImgExportToExcel.Enabled = false;
-                ImgExportToPDF.Enabled = false;
-            }
 
             int ViewSubjectid, ViewUserId;
             ViewSubjectid = Convert.ToInt32(Session["ViewUserSubjectId"]);
@@ -205,212 +120,35 @@ namespace AdminTool
             {
                 MailToLeadColumnHeader.DataSource = new DataTable();
                 MailToLeadColumnHeader.DataBind();
-                PnlAddNewSplitInfo.Visible = false;
-                PnlisValueSplitInfo.Visible = false;
-                pnlIsDefaultValue.Visible = false;
-                lblMsg.Visible = false;
-                lblMsg.Text = "No More Data Available";
+                pnlAddNewInfo.Visible = false;
+                ImgAddSplitInfo.Enabled = true;
+                lblMsg.Visible = true;
+                lblMsg.Text = "No more lead column available";
+                lblMsg.ForeColor = System.Drawing.Color.Red;
             }
             else
             {
                 lblMsg.Visible = false;
-                PnlAddNewSplitInfo.Visible = true;
-                PnlisValueSplitInfo.Visible = true;
-                pnlIsDefaultValue.Visible = true;
+                dropdownIsDefaultValue.Visible = false;
                 chkisValueSplit.Checked = false;
                 checkIsDefaultValue.Checked = false;
-                dropdownIsDefaultValue.Visible = false;
+                tbEndText.Enabled = true;
+                tbStartText.Enabled = true;
+                chkisValueSplit.Enabled = true;
                 txtDefaultValue.Visible = false;
                 lblValuetype.Visible = false;
                 txtDefaultValue.Text = "";
-                tbStartText.Enabled = true;
-                tbEndText.Enabled = true;
-                chkisValueSplit.Enabled = true;
+                tbStartText.Text = "";
+                tbEndText.Text = "";
+                pnlAddNewInfo.Visible = true;
+                ImgAddSplitInfo.Enabled = false;
                 MailToLeadColumnHeader.DataSource = dt;
                 MailToLeadColumnHeader.DataTextField = "leadColumnHeader";
                 MailToLeadColumnHeader.DataValueField = "id";
+                MailToLeadColumnHeader.Enabled = true;
                 MailToLeadColumnHeader.DataBind();
                 fillIsValueSplitDropDownValue();
             }
-        }
-
-
-        protected DataTable FilterData(string searchString, DataTable dt)
-        {
-            DataTable dtnew = new DataTable();
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                DataRow[] foundRows = dt.Select("leadColumnHeader LIKE '%" + searchString + "%' OR mailColumnHeader LIKE '%" +
-                    searchString + "%' OR startText LIKE '%" + searchString + "%' OR endText LIKE '%" +
-                    searchString + "%'");
-                dtnew = foundRows.CopyToDataTable();
-            }
-
-            return dtnew;
-        }
-
-        protected void ImgExportToExcel_Click(object sender, EventArgs e)
-        {
-
-
-            try
-            {
-                StringBuilder sb = new StringBuilder();
-                string FileName = "MailContentSplitInfo";
-                DataTable dt = GetDataTable();
-                GridView GridView1 = new GridView();
-
-                HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ClearContent();
-                HttpContext.Current.Response.ClearHeaders();
-                HttpContext.Current.Response.Buffer = true;
-                HttpContext.Current.Response.ContentType = "application/ms-excel";
-                HttpContext.Current.Response.Write(@"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">");
-                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName + ".xls");
-
-                HttpContext.Current.Response.Charset = "utf-8";
-                HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("windows-1250");
-                //sets font
-                HttpContext.Current.Response.Write("<font style='font-size:10.0pt; font-family:Calibri;'>");
-                HttpContext.Current.Response.Write("<BR><BR><BR>");
-                //sets the table border, cell spacing, border color, font of the text, background, foreground, font height
-                HttpContext.Current.Response.Write("<Table border='1' bgColor='#ffffff' " +
-                  "borderColor='#000000' cellSpacing='0' cellPadding='0' " +
-                  "style='font-size:10.0pt; font-family:Calibri; background:lightblue;'> <TR>");
-                //am getting my grid's column headers
-                int columnscount = GridView1.Columns.Count;
-
-                for (int j = 0; j < columnscount; j++)
-                {      //write in new column
-                    HttpContext.Current.Response.Write("<Td>");
-                    //Get column headers  and make it as bold in excel columns
-                    HttpContext.Current.Response.Write("<B>");
-                    HttpContext.Current.Response.Write(GridView1.Columns[j].HeaderText.ToString());
-                    HttpContext.Current.Response.Write("</B>");
-                    HttpContext.Current.Response.Write("</Td>");
-                }
-                HttpContext.Current.Response.Write("</TR>");
-                foreach (DataRow row in dt.Rows)
-                {//write in new row
-                    HttpContext.Current.Response.Write("<TR>");
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        HttpContext.Current.Response.Write("<Td>");
-                        HttpContext.Current.Response.Write(row[i].ToString());
-                        HttpContext.Current.Response.Write("</Td>");
-                    }
-
-                    HttpContext.Current.Response.Write("</TR>");
-                }
-                HttpContext.Current.Response.Write("</Table>");
-                HttpContext.Current.Response.Write("</font>");
-                HttpContext.Current.Response.Flush();
-                HttpContext.Current.Response.End();
-
-            }
-            catch (Exception ex)
-            {
-                lblMsg.Text = "Some Error Occured . Please Try Again Later";
-                lblMsg.Style.Add("color", "Red");
-                lblMsg.Style.Add("display", "block");
-            }
-        }
-
-
-        protected void ImgExportToCSV_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                StringBuilder sb = new StringBuilder();
-                string FileName = "MailContentSplitInfo";
-                DataTable dt = GetDataTable();
-                GridView GridView1 = new GridView();
-
-                GridView1.AllowPaging = false;
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
-                GridView1.HeaderRow.BackColor = System.Drawing.Color.LightBlue;
-
-                foreach (TableCell cell in GridView1.HeaderRow.Cells)
-                {
-                    sb.Append(cell.Text.Trim() + ',');
-                }
-                sb.Append("\r\n");
-
-                Response.Clear();
-                Response.Buffer = true;
-                Response.Charset = "";
-                Response.ContentType = "application/text";
-                Response.AddHeader("content-disposition", "attachment;filename=" + FileName + ".csv");
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dt.Columns.Count; j++)
-                    {
-                        sb.Append(Convert.ToString(dt.Rows[i][j]) + ',');
-                    }
-                    sb.Append("\r\n");
-                }
-                string b = System.Net.WebUtility.HtmlDecode(sb.ToString());
-                Response.Write(b);
-                Response.Flush();
-                Response.End();
-            }
-            catch (Exception ex)
-            {
-                lblMsg.Text = "Some Error Occured . Please Try Again Later";
-                lblMsg.Style.Add("color", "Red");
-                lblMsg.Style.Add("display", "block");
-            }
-
-        }
-
-
-
-        protected void ImgExportToPDF_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-
-                string FileName = "MailContentSplitInfo";
-                DataTable dt = GetDataTable();
-                GridView GridView1 = new GridView();
-
-                GridView1.AllowPaging = false;
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
-                GridView1.HeaderRow.BackColor = System.Drawing.Color.LightBlue;
-
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=" + FileName + ".pdf");
-
-                Response.Cache.SetCacheability(HttpCacheability.NoCache);
-                StringWriter sw = new StringWriter();
-                HtmlTextWriter hw = new HtmlTextWriter(sw);
-                GridView1.RenderControl(hw);
-                StringReader sr = new StringReader(sw.ToString());
-                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-                PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-                pdfDoc.Open();
-                htmlparser.Parse(sr);
-                pdfDoc.Close();
-                Response.Write(pdfDoc);
-                Response.End();
-            }
-            catch (Exception ex)
-            {
-                lblMsg.Text = "Some Error Occured . Please Try Again Later";
-                lblMsg.Style.Add("color", "Red");
-                lblMsg.Style.Add("display", "block");
-            }
-        }
-
-        DataTable GetDataTable()
-        {
-            DataTable dt = (System.Data.DataTable)ViewState["DefaultLeadSplitDataTable"];
-            return dt;
         }
 
         public void fillIsValueSplitDropDownValue()
@@ -440,7 +178,7 @@ namespace AdminTool
             dt.Rows.Add(dr);
             dr["Value"] = "NewLine";
             dr = dt.NewRow();
-            dr["Value"] = "Others";
+            dr["Value"] = "Other";
             dt.Rows.Add(dr);
             dropdownIsValueSplit.DataSource = dt;
             dropdownIsValueSplit.DataTextField = "Value";
@@ -457,33 +195,33 @@ namespace AdminTool
 
         protected void ImgAddNewSplitInfo_Click(object sender, EventArgs e)
         {
-            if (GridSplitDetail.Rows.Count <= 0)
-            {
-                ImgExportToCSV.Enabled = false;
-                ImgExportToExcel.Enabled = false;
-                ImgExportToPDF.Enabled = false;
-                ImgTestMail.Enabled = false;
-            }
+            imgBtnAddNew.Text = "Add";
+            lblMsg.Visible = false;
+            GridSplitDetail.EditIndex = -1;
             FileHeaderComboBox();
+            FillDefaultGridView();
+        }
+
+
+        protected void GridSplitDetail_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            GridSplitDetail.EditIndex = -1;
+            pnlAddNewInfo.Visible = false;
+            ImgAddSplitInfo.Enabled = true;
+            FillDefaultGridView();
         }
 
         protected void imgBtnCancel_Click(object sender, EventArgs e)
         {
-            PnlAddNewSplitInfo.Visible = false;
-            PnlisValueSplitInfo.Visible = false;
-            pnlIsDefaultValue.Visible = false;
-            tbStartText.Text = "";
-            tbEndText.Text = "";
-            FillDefaultGridView(false);
+            lblMsg.Visible = false;
+            pnlAddNewInfo.Visible = false;
+            ImgAddSplitInfo.Enabled = true;
         }
 
         protected void imgBtnAddNew_Click(object sender, EventArgs e)
         {
             try
             {
-                PnlAddNewSplitInfo.Visible = false;
-                PnlisValueSplitInfo.Visible = false;
-                pnlIsDefaultValue.Visible = false;
                 ImageButton img = sender as ImageButton;
                 int ColumnHeaderId = Convert.ToInt32(MailToLeadColumnHeader.SelectedValue);
                 int SubjectId = Convert.ToInt32(Session["ViewUserSubjectId"]);
@@ -497,39 +235,81 @@ namespace AdminTool
                 Boolean isValueSplit = chkisValueSplit.Checked;
 
 
-                string IsDefaultValueCheck = checkIsDefaultValue.Checked.ToString();
+                Boolean IsDefaultValueCheck = checkIsDefaultValue.Checked;
                 string IsDefaultValuetype = dropdownIsDefaultValue.SelectedValue.ToString();
                 string defaultValue = txtDefaultValue.Text.ToString();
+
+                if (!IsDefaultValueCheck)
+                {
+                    if (string.IsNullOrEmpty(startText.Trim()) || string.IsNullOrEmpty(endText.Trim()))
+                    {
+                        lblMsg.ForeColor = System.Drawing.Color.Red;
+                        lblMsg.Text = "Start text & End text field should not be empty.";
+                        lblMsg.Visible = true;
+                        return;
+                    }
+                    IsDefaultValuetype = "Current Date";
+                    defaultValue = "Na";
+                }
+                else
+                {
+                    isValueSplit = false;
+                    startText = "---";
+                    endText = "---";
+                    if (IsDefaultValuetype.ToLower().Contains("other") && string.IsNullOrEmpty(defaultValue.Trim()))
+                    {
+                        lblMsg.ForeColor = System.Drawing.Color.Red;
+                        lblMsg.Text = "Default value should not be empty.";
+                        lblMsg.Visible = true;
+                        return;
+                    }
+                    else if (IsDefaultValuetype.ToLower().Contains("date"))
+                    {
+                        defaultValue = "Na";
+                    }
+                }
 
 
                 if (!isValueSplit)
                 {
-                    SplitType = "other";
+                    SplitType = "Other";
                     splitIndex = 0;
                     splitValueText = "Na";
                 }
-
-                if (!Convert.ToBoolean(IsDefaultValueCheck))
+                else
                 {
-                    IsDefaultValuetype = "-";
-                    defaultValue = "-";
+                    if (string.IsNullOrEmpty(splitValueText.Trim()) && SplitType.ToLower().Contains("other"))
+                    {
+                        lblMsg.ForeColor = System.Drawing.Color.Red;
+                        lblMsg.Text = "Split value should not be empty.";
+                        lblMsg.Visible = true;
+                        return;
+                    }
+                    else if (!SplitType.ToLower().Contains("other"))
+                    {
+                        splitValueText = "Na";
+                    }
                 }
-                else if (IsDefaultValuetype.ToLower().Contains("date"))
-                {
-                    defaultValue = "-";
-                }
-
 
                 string result = dataBaseProvider.AddNewMailContentSplitInfo(startText, endText, ColumnHeaderId, SubjectId, splitValueText, splitIndex, SplitType, isValueSplit, IsDefaultValueCheck, IsDefaultValuetype, defaultValue);
 
                 if (result.Equals("SUCCESS"))
                 {
-                    lblMsg.Text = "Lead Info Added Successfully";
+                    lblMsg.Text = "Template content split information added successfully";
                     lblMsg.ForeColor = System.Drawing.Color.Green;
                     GridSplitDetail.EditIndex = -1;
-                    tbStartText.Text = "";
-                    tbEndText.Text = "";
-                    FillDefaultGridView(true);
+                    pnlAddNewInfo.Visible = false;
+                    ImgAddSplitInfo.Enabled = true;
+                    FillDefaultGridView();
+                }
+                else if (result.Equals("UPDATE"))
+                {
+                    lblMsg.Text = "Template content split information update successfully";
+                    lblMsg.ForeColor = System.Drawing.Color.Green;
+                    GridSplitDetail.EditIndex = -1;
+                    pnlAddNewInfo.Visible = false;
+                    ImgAddSplitInfo.Enabled = true;
+                    FillDefaultGridView();
                 }
                 else
                 {
@@ -542,20 +322,12 @@ namespace AdminTool
                 ExceptionAndErrorClass.StoretheErrorLog(System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
                 lblMsg.Text = "Some Error Occured";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
-                lblMsg.Visible = true;
             }
-        }
-
-        protected void GridSplitDetail_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
+            lblMsg.Visible = true;
         }
 
         public void fillDefaultValueDropDown()
         {
-
-
-
             DataTable dt = new DataTable();
             DataRow dr = null;
             dt = new DataTable();
@@ -564,7 +336,7 @@ namespace AdminTool
             dr["Value"] = "Current Date";
             dt.Rows.Add(dr);
             dr = dt.NewRow();
-            dr["Value"] = "Others";
+            dr["Value"] = "Other";
             dt.Rows.Add(dr);
             dropdownIsDefaultValue.DataSource = dt;
             dropdownIsDefaultValue.DataTextField = "Value";
@@ -575,8 +347,64 @@ namespace AdminTool
 
         protected void GridSplitDetail_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            GridSplitDetail.EditIndex = e.NewEditIndex;
-            FillDefaultGridView(false);
+            try
+            {
+                lblMsg.Visible = false;
+                ImgAddSplitInfo.Enabled = false;                
+                pnlAddNewInfo.Visible = true;
+
+                int SubjectId = Convert.ToInt32(Session["ViewUserSubjectId"]);
+                int SplitRowId = Convert.ToInt32(((HiddenField)GridSplitDetail.Rows[e.NewEditIndex].FindControl("hiddenSplitId")).Value.Trim());
+                int ColumnHeaderId = Convert.ToInt32(((HiddenField)GridSplitDetail.Rows[e.NewEditIndex].FindControl("hiddenColumnHeaderId")).Value.Trim());
+
+                string startText = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblStartText")).Text.Trim();
+                string endText = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblEndText")).Text.Trim();
+
+                string leadColumnHeader = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblLeadColumnHeader")).Text.Trim();
+                string splitValueText = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblSplitValueText")).Text.Trim();
+                string splitIndex = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("dropdownSplitIndex")).Text.ToString().Trim();
+                string SplitType = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblIsValueSplit")).Text.ToString();
+                Boolean isValueSplit = ((CheckBox)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblIsValueSplit1")).Checked;
+                string defaultValue = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lbldefaultValue")).Text.Trim();
+                string IsDefaultValuetype = ((Label)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lbldefaultValueType")).Text.ToString();
+                Boolean IsDefaultValueCheck = ((CheckBox)GridSplitDetail.Rows[e.NewEditIndex].FindControl("lblisHaveDefaultValue")).Checked;
+
+
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("id");
+                dt.Columns.Add("leadColumnHeader");
+                dt.Rows.Add(ColumnHeaderId, leadColumnHeader);
+                MailToLeadColumnHeader.DataSource = dt;
+                MailToLeadColumnHeader.DataTextField = "leadColumnHeader";
+                MailToLeadColumnHeader.DataValueField = "id";
+                MailToLeadColumnHeader.DataBind();
+                MailToLeadColumnHeader.Enabled = false;
+                fillIsValueSplitDropDownValue();
+                defaultValueChk(!IsDefaultValueCheck);
+                valueSplitinfo(isValueSplit);
+
+                tbStartText.Text = startText;
+                tbEndText.Text = endText;
+
+                if (SplitType.ToLower().Contains("other") && isValueSplit)
+                { txtValueToSplit.Visible = true; }
+                if (IsDefaultValuetype.ToLower().Contains("other") && IsDefaultValueCheck)
+                { txtDefaultValue.Visible = true; }
+
+                txtValueToSplit.Text = splitValueText;
+                dropdownValueIndex.SelectedValue = splitIndex;
+                dropdownIsValueSplit.SelectedValue = SplitType;
+                chkisValueSplit.Checked = isValueSplit;
+
+                checkIsDefaultValue.Checked = IsDefaultValueCheck;
+                dropdownIsDefaultValue.SelectedValue = IsDefaultValuetype;
+                txtDefaultValue.Text = defaultValue;
+
+                imgBtnAddNew.Text = "Update";
+            }
+            catch (Exception ex)
+            { }
         }
 
         protected void GridSplitDetail_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -585,88 +413,16 @@ namespace AdminTool
             string result = dataBaseProvider.DeleteMailContentSplitInfo(LeadSplitId);
             if (result.Equals("SUCCESS"))
             {
-                lblMsg.Text = "Lead Split Info Deleted Sucessfully";
+                lblMsg.Text = "Template content split information deleted sucessfully";
                 lblMsg.ForeColor = System.Drawing.Color.Green;
-                FillDefaultGridView(true);
+                FillDefaultGridView();
             }
             else
             {
                 lblMsg.Text = "Some Error Occured";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
             }
-        }
-
-        protected void GridSplitDetail_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            GridSplitDetail.EditIndex = -1;
-            FillDefaultGridView(false);
-        }
-
-        protected void GridSplitDetail_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            try
-            {
-                int SubjectId = Convert.ToInt32(Session["ViewUserSubjectId"]);
-                int SplitRowId = Convert.ToInt32(((HiddenField)GridSplitDetail.Rows[e.RowIndex].FindControl("hiddenSplitId")).Value.Trim());
-                int ColumnHeaderId = Convert.ToInt32(((HiddenField)GridSplitDetail.Rows[e.RowIndex].FindControl("hiddenColumnHeaderId")).Value.Trim());
-
-                string startText = ((TextBox)GridSplitDetail.Rows[e.RowIndex].FindControl("tbStartText")).Text.Trim();
-                string endText = ((TextBox)GridSplitDetail.Rows[e.RowIndex].FindControl("tbEndText")).Text.Trim();
-
-
-                string splitValueText = ((TextBox)GridSplitDetail.Rows[e.RowIndex].FindControl("tbSplitValueText1")).Text.Trim();
-                int splitIndex = Convert.ToInt32(((DropDownList)GridSplitDetail.Rows[e.RowIndex].FindControl("editDropdownSplitIndex")).SelectedValue);
-                string SplitType = ((DropDownList)GridSplitDetail.Rows[e.RowIndex].FindControl("editDropdownSplitType")).SelectedValue;
-                Boolean isValueSplit = ((CheckBox)GridSplitDetail.Rows[e.RowIndex].FindControl("tbIsValueSplit1")).Checked;
-                if (!isValueSplit)
-                {
-                    SplitType = "other";
-                    splitIndex = 0;
-                    splitValueText = "Na";
-                }
-
-                string DefaultValue = ((TextBox)GridSplitDetail.Rows[e.RowIndex].FindControl("tbdefaultValue")).Text.Trim();
-                string DefaultValueType = Convert.ToString(((DropDownList)GridSplitDetail.Rows[e.RowIndex].FindControl("editDefaultValueType")).SelectedValue);
-                Boolean IsHaveDefaultValue = ((CheckBox)GridSplitDetail.Rows[e.RowIndex].FindControl("chkckIsHaveDefaultValue")).Checked;
-
-                if (!IsHaveDefaultValue)
-                {
-                    DefaultValueType = "-";
-                    DefaultValue = "-";
-                }
-                else if (DefaultValueType.ToLower().Contains("date"))
-                {
-                    DefaultValueType = "-";
-                }
-
-                string result = dataBaseProvider.UpdateMailContentSplitInfo(startText, endText, ColumnHeaderId, SubjectId, SplitRowId, splitValueText, splitIndex, SplitType, isValueSplit, IsHaveDefaultValue.ToString(), DefaultValueType, DefaultValue);
-                if (result.Equals("SUCCESS"))
-                {
-                    lblMsg.Text = "Lead Split info Update Successfully";
-                    lblMsg.ForeColor = System.Drawing.Color.Green;
-                    GridSplitDetail.EditIndex = -1;
-                    FillDefaultGridView(true);
-                }
-                else
-                {
-                    lblMsg.Text = "Some Error Occured";
-                    lblMsg.ForeColor = System.Drawing.Color.Red;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                ExceptionAndErrorClass.StoretheErrorLog(System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                lblMsg.Text = "Some Error Occured";
-                lblMsg.ForeColor = System.Drawing.Color.Red;
-            }
-
-
-        }
-
-        protected void GridSplitDetail_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
+            lblMsg.Visible = true;
         }
 
         protected void imgBtnDelete_Click(object sender, ImageClickEventArgs e)
@@ -676,12 +432,10 @@ namespace AdminTool
             string result = dataBaseProvider.DeleteMailContentSplitInfo(SplitId);
             if (result.Equals("SUCCESS"))
             {
-                lblMsg.Text = "Lead Split Info Deleted Successfully";
+                lblMsg.Text = "Template content split information deleted successfully";
                 lblMsg.ForeColor = System.Drawing.Color.Green;
-                txtSearchBox.Text = "";
-                hdnSearchTxt.Value = "";
                 GridSplitDetail.EditIndex = -1;
-                FillDefaultGridView(true);
+                FillDefaultGridView();
             }
             else
             {
@@ -693,9 +447,9 @@ namespace AdminTool
         protected void dropdownIsValueSplit_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
-
+            lblMsg.Visible = false;
             string value = ddl.SelectedValue.ToString();
-            if (value.ToLower().Contains("others"))
+            if (value.ToLower().Contains("other"))
             {
                 lblIndex.Visible = true;
                 txtValueToSplit.Visible = true;
@@ -711,72 +465,62 @@ namespace AdminTool
         protected void chkDefaultValueCheck_Clicked(Object sender, EventArgs e)
         {
             CheckBox check = (CheckBox)sender;
+            lblMsg.Visible = false;
+            defaultValueChk(!check.Checked);
+        }
 
-            if (check.Checked)
+        public void defaultValueChk(Boolean b)
+        {
+            dropdownIsDefaultValue.Visible = !b;
+            lblValuetype.Visible = !b;
+            chkisValueSplit.Enabled = b;
+            dropdownIsValueSplit.Enabled = b;
+            dropdownValueIndex.Enabled = b;
+            txtValueToSplit.Enabled = b;
+            tbStartText.Enabled = b;
+            tbEndText.Enabled = b;
+            if (!b)
             {
                 fillDefaultValueDropDown();
-                dropdownIsDefaultValue.Visible = true;
-                lblValuetype.Visible = true;
-                chkisValueSplit.Enabled = false;
-                dropdownIsValueSplit.Enabled = false;
-                dropdownValueIndex.Enabled = false;
-                txtValueToSplit.Enabled = false;
-                tbStartText.Enabled = false;
-                tbEndText.Enabled = false;
             }
             else
             {
-                dropdownIsDefaultValue.Visible = false;
                 txtDefaultValue.Visible = false;
-                lblValuetype.Visible = false;
                 txtDefaultValue.Text = "";
-                chkisValueSplit.Enabled = true;
-                dropdownIsValueSplit.Enabled = true;
-                dropdownValueIndex.Enabled = true;
-                txtValueToSplit.Enabled = true;
-                tbStartText.Enabled = true;
-                tbEndText.Enabled = true;
             }
         }
 
         protected void chkIsValueSplitInfo_Clicked(Object sender, EventArgs e)
         {
             CheckBox check = (CheckBox)sender;
-            if (check.Checked)
-            {
-                dropdownIsValueSplit.Visible = true;
-                lblSplitFrom.Visible = true;
-                lblIndex.Visible = true;
-                dropdownValueIndex.Visible = true;
-                tbStartText.Enabled = false;
-                tbEndText.Enabled = false;
-                chkisValueSplit.Enabled = true;
-                dropdownIsValueSplit.Enabled = true;
-                dropdownValueIndex.Enabled = true;
-                txtValueToSplit.Enabled = true;
+            lblMsg.Visible = false;
+            valueSplitinfo(check.Checked);
+        }
 
-            }
-            else
-            {
+        public void valueSplitinfo(Boolean b)
+        {
+            dropdownIsValueSplit.Visible = b;
+            lblSplitFrom.Visible = b;
+            lblIndex.Visible = b;
+            txtValueToSplit.Enabled = b;
+            dropdownValueIndex.Visible = b;
+            dropdownIsValueSplit.Enabled = b;
+            dropdownValueIndex.Enabled = b;
 
-                lblSplitFrom.Visible = false;
-                dropdownIsValueSplit.Visible = false;
-                txtValueToSplit.Visible = false;
-                lblIndex.Visible = false;
-                dropdownValueIndex.Visible = false;
-                tbStartText.Enabled = true;
-                tbEndText.Enabled = true;
-                chkisValueSplit.Enabled = true;
+            if (b)
+            {
                 txtValueToSplit.Text = "";
+                if (dropdownIsValueSplit.SelectedValue.ToString().ToLower().Contains("other"))
+                { txtValueToSplit.Visible = true; }
             }
         }
 
         protected void dropdownIsDefaultValue_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddl = (DropDownList)sender;
-
+            lblMsg.Visible = false;
             string value = ddl.SelectedValue.ToString();
-            if (value.ToLower().Contains("others"))
+            if (value.ToLower().Contains("other"))
             {
                 txtDefaultValue.Visible = true;
             }
@@ -787,45 +531,19 @@ namespace AdminTool
             }
         }
 
-        protected void ImgTestMail_Click(object sender, EventArgs e)
+        protected void ImageGoBack3_Click(object sender, ImageClickEventArgs e)
         {
-            int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
-            int SubjectID = Convert.ToInt32(Session["ViewUserSubjectId"]);
-            if (GridSplitDetail.Rows.Count < 0)
-            {
-                lblMsg.Text = "Please Insert Some Lead Split info";
-                lblMsg.ForeColor = System.Drawing.Color.Red;
-                lblMsg.Visible = true;
-            }
-            else
-            {
-                if (ViewUserId > 0 && SubjectID > 0)
-                {
-                    /* Format  
-                * SendEmailStarted(int UserId, int numberOfDays, int IsApprovedOrAll, int ViewSubjectId)
-                * 
-                * UserId = Loged in user Id
-                * numberOfDays =how many days old mail to check
-                * ViewSubjectId= Id of particular subject which user want to sync
-                * IsApprovedOrAll = value may either 0 or 1, 
-                *                  CASE 0 sync all the mail no matter approve or not
-                *                  CASE 1 sync only approved mail 
-                * 
-                 */
-                    MainTimeTicker.SubmitEmailFromMailToCRM(ViewUserId, 1, 0, SubjectID, "TestSplit");
-                }
-                else
-                {
-                    lblMsg.Text = "Some Error Occured";
-                    lblMsg.ForeColor = System.Drawing.Color.Red;
-                    lblMsg.Visible = true;
-                }
-            }
+            Response.Redirect("~/frmTemplate.aspx");
         }
 
-        protected void txtSearchBox_TextChanged(object sender, EventArgs e)
+        protected void dropDpownListOfAllSubjectList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Search();
+            lblMsg.Visible = false;
+            pnlAddNewInfo.Visible = false;
+            ImgAddSplitInfo.Enabled = true;
+            Session["ViewUserSubjectId"] = dropDpownListOfAllSubjectList.SelectedValue;
+            SetUserLeadMailSplitInfo(Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue));
         }
+
     }
 }
