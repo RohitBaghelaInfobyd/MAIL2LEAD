@@ -11,34 +11,9 @@ namespace AdminTool.Model
     {
         private string defaultImapHostName = "imap.gmail.com";
         private int defaultPort = 993;
-        private string defaultUserName = "zohoalok@gmail.com";
-        private string defaultPassword = "alok@crm";
         private ImapClient client;
         private bool isConnected = false;
-
-
-        public bool connect()
-        {
-            try
-            {
-                client = new ImapClient(defaultImapHostName, defaultPort, defaultUserName, defaultPassword, AuthMethod.Login, true);
-
-                Console.WriteLine("We are connected with default credential!");
-                isConnected = true;
-                return true;
-            }
-            catch (InvalidCredentialsException ex)
-            {
-                Console.WriteLine("Invalid credential Exception " + ex.Message);
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception " + ex.Message);
-                return false;
-            }
-        }
-
+        
         public bool connect(string userName, string password)
         {
             try

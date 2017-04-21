@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Text;
@@ -68,11 +69,11 @@ namespace AdminTool.Model
             return result;
         }
 
-        public static string sendUserMail2LeadRespotStatus(int UserId,string AppFolderPath)
+        public static string sendUserMail2LeadRespotStatus(int UserId, string AppFolderPath)
         {
             string result = string.Empty, FirstName, AttachmentUrl = null;
             string ToEmail, SubjectLine, BodyofEmail;
-            int numberOfDays=0;
+            int numberOfDays = 0;
             try
             {
                 DataTable UserInfo = databaseProvider.getUserBasicInfo(UserId);
@@ -80,8 +81,8 @@ namespace AdminTool.Model
                 { return null; }
                 FirstName = UserInfo.Rows[0]["FirstName"].ToString();
                 ToEmail = UserInfo.Rows[0]["EmailId"].ToString();
-                numberOfDays =Convert.ToInt32(UserInfo.Rows[0]["Days"].ToString());
-                AttachmentUrl =CaculateMail2LeadStatusReport(UserId, AppFolderPath, numberOfDays);
+                numberOfDays = Convert.ToInt32(UserInfo.Rows[0]["Days"].ToString());
+                AttachmentUrl = CaculateMail2LeadStatusReport(UserId, AppFolderPath, numberOfDays);
                 SubjectLine = "Mail2Lead Status Report for" + ToEmail + " On " + DateTime.Now.ToString();
                 BodyofEmail = "Hi " + FirstName + ", \n\n Please Find your Mail2Lead Status Resport for" + ToEmail + " On " + DateTime.Now.ToString() + " If you required any help or query so contact us at Team@infobyd.com. \n\n Thanks, \nInfobyd Team";
                 result = sendActionEmail(ToEmail, SubjectLine, BodyofEmail, AttachmentUrl);
@@ -127,32 +128,24 @@ namespace AdminTool.Model
             string result = string.Empty;
             try
             {
-                toEmail = "Rohitb@infobyd.com";
                 Attachment attachment = null;
-                MailMessage mail = new MailMessage();
-                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("rohit.baghela@outlook.com");
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("rohit.baghela1@gmail.com", "888Jana*"),
+                    EnableSsl = true
+                };
+                MailMessage mail = new MailMessage("noreply@infobyd.com",toEmail);
                 mail.To.Add(toEmail);
-                mail.To.Add("alok@infobyd.com");
                 mail.Subject = subjectLine;
                 mail.Body = bodyOfMail;
-                mail.Bcc.Add("Team@infobyd.com");
                 if (!string.IsNullOrEmpty(attachmentUrl))
                 {
                     attachment = new Attachment(attachmentUrl);
                     mail.Attachments.Add(attachment);
                 }
 
-                SmtpServer.Credentials = new System.Net.NetworkCredential("rohit.baghela@outlook.com", "888Jana*");
-                SmtpServer.Port = 587;
-                SmtpServer.EnableSsl = true;
-                SmtpServer.UseDefaultCredentials = true;
-                SmtpServer.Send(mail);
-                if (!string.IsNullOrEmpty(attachmentUrl))
-                {
-                    attachment.Dispose();
-                    File.Delete(attachmentUrl);
-                }
+                client.Send(mail);
+
                 result = "SUCCESS";
             }
             catch (Exception ex)
@@ -163,7 +156,7 @@ namespace AdminTool.Model
             }
             return result;
         }
-        private static string CaculateMail2LeadStatusReport(int UserId,string AppFolderPath,int numberOfDays)
+        private static string CaculateMail2LeadStatusReport(int UserId, string AppFolderPath, int numberOfDays)
         {
             string result = null, record_id = string.Empty, DatabaseId = string.Empty, subjectLine = string.Empty, value_from_mail = string.Empty;
             string serviceTime = string.Empty, STATUS = string.Empty;
@@ -172,7 +165,7 @@ namespace AdminTool.Model
                 DataTable UserInfo = databaseProvider.getUserAutoSyncReport(UserId, numberOfDays);
                 if (UserInfo.Rows.Count < 0)
                 { return null; }
-                
+
                 StringBuilder sb = new StringBuilder();
 
                 IEnumerable<string> columnNames = UserInfo.Columns.Cast<DataColumn>().
@@ -184,8 +177,8 @@ namespace AdminTool.Model
                     IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
                     sb.AppendLine(string.Join(",", fields));
                 }
-                
-                result = AppFolderPath+"report_"+UserId+"_"+ DateTime.Now.ToString("dd/MM/yyyy").Replace('/','_')+".csv";
+
+                result = AppFolderPath + "report_" + UserId + "_" + DateTime.Now.ToString("dd/MM/yyyy").Replace('/', '_') + ".csv";
                 File.WriteAllText(result, sb.ToString());
             }
             catch (Exception ex)

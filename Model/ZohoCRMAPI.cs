@@ -14,9 +14,17 @@ namespace AdminTool.Model
         private static string zohocrmupdateurl = "https://crm.zoho.com/crm/private/xml/Leads/updateRecords?";
         private static string zohocrmSearchurl = "https://crm.zoho.com/crm/private/xml/Leads/getSearchRecords?";
 
+        private static string zohocrmContacturl = "https://crm.zoho.com/crm/private/xml/Contacts/insertRecords?";
+        private static string zohocrmContactupdateurl = "https://crm.zoho.com/crm/private/xml/Contacts/updateRecords?";
+        private static string zohocrmContactSearchurl = "https://crm.zoho.com/crm/private/xml/Contacts/getSearchRecords?";
+
         internal static String APIMethod(string authToken, string xmlData)
         {
             string uri = zohocrmurl;
+            if (xmlData.ToLower().Contains("<contacts>"))
+            {
+                uri = zohocrmContacturl;
+            }
             /* Append your parameters here */
             string postContent = "scope=crmapi";
             postContent = postContent + "&authtoken=" + authToken;//Give your authtoken
@@ -30,6 +38,10 @@ namespace AdminTool.Model
         internal static String UpdateAPIMethod(string authToken, string xmlData, string RecordId)
         {
             string uri = zohocrmupdateurl;
+            if (xmlData.ToLower().Contains("<contacts>"))
+            {
+                uri = zohocrmContactupdateurl;
+            }
             /* Append your parameters here */
             string postContent = "scope=crmapi";
             postContent = postContent + "&authtoken=" + authToken;//Give your authtoken
@@ -41,9 +53,13 @@ namespace AdminTool.Model
         }
 
 
-        internal static String CheckRecord(string authToken, string email)
+        internal static String CheckRecord(string authToken, string email, bool isForLead)
         {
             string uri = zohocrmSearchurl;
+            if (!isForLead)
+            {
+                uri = zohocrmContactSearchurl;
+            }
             /* Append your parameters here */
             string postContent = "scope=crmapi";
             postContent = postContent + "&authtoken=" + authToken;//Give your authtoken

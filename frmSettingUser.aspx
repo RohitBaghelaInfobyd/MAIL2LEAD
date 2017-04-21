@@ -65,10 +65,10 @@
                                     <asp:Label runat="server" ID="lblFirstName" AssociatedControlID="tbFirstName" Style="vertical-align: middle;" CssClass="control-label ">First Name : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbFirstName" ValidationGroup="Group1" CssClass="form-control"
+                                    <asp:TextBox runat="server" ID="tbFirstName" CssClass="form-control"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbFirstName"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
                                 </td>
                             </tr>
                             <tr>
@@ -76,10 +76,10 @@
                                     <asp:Label runat="server" ID="lblLastName" AssociatedControlID="tbLastName" Style="vertical-align: middle;" CssClass="control-label">Last Name : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbLastName" ValidationGroup="Group1" CssClass="form-control"
+                                    <asp:TextBox runat="server" ID="tbLastName" CssClass="form-control"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbLastName"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
                                 </td>
                             </tr>
                             <tr>
@@ -87,10 +87,14 @@
                                     <asp:Label runat="server" ID="lblEmail" AssociatedControlID="tbEmail" Style="vertical-align: middle;" CssClass="control-label">Email : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbEmail" ValidationGroup="Group1" CssClass="form-control"
+                                    <asp:TextBox runat="server" ID="tbEmail" CssClass="form-control"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" autocomplete="off" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbEmail"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
+
+                                    <asp:RegularExpressionValidator ID="regexEmailValid" runat="server"
+                                        ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                        ControlToValidate="tbEmail" ErrorMessage="Invalid Email Format" ForeColor="Red"></asp:RegularExpressionValidator>
                                 </td>
                             </tr>
 
@@ -103,7 +107,7 @@
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" autocomplete="off" />
                                     <asp:LinkButton ID="lnkPortalPassword" runat="server" OnClientClick="ShowPortalPasswordClick();return false;">Show Password</asp:LinkButton>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbPassword"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
 
                                 </td>
                             </tr>
@@ -113,7 +117,7 @@
                             <tr>
                                 <td>
                                     <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn"
-                                        Width="125" CausesValidation="true" BackColor="#3E75CD" OnClick="btnSave_Click"
+                                        Width="125" BackColor="#3E75CD" OnClick="btnSave_Click"
                                         ForeColor="White" />
                                 </td>
                                 <td>

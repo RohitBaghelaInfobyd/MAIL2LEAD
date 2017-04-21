@@ -61,8 +61,9 @@ namespace AdminTool
             DataTable dt = new DataTable();
             string startDate = tbStartDate.Text.ToString();
             string endDate = tbEndDate.Text.ToString();
-
-            dt = dataBaseProvider.getMailReport(UserId, startDate, endDate, 0, 0);
+            string StatusType = dropDownStatusOfReport.SelectedValue.ToString();
+            int SubjectId = Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue.ToString());
+            dt = dataBaseProvider.getMailReport(UserId, startDate, endDate, SubjectId, StatusType);
             ViewState["DefaultMailReportDataTable"] = dt;
 
             if (dt.Rows.Count < 1)
@@ -162,8 +163,8 @@ namespace AdminTool
             string startDate = tbStartDate.Text.ToString();
             string endDate = tbEndDate.Text.ToString();
             int SubjectId = Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue.ToString());
-            int StatusId = Convert.ToInt32(dropDownStatusOfReport.SelectedValue.ToString());
-            dt = dataBaseProvider.getMailReport(ViewUserId, startDate, endDate, SubjectId, StatusId);
+            string StatusType = dropDownStatusOfReport.SelectedValue.ToString();
+            dt = dataBaseProvider.getMailReport(ViewUserId, startDate, endDate, SubjectId, StatusType);
             ViewState["DefaultSubjectDataTable"] = dt;
             lblMsg.Visible = false;
             if (!string.IsNullOrEmpty(hdnSearchTxt.Value))
@@ -219,6 +220,10 @@ namespace AdminTool
             }
         }
 
+        private void FillStatusDropDown()
+        {
+        }
+
         protected void ImgExportToExcel_Click(object sender, EventArgs e)
         {
             try
@@ -242,18 +247,18 @@ namespace AdminTool
                 HttpContext.Current.Response.Write("<font style='font-size:10.0pt; font-family:Calibri;'>");
                 HttpContext.Current.Response.Write("<BR><BR><BR>");
                 //sets the table border, cell spacing, border color, font of the text, background, foreground, font height
-                HttpContext.Current.Response.Write("<Table border='1' bgColor='#ffffff' " +
-                  "borderColor='#000000' cellSpacing='0' cellPadding='0' " +
-                  "style='font-size:10.0pt; font-family:Calibri; background:lightblue;'> <TR>");
-                //am getting my grid's column headers
-                int columnscount = GridView1.Columns.Count;
 
-                for (int j = 0; j < columnscount; j++)
+                HttpContext.Current.Response.Write("<Table border='1' " +
+                 "borderColor='#000000' cellSpacing='0' cellPadding='0' " +
+                 "style='font-size:10.0pt; font-family:Calibri;'> <TR style='background-color:Yellow'>");
+                //am getting my grid's column headers
+
+                for (int j = 0; j < dt.Columns.Count; j++)
                 {      //write in new column
                     HttpContext.Current.Response.Write("<Td>");
                     //Get column headers  and make it as bold in excel columns
                     HttpContext.Current.Response.Write("<B>");
-                    HttpContext.Current.Response.Write(GridView1.Columns[j].HeaderText.ToString());
+                    HttpContext.Current.Response.Write(dt.Columns[j].ColumnName.ToString());
                     HttpContext.Current.Response.Write("</B>");
                     HttpContext.Current.Response.Write("</Td>");
                 }

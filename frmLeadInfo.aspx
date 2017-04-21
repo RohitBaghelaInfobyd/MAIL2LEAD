@@ -24,7 +24,8 @@
                 padding-left: 15px;
                 vertical-align: middle;
             }
-             .commondClass {
+
+        .commondClass {
             text-align: center;
         }
     </style>
@@ -58,19 +59,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="4">
                         <div>
                             <asp:Panel ID="AddNewLeadInfo" runat="server">
-                                <table>
+                                <table style="width:50%;">
                                     <tr>
                                         <td style="vertical-align: middle; padding-right: 1em;">
                                             <asp:TextBox ID="tbNewLeadInfo" placeholder="Enter Field Name" runat="server"
-                                                MaxLength="80" class="form-control" />
+                                                MaxLength="80" class="form-control" />       
+                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbNewLeadInfo"
+                                                ErrorMessage="*" ForeColor="Red" />                                    
                                         </td>
 
-                                        <td style="vertical-align: middle; padding-left: 1em;">
+                                        <td style="vertical-align: top; padding-left: 1em;">
                                             <asp:Button ID="imgBtnNewLeadInfo" runat="server" Text="Add" CssClass="btn" EnableViewState="false"
-                                                Width="125" CausesValidation="true" ValidationGroup="Group1" OnClick="imgBtnNewLeadInfo_Click"
+                                                Width="125" OnClick="imgBtnNewLeadInfo_Click"
                                                 BackColor="#3E75CD" ForeColor="White" />
                                             <asp:Button ID="imgBtnNewLeadInfoCancel" runat="server" Text="Cancel" CssClass="btn"
                                                 EnableViewState="false" Width="125" CausesValidation="true" ValidationGroup="Group1"

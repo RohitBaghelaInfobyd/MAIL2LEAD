@@ -41,7 +41,8 @@
         .style3 {
             height: 86px;
         }
-          .commondClass {
+
+        .commondClass {
             text-align: center;
         }
     </style>
@@ -94,31 +95,32 @@
                 <tr>
                     <td colspan="3">
                         <div>
-                            <asp:Label ID="Label1" runat="server" Text="Select Subject List : "></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Font-Bold="true" Text="Select Subject List : "></asp:Label>
                             <asp:DropDownList ID="dropDpownListOfAllSubjectList" runat="server">
-                                <asp:ListItem Text="All"></asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:Label ID="Label3" runat="server" Style="display: none; margin-left: 1%; margin-right: 1%" Text="Select Status : "></asp:Label>
-                            <asp:DropDownList ID="dropDownStatusOfReport" runat="server" Visible="false">
-                                <asp:ListItem Text="All" Value="0"></asp:ListItem>
-                                <asp:ListItem Text="Is Submitted into CRM" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Is Split Completed" Value="2"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">&nbsp;
+                    <td colspan="3" style="padding-top: 1%; padding-bottom: 1%;">
+                        <asp:Label ID="Label3" runat="server" Font-Bold="true" Text="Select Status : "></asp:Label>
+                        <asp:DropDownList ID="dropDownStatusOfReport" runat="server">
+                            <asp:ListItem Text="All" Value="all"></asp:ListItem>
+                            <asp:ListItem Text="Inserted" Value="ADD"></asp:ListItem>
+                            <asp:ListItem Text="Updated" Value="UPDATE"></asp:ListItem>
+                            <asp:ListItem Text="Pending" Value="pending"></asp:ListItem>
+                            <asp:ListItem Text="Error" Value="ERROR"></asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="lblstartText" runat="server" Text="Start Date : "></asp:Label>
+                        <asp:Label ID="lblstartText" runat="server" Font-Bold="true" Text="Start Date : "></asp:Label>
                         <asp:TextBox runat="server" ID="tbStartDate" Width="15%" />
                         <asp:CalendarExtender ID="calStartDate" runat="server" Format="dd/MM/yyyy" CssClass="Calendar" PopupButtonID="tbStartDate" TargetControlID="tbStartDate"></asp:CalendarExtender>
                         <asp:RequiredFieldValidator ID="requiredFieldValidator2" runat="server" ControlToValidate="tbStartDate" ValidationGroup="SaveData" ErrorMessage="*" ForeColor="Red" Font-Bold="true">
                         </asp:RequiredFieldValidator>
-                        <asp:Label ID="lblEndDate" runat="server" Text="End Date : "></asp:Label>
+                        <asp:Label ID="lblEndDate" runat="server" Font-Bold="true" Text="End Date : "></asp:Label>
                         <asp:TextBox runat="server" ID="tbEndDate" Width="15%" />
                         <asp:CalendarExtender ID="calEndDate" runat="server" Format="dd/MM/yyyy" CssClass="Calendar" PopupButtonID="tbEndDate" TargetControlID="tbEndDate"></asp:CalendarExtender>
                         <asp:RequiredFieldValidator ID="requiredFieldValidator1" runat="server" ControlToValidate="tbEndDate" ValidationGroup="SaveData" ErrorMessage="*" ForeColor="Red" Font-Bold="true">

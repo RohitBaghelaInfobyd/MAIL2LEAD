@@ -59,11 +59,18 @@
                         <asp:DropDownList ID="dropDpownListOfAllSubjectList" runat="server" OnSelectedIndexChanged="dropDpownListOfAllSubjectList_SelectedIndexChanged" AutoPostBack="true">
                         </asp:DropDownList>
                     </td>
-                    <td colspan="3" style="text-align: right">
+                    <td colspan="2" style="text-align: right">
                         <div id="DivExport" runat="server">
                             <asp:Button ID="ImgAddSplitInfo" runat="server" Text="Add Split Info" CssClass="btn"
                                 Width="125" CausesValidation="true" ValidationGroup="Group1"
                                 OnClick="ImgAddNewSplitInfo_Click" BackColor="#3E75CD" ForeColor="White" />
+                        </div>
+                    </td>
+                    <td colspan="2" style="text-align: right">
+                        <div id="Div1" runat="server">
+                            <asp:Button ID="ImgTestSplitInfo" runat="server" Text="Test Split" CssClass="btn"
+                                Width="125" CausesValidation="true" ValidationGroup="Group1"
+                                OnClick="ImgTestSplitInfo_Click" BackColor="#3E75CD" ForeColor="White" />
                         </div>
                     </td>
                 </tr>
@@ -73,7 +80,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4">
+                    <td colspan="6">
                         <asp:Panel ID="pnlAddNewInfo" runat="server" Visible="false" Style="padding-top: 10px;">
                             <table>
                                 <tr>
@@ -140,7 +147,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="4">
+                    <td colspan="6">
                         <br />
                         <div id="GroupDetails" runat="server" width="100%" style="border: 1px solid #4090fd;">
                             <asp:GridView ID="GridSplitDetail" runat="server" EnableViewState="true" Width="100%" AutoGenerateColumns="False"

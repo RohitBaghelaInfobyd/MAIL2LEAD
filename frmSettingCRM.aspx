@@ -63,10 +63,10 @@
                                     <asp:Label runat="server" ID="lblGmailId" AssociatedControlID="tbGmailId" Style="vertical-align: middle;" CssClass="control-label ">Gmail EmailId : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbGmailId" ValidationGroup="Group1" CssClass="form-control"
+                                    <asp:TextBox runat="server" ID="tbGmailId" CssClass="form-control"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="tbGmailId"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
                                 </td>
                             </tr>
                             <tr>
@@ -74,12 +74,11 @@
                                     <asp:Label runat="server" ID="lblGmailPassword" AssociatedControlID="tbGmailPassword" Style="vertical-align: middle;" CssClass="control-label">Gmail Password : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbGmailPassword" ValidationGroup="Group1" CssClass="form-control" TextMode="Password"
+                                    <asp:TextBox runat="server" ID="tbGmailPassword" CssClass="form-control" TextMode="Password"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin: 2%;" />
                                     <asp:LinkButton ID="lnlShowPortalPassword" runat="server" OnClientClick="ShowCrmPasswordClick();return false;">Show Password</asp:LinkButton>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbGmailPassword"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
-
+                                        ErrorMessage="The field is required." ForeColor="Red" />
                                 </td>
                             </tr>
                             <tr>
@@ -87,22 +86,22 @@
                                     <asp:Label runat="server" ID="lblConfigurationToken" AssociatedControlID="tbConfigurationToken" Style="vertical-align: middle;" CssClass="control-label">ZohoCRM Auth token : </asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbConfigurationToken" ValidationGroup="Group1" CssClass="form-control"
+                                    <asp:TextBox runat="server" ID="tbConfigurationToken" CssClass="form-control"
                                         BorderColor="#bbd3e9" Style="background-color: #e5eef6; display: inline; margin-left: 2%; margin-bottom: 2%; margin-top: 2%" autocomplete="off" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbConfigurationToken"
-                                        ValidationGroup="Group1" ErrorMessage="The field is required." ForeColor="Red" />
+                                        ErrorMessage="The field is required." ForeColor="Red" />
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn" EnableViewState="false"
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn" EnableViewState="false" 
                                         Width="125" CausesValidation="false" OnClick="btnUpdate_Click" BackColor="#3E75CD"
                                         ForeColor="White" />
                                 </td>
                                 <td>
                                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn" Width="125"
-                                        CausesValidation="true" OnClick="btnUpdateCancel_Click" BackColor="#3E75CD" ForeColor="White" />
+                                        EnableViewState="false"  OnClick="btnUpdateCancel_Click" BackColor="#3E75CD" ForeColor="White" />
                                 </td>
                             </tr>
                         </table>

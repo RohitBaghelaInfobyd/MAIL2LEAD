@@ -99,7 +99,7 @@
                     <td style="vertical-align: middle">
                         <asp:TextBox ID="tbPassword" placeholder="Password" ValidationGroup="text"
                             runat="server" MaxLength="50" CssClass="txtfield" BorderColor="#bbd3e9" Style="margin-left: 10%; padding: 5px !important; font-size: 22px;" />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtPassword"
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbPassword"
                             ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                 </tr>

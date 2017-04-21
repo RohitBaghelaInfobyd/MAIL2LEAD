@@ -68,8 +68,6 @@ namespace AdminTool.Model
                 Email = UserInfo.Rows[0]["EmailId"].ToString();
                 Password = UserInfo.Rows[0]["password"].ToString();
                 APILimit = Convert.ToInt32(UserInfo.Rows[0]["apiLimit"].ToString());
-                Email = "westportinvestltd@gmail.com";
-                Password = "West$port";
                 MailHelper mailHelper = new MailHelper();
                 if (mailHelper.connect(Email, Password))
                 {
@@ -121,8 +119,7 @@ namespace AdminTool.Model
                 {
                     for (int i = 0; i <= uidsList.Rows.Count; i++)
                     {
-                        //uint item = Convert.ToUInt32(uidsList.Rows[i][0].ToString());
-                        uint item = 4259;
+                        uint item = Convert.ToUInt32(uidsList.Rows[i][0].ToString());
                         IEnumerable <uint> uids = (new[] { item });
 
                         IEnumerable<MailMessage> mailMessages = mailHelper.getMailByUids(uids);

@@ -41,7 +41,7 @@ namespace AdminTool
                 int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
                 string startDate = tbStartDate.Text.ToString();
                 string endDate = tbEndDate.Text.ToString();
-                int numberOfDays = 30;
+                int numberOfDays = 1;
                 if (numberOfDays > 0)
                 {
                     if (ViewUserId > 0)

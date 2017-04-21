@@ -6,3 +6,4 @@ C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\MySql.Data.dll
 C:\Users\rohit\Documents\GitHub\MAIL2LEAD\bin\MySql.Data.xml
 C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.dll
 C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.pdb
+C:\Users\rohit\Documents\GitHub\MAIL2LEAD\obj\Debug\AdminTool.csprojResolveAssemblyReference.cache

@@ -92,7 +92,8 @@ namespace AdminTool
                 }
                 else
                 {
-                    string result = dataBaseProvider.AddNewSubject(templateText, userId);
+                    string subjectType = dropDownTemplateType.SelectedValue.ToString();
+                    string result = dataBaseProvider.AddNewSubject(templateText, userId, subjectType);
                     if (result.Equals("SUCCESS"))
                     {
                         lblMsg.Text = "New Template Added Successfully";
@@ -123,6 +124,7 @@ namespace AdminTool
         {
             AddNewTemplateInfo.Visible = false;
             tbNewTemplateInfo.Text = "";
+            lblMsg.Visible = false;
             btnAddNewTemplate.Enabled = true;
             SetUserTemplateInfo();
         }
@@ -162,7 +164,8 @@ namespace AdminTool
                 int SubjectId = Convert.ToInt32(((HiddenField)GridTemplateDetail.Rows[e.RowIndex].FindControl("hiddenSubjectId")).Value.Trim());
                 string SubjectLine = ((TextBox)GridTemplateDetail.Rows[e.RowIndex].FindControl("tbSubjectTitleHeader")).Text.Trim();
                 Boolean IsApproved = ((CheckBox)GridTemplateDetail.Rows[e.RowIndex].FindControl("chkIsApproved")).Checked;
-                string result = dataBaseProvider.UpdateSubjectInfoById(SubjectLine, SubjectId, IsApproved, UserId);
+                string subjectType = ((DropDownList)GridTemplateDetail.Rows[e.RowIndex].FindControl("gridDropDownTemplateType")).SelectedValue;
+                string result = dataBaseProvider.UpdateSubjectInfoById(SubjectLine, SubjectId, IsApproved, UserId, subjectType);
                 if (result.Equals("SUCCESS"))
                 {
                     lblMsg.Text = "Template Update Successfully";

@@ -25,6 +25,10 @@
                 vertical-align: middle;
             }
 
+        .commondClass {
+            text-align: left;
+        }
+
         .style1 {
             height: 55px;
         }
@@ -79,7 +83,7 @@
                         </td>
                         <td style="vertical-align: middle; float: right; margin: 1%;">
                             <asp:TextBox ID="txtSearchBox" runat="server" EnableViewState="true" AutoPostBack="true" Style="width: 200px; height: 25px; vertical-align: middle;"
-                                MaxLength="50" CssClass="form-control" OnTextChanged="txtSearchBox_TextChanged"
+                                MaxLength="50" placeholder="Type here to search" CssClass="form-control" OnTextChanged="txtSearchBox_TextChanged"
                                 BorderColor="#bbd3e9" />
                             <asp:ImageButton ID="btnSearch" ValidationGroup="text" runat="server" ImageUrl="~/Images/search_User.png"
                                 Style="height: 30px; width: 30px; vertical-align: middle; display: none;" OnClientClick="if(!ValidateSearch()) return false;"
@@ -204,22 +208,21 @@
 
                                     <asp:CommandField ButtonType="Image" EditImageUrl="~/Images/edit.png" CancelImageUrl="~/Images/cancel_new.png"
                                         DeleteImageUrl="~/Images/delete.png" UpdateImageUrl="~/Images/save.png" ShowCancelButton="true"
-                                        ShowDeleteButton="false" ShowEditButton="true" ItemStyle-Width="50" ItemStyle-HorizontalAlign="Right">
-                                        <ItemStyle HorizontalAlign="center" Width="100px"></ItemStyle>
-                                        <HeaderStyle CssClass="commondClass" />
+                                        ShowDeleteButton="false" ShowEditButton="true" ItemStyle-HorizontalAlign="Right">
+                                        <ItemStyle HorizontalAlign="right"></ItemStyle>
                                     </asp:CommandField>
                                     <asp:TemplateField>
-                                        <HeaderTemplate>
+                                         <HeaderTemplate>
                                             Action
                                         </HeaderTemplate>
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="imgBtnDelete" runat="server" ToolTip="Delete User Record" OnClick="imgBtnDelete_Click"
+                                            <asp:ImageButton ID="imgBtnDelete" runat="server" ToolTip="Delete User Record" OnClick="imgBtnDelete_Click" style="margin-right:10%;"
                                                 OnClientClick="return confirmation();" CommandArgument='<%# Eval("Id") %>' ImageUrl="~/Images/delete.png" />
                                             <asp:ImageButton ID="imgBtnUserDetail" runat="server" ToolTip="User Details" OnClick="imgBtnUserDetail_Click"
                                                 OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>'
                                                 ImageUrl="~/Images/detail_screen.png" Width="20px" />
                                         </ItemTemplate>
-                                         <HeaderStyle CssClass="commondClass" />
+                                        <HeaderStyle CssClass="commondClass" />
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>

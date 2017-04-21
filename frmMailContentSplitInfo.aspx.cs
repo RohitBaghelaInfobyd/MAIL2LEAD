@@ -1,4 +1,5 @@
 ﻿using AdminTool.DataBase;
+using AdminTool.Model;
 using System;
 using System.Data;
 using System.Web.UI;
@@ -67,6 +68,7 @@ namespace AdminTool
                 DataTable dt = dataBaseProvider.getListOfMailContentSplitInfo(SubjectID);
                 if (dt.Rows.Count < 1)
                 {
+                    ImgTestSplitInfo.Enabled = false;
                     GridSplitDetail.Visible = false;
                     lblMsg.Text = "No any split info found. Please provide content split info.";
                     lblMsg.ForeColor = System.Drawing.Color.Red;
@@ -77,6 +79,7 @@ namespace AdminTool
                 }
                 else
                 {
+                    ImgTestSplitInfo.Enabled = true;
                     GridSplitDetail.Visible = true;
                     GridSplitDetail.DataSource = dt;
                     GridSplitDetail.DataBind();
@@ -90,6 +93,7 @@ namespace AdminTool
 
         private void FillDefaultGridView()
         {
+            GridSplitDetail.EditIndex = -1;
             int SubjectID = Convert.ToInt32(Session["ViewUserSubjectId"]);
             DataTable dt = new DataTable();
             dt = dataBaseProvider.getListOfMailContentSplitInfo(SubjectID);
@@ -99,9 +103,11 @@ namespace AdminTool
             if (dt != null && dt.Rows.Count > 0)
             {
                 GridSplitDetail.Visible = true;
+                ImgTestSplitInfo.Enabled = true;
             }
             else
             {
+                ImgTestSplitInfo.Enabled = false;
                 GridSplitDetail.Visible = false;
                 lblMsg.Text = "No any split info found. Please provide content split info.";
                 lblMsg.ForeColor = System.Drawing.Color.Red;
@@ -197,7 +203,6 @@ namespace AdminTool
         {
             imgBtnAddNew.Text = "Add";
             lblMsg.Visible = false;
-            GridSplitDetail.EditIndex = -1;
             FileHeaderComboBox();
             FillDefaultGridView();
         }
@@ -205,7 +210,6 @@ namespace AdminTool
 
         protected void GridSplitDetail_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            GridSplitDetail.EditIndex = -1;
             pnlAddNewInfo.Visible = false;
             ImgAddSplitInfo.Enabled = true;
             FillDefaultGridView();
@@ -297,7 +301,6 @@ namespace AdminTool
                 {
                     lblMsg.Text = "Template content split information added successfully";
                     lblMsg.ForeColor = System.Drawing.Color.Green;
-                    GridSplitDetail.EditIndex = -1;
                     pnlAddNewInfo.Visible = false;
                     ImgAddSplitInfo.Enabled = true;
                     FillDefaultGridView();
@@ -306,7 +309,6 @@ namespace AdminTool
                 {
                     lblMsg.Text = "Template content split information update successfully";
                     lblMsg.ForeColor = System.Drawing.Color.Green;
-                    GridSplitDetail.EditIndex = -1;
                     pnlAddNewInfo.Visible = false;
                     ImgAddSplitInfo.Enabled = true;
                     FillDefaultGridView();
@@ -350,7 +352,7 @@ namespace AdminTool
             try
             {
                 lblMsg.Visible = false;
-                ImgAddSplitInfo.Enabled = false;                
+                ImgAddSplitInfo.Enabled = false;
                 pnlAddNewInfo.Visible = true;
 
                 int SubjectId = Convert.ToInt32(Session["ViewUserSubjectId"]);
@@ -434,7 +436,6 @@ namespace AdminTool
             {
                 lblMsg.Text = "Template content split information deleted successfully";
                 lblMsg.ForeColor = System.Drawing.Color.Green;
-                GridSplitDetail.EditIndex = -1;
                 FillDefaultGridView();
             }
             else
@@ -545,5 +546,13 @@ namespace AdminTool
             SetUserLeadMailSplitInfo(Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue));
         }
 
+        protected void ImgTestSplitInfo_Click(object sender, EventArgs e)
+        {
+            int UserId = Convert.ToInt32(Session["ViewUserId"]);
+            int viewSubjectId = Convert.ToInt32(dropDpownListOfAllSubjectList.SelectedValue);
+            MainTimeTicker.SubmitEmailFromMailToCRM(UserId, 6, 1, viewSubjectId, "TestSync");
+            lblMsg.Text = "Test Split Completed";
+            lblMsg.Visible = true;
+        }
     }
 }

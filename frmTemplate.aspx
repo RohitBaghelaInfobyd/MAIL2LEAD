@@ -24,9 +24,9 @@
                 padding-left: 15px;
                 vertical-align: middle;
             }
-            
+
         .commondClass {
-            text-align: right;
+            text-align: center;
         }
     </style>
 </asp:Content>
@@ -68,7 +68,16 @@
                                             <asp:TextBox ID="tbNewTemplateInfo" Width="100%" placeholder="Enter Subject title" runat="server"
                                                 MaxLength="80" class="form-control" />
                                         </td>
-
+                                         <td style="vertical-align: middle; padding-right: 1em;">
+                                            <asp:Label ID="TextBox1" Width="100%" Text="Subject Type : " runat="server"
+                                                MaxLength="80" Font-Bold="true" />
+                                        </td>
+                                        <td style="vertical-align: middle; padding-right: 1em;">
+                                            <asp:DropDownList ID="dropDownTemplateType" runat="server">
+                                                <asp:ListItem Text="LEAD" Value="LEAD"></asp:ListItem>
+                                                <asp:ListItem Text="CONTACT" Value="CONTACT"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </td>
 
                                         <td style="vertical-align: middle; padding-left: 1em;">
                                             <asp:Button ID="btnAddNewTemplateInfoAdd" runat="server" Text="Add" CssClass="btn" EnableViewState="false"
@@ -109,7 +118,7 @@
                                     <asp:TemplateField>
                                         <ItemStyle Width="1px" />
                                         <ItemTemplate>
-                                            <asp:HiddenField ID="hiddenSubjectId"  Visible="false" runat="server" Value='<%# Eval("id") %>'></asp:HiddenField>
+                                            <asp:HiddenField ID="hiddenSubjectId" Visible="false" runat="server" Value='<%# Eval("id") %>'></asp:HiddenField>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
@@ -128,6 +137,25 @@
                                                     Width="70%" class="form-control" Style="display: inline-block;"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatortbLeadColumnHeader" runat="server"
                                                     ControlToValidate="tbSubjectTitleHeader" ErrorMessage="*" Font-Bold="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                            </div>
+                                        </EditItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemStyle CssClass="minWidth" />
+                                        <HeaderTemplate>
+                                            Module
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <div style="display: inline-block; width: 100%;">
+                                                <asp:Label ID="lblSubjectType" runat="server" Text='<%# Eval("subjectType") %>'></asp:Label>
+                                            </div>
+                                        </ItemTemplate>
+                                        <EditItemTemplate>
+                                            <div style="display: inline-block; width: 100%;">
+                                                <asp:DropDownList ID="gridDropDownTemplateType" runat="server">
+                                                    <asp:ListItem Text="LEAD" Value="LEAD"></asp:ListItem>
+                                                    <asp:ListItem Text="CONTACT" Value="CONTACT"></asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </EditItemTemplate>
                                     </asp:TemplateField>
@@ -157,12 +185,18 @@
                                         <HeaderStyle CssClass="commondClass" />
                                     </asp:CommandField>
                                     <asp:TemplateField>
+                                        <ItemStyle CssClass="minWidth" />
+                                        <HeaderTemplate>
+                                            Split Info
+                                        </HeaderTemplate>
                                         <ItemTemplate>
                                             <asp:ImageButton ID="imgBtnSubjectDetail" runat="server" OnClick="imgBtnSubjectDetail_Click"
                                                 OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>'
                                                 ImageUrl="~/Images/detail_screen.png" Width="20px"
                                                 ToolTip="User Split Info" />
                                         </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="center" Width="100px"></ItemStyle>
+                                        <HeaderStyle CssClass="commondClass" />
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>

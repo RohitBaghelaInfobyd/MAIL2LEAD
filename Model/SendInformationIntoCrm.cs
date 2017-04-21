@@ -45,11 +45,19 @@ namespace AdminTool.Model
                     }
 
                     int MailId = Convert.ToInt32(DTLeadsInfo.Rows[x]["id"].ToString());
+                    string SubjctType = DTLeadsInfo.Rows[x]["subjectType"].ToString();
 
                     DataTable valueDataTable = databaseProvider.GetLeadToMailColumnValueByMailId(MailId);
                     UniqueValueToCheckExisingValue = string.Empty;
+                    if (SubjctType.ToLower().Contains("lead"))
+                    {
+                        sTmpDataStr = "<Leads>" + CRLF;
+                    }
+                    else
+                    {
+                        sTmpDataStr = "<Contacts>" + CRLF;
+                    }
 
-                    sTmpDataStr = "<Leads>" + CRLF;
                     sTmpDataStr += "<row no=" + Convert.ToChar(34) + "1" + Convert.ToChar(34) + ">" + CRLF;
 
 
@@ -126,14 +134,27 @@ namespace AdminTool.Model
                     }
                     /*************************************************************************/
                     sTmpDataStr += "</row>" + CRLF;
-                    sTmpDataStr += "</Leads>";
+
+                    if (SubjctType.ToLower().Contains("lead"))
+                    {
+                        sTmpDataStr += "</Leads>";
+                    }
+                    else
+                    {
+                        sTmpDataStr += "</Contacts>";
+                    }
                     sRes = string.Empty;
 
                     if (exitingEntryEvent > 1)
                     {
                         if (!string.IsNullOrEmpty(UniqueValueToCheckExisingValue))
                         {
-                            sRes = ZohoCRMAPI.CheckRecord(token, UniqueValueToCheckExisingValue);
+                            bool isForLead = true;
+                            if (!SubjctType.ToLower().Contains("lead"))
+                            {
+                                isForLead = false;
+                            }
+                            sRes = ZohoCRMAPI.CheckRecord(token, UniqueValueToCheckExisingValue, isForLead);
 
                             if (sRes.IndexOf("<code>") < 0)
                             {

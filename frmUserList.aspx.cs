@@ -26,8 +26,8 @@ namespace AdminTool
                 try
                 {
                     int LoggedInuserId;
-                    Session["ViewUserId"] = 0;
                     LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
+                    Session["ViewUserId"] = LoggedInuserId;
                     if (LoggedInuserId < 1)
                     { Response.Redirect("~/default.aspx"); }
                     else
@@ -297,18 +297,17 @@ namespace AdminTool
                 HttpContext.Current.Response.Write("<font style='font-size:10.0pt; font-family:Calibri;'>");
                 HttpContext.Current.Response.Write("<BR><BR><BR>");
                 //sets the table border, cell spacing, border color, font of the text, background, foreground, font height
-                HttpContext.Current.Response.Write("<Table border='1' bgColor='#ffffff' " +
+                HttpContext.Current.Response.Write("<Table border='1' " +
                   "borderColor='#000000' cellSpacing='0' cellPadding='0' " +
-                  "style='font-size:10.0pt; font-family:Calibri; background:lightblue;'> <TR>");
+                  "style='font-size:10.0pt; font-family:Calibri;'> <TR style='background-color:Yellow'>");
                 //am getting my grid's column headers
-                int columnscount = GridView1.Columns.Count;
 
-                for (int j = 0; j < columnscount; j++)
+                for (int j = 0; j < dt.Columns.Count; j++)
                 {      //write in new column
                     HttpContext.Current.Response.Write("<Td>");
                     //Get column headers  and make it as bold in excel columns
                     HttpContext.Current.Response.Write("<B>");
-                    HttpContext.Current.Response.Write(GridView1.Columns[j].HeaderText.ToString());
+                    HttpContext.Current.Response.Write(dt.Columns[j].ColumnName.ToString());
                     HttpContext.Current.Response.Write("</B>");
                     HttpContext.Current.Response.Write("</Td>");
                 }
@@ -449,6 +448,7 @@ namespace AdminTool
 
         protected void ImgAddNewUser_Click1(object sender, EventArgs e)
         {
+            Session["ViewUserId"] = 0;
             Response.Redirect("~/frmSettingUser.aspx");
         }
 

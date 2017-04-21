@@ -82,9 +82,16 @@ namespace AdminTool
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
-            SetUserInfoIntoForm(ViewUserId);
-            lblMsg.Visible = false;
-            EnableDisable(false);
+            if (ViewUserId > 0)
+            {
+                SetUserInfoIntoForm(ViewUserId);
+                lblMsg.Visible = false;
+                EnableDisable(false);
+            }
+            else
+            {
+                Response.Redirect("~/frmUserList.aspx");
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -100,11 +107,11 @@ namespace AdminTool
                 int LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
                 int userType = 1;
                 string FirstName, LastName, EmailId, password = string.Empty, result = string.Empty;
-                FirstName = tbFirstName.Text;
-                LastName = tbLastName.Text;
-                EmailId = tbEmail.Text;
+                FirstName = tbFirstName.Text.Trim();
+                LastName = tbLastName.Text.Trim();
+                EmailId = tbEmail.Text.Trim();
                 password = tbPassword.Text.Trim();
-
+               
                 if (ViewUserId > 0)
                 {
                     result = dataBaseProvider.updateExisingUserInfoIntoDataBase(ViewUserId, FirstName, LastName, EmailId, userType, password);
