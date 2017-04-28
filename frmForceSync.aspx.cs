@@ -1,6 +1,7 @@
 ﻿using AdminTool.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,9 +40,25 @@ namespace AdminTool
             try
             {
                 int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
-                string startDate = tbStartDate.Text.ToString();
-                string endDate = tbEndDate.Text.ToString();
+                string date= tbStartDate.Text;
+                DateTime startDate = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                date = tbEndDate.Text;
+                DateTime endDate = DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+                if (startDate > endDate)
+                {
+                    lblMsg.Text = "Start Date should be less than End date";
+                    lblMsg.Visible = true;
+                    return;
+                }
+
                 int numberOfDays = 1;
+                try
+                {
+                    numberOfDays = Convert.ToInt32((endDate - startDate).TotalDays);
+                }
+                catch (Exception ex)
+                { }
                 if (numberOfDays > 0)
                 {
                     if (ViewUserId > 0)

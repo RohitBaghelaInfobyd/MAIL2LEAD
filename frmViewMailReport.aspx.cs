@@ -231,7 +231,6 @@ namespace AdminTool
                 StringBuilder sb = new StringBuilder();
                 string FileName = "MailReport";
                 DataTable dt = GetDataTable();
-                GridView GridView1 = new GridView();
 
                 HttpContext.Current.Response.Clear();
                 HttpContext.Current.Response.ClearContent();
